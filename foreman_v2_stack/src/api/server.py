@@ -30,8 +30,6 @@ def _find_repo_root(start: Path) -> Path:
         ).exists():
             return candidate
     raise RuntimeError("Unable to locate repository root from server.py path")
-
-
 def _load_json(path: Path) -> Dict[str, Any]:
     with open(path, "r", encoding="utf-8") as f:
         return json.load(f)
