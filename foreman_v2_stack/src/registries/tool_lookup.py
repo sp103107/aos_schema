@@ -70,7 +70,10 @@ class ToolRegistry:
     @staticmethod
     def _find_repo_root(start: Path) -> Path:
         for candidate in (start, *start.parents):
-            if (candidate / ".git").exists() or (candidate / "registry").exists():
+            if (candidate / ".git").exists() or (
+                (candidate / "foreman_v2_stack").exists()
+                and (candidate / "registry" / "tools_catalog.jsonl").exists()
+            ):
                 return candidate
         raise RuntimeError("Unable to locate repository root from tool_lookup.py path")
 
