@@ -1,0 +1,3 @@
+@echo off
+echo Registering stack in index...
+REM TODO: implement registration against central index

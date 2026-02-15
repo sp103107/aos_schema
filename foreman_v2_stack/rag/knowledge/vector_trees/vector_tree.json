@@ -1,0 +1,366 @@
+{
+  "component_id": "foreman_v2",
+  "vector_tree": {
+    "root": {
+      "id": "foreman_v2_root",
+      "name": "Foreman v2 Knowledge Tree",
+      "description": "Root node for Foreman v2 orchestration knowledge organization",
+      "vector_embedding": [0.1, 0.2, 0.3, 0.4, 0.5],
+      "children": [
+        "orchestration_knowledge",
+        "testing_knowledge",
+        "ai_planning_knowledge",
+        "health_monitoring_knowledge"
+      ]
+    },
+    "orchestration_knowledge": {
+      "id": "orchestration_knowledge",
+      "name": "Orchestration Knowledge",
+      "description": "Knowledge about task orchestration and coordination",
+      "vector_embedding": [0.2, 0.3, 0.4, 0.5, 0.6],
+      "children": [
+        "task_planning",
+        "execution_coordination",
+        "result_aggregation"
+      ],
+      "related_functions": [
+        "execute",
+        "task_orchestration_vport"
+      ]
+    },
+    "task_planning": {
+      "id": "task_planning",
+      "name": "Task Planning",
+      "description": "Planning and scheduling orchestration tasks",
+      "vector_embedding": [0.3, 0.4, 0.5, 0.6, 0.7],
+      "children": [],
+      "related_functions": [
+        "execute"
+      ],
+      "knowledge_items": [
+        {
+          "id": "planning_algorithms",
+          "title": "Planning Algorithms",
+          "content": "Algorithms for task planning and scheduling",
+          "tags": ["planning", "algorithm", "scheduling"]
+        },
+        {
+          "id": "resource_allocation",
+          "title": "Resource Allocation",
+          "content": "Intelligent resource allocation strategies",
+          "tags": ["resource", "allocation", "optimization"]
+        }
+      ]
+    },
+    "execution_coordination": {
+      "id": "execution_coordination",
+      "name": "Execution Coordination",
+      "description": "Coordinating task execution across components",
+      "vector_embedding": [0.4, 0.5, 0.6, 0.7, 0.8],
+      "children": [],
+      "related_functions": [
+        "execute"
+      ],
+      "knowledge_items": [
+        {
+          "id": "coordination_strategies",
+          "title": "Coordination Strategies",
+          "content": "Strategies for coordinating task execution",
+          "tags": ["coordination", "strategies", "execution"]
+        },
+        {
+          "id": "task_distribution",
+          "title": "Task Distribution",
+          "content": "Distributing tasks across available resources",
+          "tags": ["distribution", "tasks", "resources"]
+        }
+      ]
+    },
+    "result_aggregation": {
+      "id": "result_aggregation",
+      "name": "Result Aggregation",
+      "description": "Aggregating and processing execution results",
+      "vector_embedding": [0.5, 0.6, 0.7, 0.8, 0.9],
+      "children": [],
+      "related_functions": [
+        "execute"
+      ],
+      "knowledge_items": [
+        {
+          "id": "result_processing",
+          "title": "Result Processing",
+          "content": "Processing and analyzing execution results",
+          "tags": ["processing", "results", "analysis"]
+        },
+        {
+          "id": "performance_metrics",
+          "title": "Performance Metrics",
+          "content": "Collecting and analyzing performance metrics",
+          "tags": ["metrics", "performance", "analysis"]
+        }
+      ]
+    },
+    "testing_knowledge": {
+      "id": "testing_knowledge",
+      "name": "Testing Knowledge",
+      "description": "Knowledge about orchestration testing and validation",
+      "vector_embedding": [0.6, 0.7, 0.8, 0.9, 1.0],
+      "children": [
+        "test_execution",
+        "validation_analysis",
+        "performance_evaluation"
+      ],
+      "related_functions": [
+        "orchestration_test_suite",
+        "comprehensive_orchestration_test_runner"
+      ]
+    },
+    "test_execution": {
+      "id": "test_execution",
+      "name": "Test Execution",
+      "description": "Executing orchestration tests and scenarios",
+      "vector_embedding": [0.7, 0.8, 0.9, 1.0, 0.1],
+      "children": [],
+      "related_functions": [
+        "orchestration_test_suite"
+      ],
+      "knowledge_items": [
+        {
+          "id": "test_scenarios",
+          "title": "Test Scenarios",
+          "content": "Comprehensive test scenarios for orchestration",
+          "tags": ["scenarios", "testing", "comprehensive"]
+        },
+        {
+          "id": "test_execution_engine",
+          "title": "Test Execution Engine",
+          "content": "Engine for executing orchestration tests",
+          "tags": ["engine", "execution", "testing"]
+        }
+      ]
+    },
+    "validation_analysis": {
+      "id": "validation_analysis",
+      "name": "Validation Analysis",
+      "description": "Analyzing and validating test results",
+      "vector_embedding": [0.8, 0.9, 1.0, 0.1, 0.2],
+      "children": [],
+      "related_functions": [
+        "comprehensive_orchestration_test_runner"
+      ],
+      "knowledge_items": [
+        {
+          "id": "validation_rules",
+          "title": "Validation Rules",
+          "content": "Rules for validating orchestration results",
+          "tags": ["rules", "validation", "results"]
+        },
+        {
+          "id": "analysis_methods",
+          "title": "Analysis Methods",
+          "content": "Methods for analyzing test results",
+          "tags": ["methods", "analysis", "results"]
+        }
+      ]
+    },
+    "performance_evaluation": {
+      "id": "performance_evaluation",
+      "name": "Performance Evaluation",
+      "description": "Evaluating orchestration performance",
+      "vector_embedding": [0.9, 1.0, 0.1, 0.2, 0.3],
+      "children": [],
+      "related_functions": [
+        "comprehensive_orchestration_test_runner"
+      ],
+      "knowledge_items": [
+        {
+          "id": "performance_benchmarks",
+          "title": "Performance Benchmarks",
+          "content": "Benchmarks for orchestration performance",
+          "tags": ["benchmarks", "performance", "evaluation"]
+        },
+        {
+          "id": "evaluation_metrics",
+          "title": "Evaluation Metrics",
+          "content": "Metrics for evaluating orchestration performance",
+          "tags": ["metrics", "evaluation", "performance"]
+        }
+      ]
+    },
+    "ai_planning_knowledge": {
+      "id": "ai_planning_knowledge",
+      "name": "AI Planning Knowledge",
+      "description": "Knowledge about AI-powered orchestration planning",
+      "vector_embedding": [1.0, 0.1, 0.2, 0.3, 0.4],
+      "children": [
+        "ai_planning_engine",
+        "optimization_calculation",
+        "plan_validation"
+      ],
+      "related_functions": [
+        "create_ai_orchestration_spreadsheet",
+        "calculate_orchestration_priority"
+      ]
+    },
+    "ai_planning_engine": {
+      "id": "ai_planning_engine",
+      "name": "AI Planning Engine",
+      "description": "AI engine for orchestration planning",
+      "vector_embedding": [0.1, 0.2, 0.3, 0.4, 0.5],
+      "children": [],
+      "related_functions": [
+        "create_ai_orchestration_spreadsheet"
+      ],
+      "knowledge_items": [
+        {
+          "id": "ai_models",
+          "title": "AI Models",
+          "content": "AI models for orchestration planning",
+          "tags": ["ai", "models", "planning"]
+        },
+        {
+          "id": "planning_algorithms",
+          "title": "Planning Algorithms",
+          "content": "AI-powered planning algorithms",
+          "tags": ["algorithms", "planning", "ai"]
+        }
+      ]
+    },
+    "optimization_calculation": {
+      "id": "optimization_calculation",
+      "name": "Optimization Calculation",
+      "description": "Calculating orchestration optimizations",
+      "vector_embedding": [0.2, 0.3, 0.4, 0.5, 0.6],
+      "children": [],
+      "related_functions": [
+        "calculate_orchestration_priority"
+      ],
+      "knowledge_items": [
+        {
+          "id": "optimization_algorithms",
+          "title": "Optimization Algorithms",
+          "content": "Algorithms for orchestration optimization",
+          "tags": ["algorithms", "optimization", "orchestration"]
+        },
+        {
+          "id": "priority_calculation",
+          "title": "Priority Calculation",
+          "content": "Calculating task priorities and rankings",
+          "tags": ["calculation", "priority", "ranking"]
+        }
+      ]
+    },
+    "plan_validation": {
+      "id": "plan_validation",
+      "name": "Plan Validation",
+      "description": "Validating AI-generated orchestration plans",
+      "vector_embedding": [0.3, 0.4, 0.5, 0.6, 0.7],
+      "children": [],
+      "related_functions": [
+        "create_ai_orchestration_spreadsheet"
+      ],
+      "knowledge_items": [
+        {
+          "id": "validation_criteria",
+          "title": "Validation Criteria",
+          "content": "Criteria for validating orchestration plans",
+          "tags": ["criteria", "validation", "plans"]
+        },
+        {
+          "id": "plan_quality_assessment",
+          "title": "Plan Quality Assessment",
+          "content": "Assessing quality of AI-generated plans",
+          "tags": ["assessment", "quality", "plans"]
+        }
+      ]
+    },
+    "health_monitoring_knowledge": {
+      "id": "health_monitoring_knowledge",
+      "name": "Health Monitoring Knowledge",
+      "description": "Knowledge about orchestration health monitoring",
+      "vector_embedding": [0.4, 0.5, 0.6, 0.7, 0.8],
+      "children": [
+        "health_checking",
+        "alert_management",
+        "status_tracking"
+      ],
+      "related_functions": [
+        "orchestration_health_checker",
+        "test_rtx_health_monitoring"
+      ]
+    },
+    "health_checking": {
+      "id": "health_checking",
+      "name": "Health Checking",
+      "description": "Checking orchestration system health",
+      "vector_embedding": [0.5, 0.6, 0.7, 0.8, 0.9],
+      "children": [],
+      "related_functions": [
+        "orchestration_health_checker"
+      ],
+      "knowledge_items": [
+        {
+          "id": "health_checks",
+          "title": "Health Checks",
+          "content": "Comprehensive health check procedures",
+          "tags": ["checks", "health", "procedures"]
+        },
+        {
+          "id": "system_monitoring",
+          "title": "System Monitoring",
+          "content": "Monitoring orchestration system status",
+          "tags": ["monitoring", "system", "status"]
+        }
+      ]
+    },
+    "alert_management": {
+      "id": "alert_management",
+      "name": "Alert Management",
+      "description": "Managing orchestration system alerts",
+      "vector_embedding": [0.6, 0.7, 0.8, 0.9, 1.0],
+      "children": [],
+      "related_functions": [
+        "test_rtx_health_monitoring"
+      ],
+      "knowledge_items": [
+        {
+          "id": "alert_system",
+          "title": "Alert System",
+          "content": "System for managing orchestration alerts",
+          "tags": ["system", "alerts", "management"]
+        },
+        {
+          "id": "notification_handling",
+          "title": "Notification Handling",
+          "content": "Handling orchestration notifications",
+          "tags": ["handling", "notifications", "orchestration"]
+        }
+      ]
+    },
+    "status_tracking": {
+      "id": "status_tracking",
+      "name": "Status Tracking",
+      "description": "Tracking orchestration system status",
+      "vector_embedding": [0.7, 0.8, 0.9, 1.0, 0.1],
+      "children": [],
+      "related_functions": [
+        "orchestration_health_checker"
+      ],
+      "knowledge_items": [
+        {
+          "id": "status_monitoring",
+          "title": "Status Monitoring",
+          "content": "Real-time status monitoring and tracking",
+          "tags": ["monitoring", "status", "real-time"]
+        },
+        {
+          "id": "metrics_collection",
+          "title": "Metrics Collection",
+          "content": "Collecting orchestration system metrics",
+          "tags": ["collection", "metrics", "system"]
+        }
+      ]
+    }
+  }
+}
+

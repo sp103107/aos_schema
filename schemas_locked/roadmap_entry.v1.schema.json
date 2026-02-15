@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schema.aos.tools_bootstrap.roadmap_entry.v1",
+  "title": "Roadmap Entry (v1)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "type",
+    "stage",
+    "status",
+    "title",
+    "created_at",
+    "acceptance_criteria",
+    "outputs",
+    "logging"
+  ],
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "type": {
+      "const": "aos.roadmap_entry"
+    },
+    "stage": {
+      "type": "string",
+      "pattern": "^STAGE_[0-9]{3}$"
+    },
+    "status": {
+      "enum": [
+        "todo",
+        "doing",
+        "done",
+        "blocked"
+      ]
+    },
+    "title": {
+      "type": "string"
+    },
+    "created_at": {
+      "type": "string"
+    },
+    "acceptance_criteria": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "outputs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "logging": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ledger",
+        "episode"
+      ],
+      "properties": {
+        "ledger": {
+          "type": "string"
+        },
+        "episode": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

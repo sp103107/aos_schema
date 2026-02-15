@@ -1,0 +1,167 @@
+{
+  "scene_id": "urn:aos:scene:master_meta_v3_to_v4_upgrade",
+  "scene_version": "4.0",
+  "episode_id": "urn:aos:episode:master_meta_upgrade_v4",
+  "phase": "execution",
+  "started_at": "2026-02-12T01:00:00Z",
+  "completed_at": "2026-02-12T01:25:00Z",
+  "scene_intent": "Upgrade master meta contract from v3 to v4: harden enum typing, expand governance/execution enforcement fields, unify memory tiers, add vocab $defs for roles/tasks/forbidden actions.",
+  "scene_summary": "Produced aos.master.meta.v4.schema.json and migration docs; validated Draft 2020-12; recorded changelog and checkpoint anchored to ledger tip hash.",
+  "inputs": {
+    "refs": [
+      "urn:aos:schema:master/aos.master.meta.v3.schema.json",
+      "urn:aos:schema:temporal/aos.scene.v4.schema.json"
+    ],
+    "hash": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "canonicalization": {
+      "method": "json-c14n",
+      "profile": "aos-json-c14n-v1"
+    }
+  },
+  "outputs": {
+    "refs": [
+      "urn:aos:schema:master/aos.master.meta.v4.schema.json",
+      "urn:aos:artifact:episode_master_meta_v3_to_v4.md",
+      "urn:aos:artifact:change_checklist_master_meta_v4.md"
+    ],
+    "hash": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "canonicalization": {
+      "method": "json-c14n",
+      "profile": "aos-json-c14n-v1"
+    }
+  },
+  "replay": {
+    "runner_id": "urn:aos:runner:stdapp",
+    "runner_version": "1.1.0",
+    "determinism_level": "best_effort",
+    "environment_fingerprint_hash": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+    "notes": "Schema artifacts are hash-deterministic under aos-json-c14n-v1; strict replay requires pinning tool versions and disabling non-deterministic providers."
+  },
+  "task_nodes": [
+    {
+      "node_id": "diff_v3_v4",
+      "agent_id": "urn:aos:agent:foreman_meta_v1",
+      "status": "executed",
+      "function_id": "urn:aos:function:diff_schema_contracts_v1",
+      "task_type": "validation",
+      "input_schema_ref": "urn:aos:schema:ops:aos.diff_schema_contracts.input.v1",
+      "output_schema_ref": "urn:aos:schema:ops:aos.diff_schema_contracts.output.v1",
+      "start_event_id": "urn:aos:event:ev_mm_0001",
+      "end_event_id": "urn:aos:event:ev_mm_0002",
+      "output_refs": [
+        "urn:aos:artifact:master_meta_v3_to_v4_diff.md"
+      ],
+      "side_effects_declared": [
+        "none"
+      ],
+      "memory_write_intent": "ledger_propose",
+      "policy_refs": [
+        "urn:aos:policy:governance/halt_on_violation"
+      ]
+    },
+    {
+      "node_id": "author_master_meta_v4",
+      "agent_id": "urn:aos:agent:sorcerer_meta_v1",
+      "status": "executed",
+      "function_id": "urn:aos:function:author_jsonschema_v1",
+      "task_type": "transformation",
+      "input_schema_ref": "urn:aos:schema:ops:aos.author_jsonschema.input.v1",
+      "output_schema_ref": "urn:aos:schema:ops:aos.author_jsonschema.output.v1",
+      "start_event_id": "urn:aos:event:ev_mm_0003",
+      "end_event_id": "urn:aos:event:ev_mm_0004",
+      "output_refs": [
+        "urn:aos:schema:master/aos.master.meta.v4.schema.json"
+      ],
+      "side_effects_declared": [
+        "filesystem_write:schema"
+      ],
+      "memory_write_intent": "ledger_propose",
+      "policy_refs": [
+        "urn:aos:policy:filesystem/write_allowed"
+      ]
+    },
+    {
+      "node_id": "validate_jsonschema_draft2020_12",
+      "agent_id": "urn:aos:agent:judge_meta_v1",
+      "status": "executed",
+      "function_id": "urn:aos:function:validate_jsonschema_v1",
+      "task_type": "validation",
+      "input_schema_ref": "urn:aos:schema:ops:aos.validate_jsonschema.input.v1",
+      "output_schema_ref": "urn:aos:schema:ops:aos.validate_jsonschema.output.v1",
+      "start_event_id": "urn:aos:event:ev_mm_0005",
+      "end_event_id": "urn:aos:event:ev_mm_0006",
+      "output_refs": [
+        "urn:aos:artifact:validation_report_master_meta_v4.md"
+      ],
+      "side_effects_declared": [
+        "none"
+      ],
+      "memory_write_intent": "ledger_propose",
+      "policy_refs": [
+        "urn:aos:policy:governance/judge_required"
+      ]
+    },
+    {
+      "node_id": "record_changelog_and_checkpoint",
+      "agent_id": "urn:aos:agent:recorder_meta_v1",
+      "status": "executed",
+      "function_id": "urn:aos:function:record_changelog_v1",
+      "task_type": "recording",
+      "input_schema_ref": "urn:aos:schema:ops:aos.record_changelog.input.v1",
+      "output_schema_ref": "urn:aos:schema:ops:aos.record_changelog.output.v1",
+      "start_event_id": "urn:aos:event:ev_mm_0007",
+      "end_event_id": "urn:aos:event:ev_mm_0008",
+      "output_refs": [
+        "urn:aos:artifact:CHANGELOG_master_meta_v4.md"
+      ],
+      "side_effects_declared": [
+        "ledger_append"
+      ],
+      "memory_write_intent": "ledger_commit",
+      "policy_refs": [
+        "urn:aos:policy:ledger/append_only"
+      ]
+    }
+  ],
+  "gates": [
+    {
+      "gate_type": "judge",
+      "decision": "approve",
+      "decision_event_id": "urn:aos:event:ev_mm_0006",
+      "policy_ref": "urn:aos:policy:governance/judge_required",
+      "reason_code": "SCHEMA_VALIDATION_PASS",
+      "notes": "v4 introduces explicit governance/execution toggles, typed capability vocab, normalized memory tiers, and reusable $defs. No breaking changes to master envelope v3."
+    }
+  ],
+  "scene_status": "completed",
+  "memory_checkpoint": {
+    "ledger_ref": "urn:aos:ledger:run_2026_02_12_001",
+    "ledger_schema_ref": "urn:aos:schema:ledger:aos.event_ledger.v1",
+    "ledger_snapshot_hash": "sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+    "tip_event_id": "urn:aos:event:ev_mm_0008",
+    "tip_hash": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+    "event_count": 8,
+    "hashchain": {
+      "prev_hash_field": "prev_hash",
+      "event_hash_field": "event_hash",
+      "canonicalization": {
+        "method": "json-c14n",
+        "profile": "aos-json-c14n-v1"
+      }
+    }
+  },
+  "signatures": [
+    {
+      "signer_id": "recorder_meta_v1",
+      "algo": "hmac-sha256",
+      "sig": "BASE64_OR_HEX_SIGNATURE_PLACEHOLDER",
+      "signed_at": "2026-02-12T01:25:10Z",
+      "covers": [
+        "inputs.hash",
+        "outputs.hash",
+        "memory_checkpoint.tip_hash"
+      ]
+    }
+  ],
+  "notes": "Hashes/signature placeholders; compute using canonicalization profile + sha256/hmac in implementation."
+}

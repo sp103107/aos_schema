@@ -1,0 +1,140 @@
+{
+  "atom_id": "ui_requirement_discovery_atom_v3",
+  "component_name": "UI Requirement Discovery",
+  "component_type": "requirement_analyzer",
+  "version": "3.0.0",
+  "created_at": "2025-09-09T23:30:00.000000",
+  "status": "active",
+  "description": "Discovers UI requirements using RAG capabilities from Foreman v2 and Librarian v2 systems",
+  "fibonacci_level": 6,
+  "complexity_score": 6,
+  "capabilities": [
+    "rag_powered_requirement_discovery",
+    "user_query_analysis",
+    "component_suggestion_generation",
+    "layout_preference_determination",
+    "interaction_pattern_identification",
+    "accessibility_requirement_analysis",
+    "performance_requirement_assessment",
+    "context_aware_analysis"
+  ],
+  "functions": [
+    {
+      "function_name": "analyze_user_query",
+      "description": "Analyze user query to understand UI requirements",
+      "parameters": {
+        "user_query": "string",
+        "context": "object",
+        "preferred_style": "string",
+        "target_platform": "string"
+      },
+      "return_value": {
+        "type": "object",
+        "properties": {
+          "query_intent": "string",
+          "ui_type": "string",
+          "complexity_level": "string",
+          "target_users": "array",
+          "key_features": "array"
+        }
+      }
+    },
+    {
+      "function_name": "discover_component_requirements",
+      "description": "Use RAG to discover required UI components",
+      "parameters": {
+        "query_analysis": "object",
+        "rag_endpoints": "array",
+        "similarity_threshold": "number"
+      },
+      "return_value": {
+        "type": "object",
+        "properties": {
+          "suggested_components": "array",
+          "component_priorities": "array",
+          "integration_points": "array",
+          "rag_insights": "object"
+        }
+      }
+    },
+    {
+      "function_name": "determine_layout_preferences",
+      "description": "Determine optimal layout based on requirements",
+      "parameters": {
+        "ui_type": "string",
+        "complexity_level": "string",
+        "target_users": "array",
+        "device_constraints": "object"
+      },
+      "return_value": {
+        "type": "object",
+        "properties": {
+          "layout_type": "string",
+          "orientation": "string",
+          "sections": "array",
+          "responsive_requirements": "object"
+        }
+      }
+    },
+    {
+      "function_name": "identify_interaction_patterns",
+      "description": "Identify required interaction patterns",
+      "parameters": {
+        "ui_type": "string",
+        "target_users": "array",
+        "complexity_level": "string",
+        "rag_insights": "object"
+      },
+      "return_value": {
+        "type": "object",
+        "properties": {
+          "interaction_types": "array",
+          "user_flows": "array",
+          "accessibility_patterns": "array",
+          "performance_considerations": "array"
+        }
+      }
+    }
+  ],
+  "dependencies": [
+    "enhanced_rag_query_engine",
+    "enhanced_rag_indexer"
+  ],
+  "integration_points": [
+    "foreman_v2_stack",
+    "librarian_v2_stack"
+  ],
+  "use_cases": [
+    "Analyze user queries for UI requirements",
+    "Discover components through RAG-powered search",
+    "Determine optimal layouts and interactions",
+    "Assess accessibility and performance needs"
+  ],
+  "agi_bootstrapping_relevance": "Essential for understanding user intent and translating it into actionable UI requirements through RAG-powered knowledge discovery",
+  "performance_characteristics": {
+    "execution_time": "1-3 seconds",
+    "memory_usage": "low",
+    "scalability": "high",
+    "concurrent_operations": "supported"
+  },
+  "security_considerations": [
+    "Secure RAG endpoint access",
+    "Protected query analysis",
+    "Controlled knowledge base access"
+  ],
+  "testing_requirements": [
+    "Unit tests for query analysis",
+    "Integration tests with RAG systems",
+    "Performance tests for requirement discovery",
+    "Accuracy tests for component suggestions"
+  ],
+  "documentation_requirements": [
+    "API documentation for all functions",
+    "Integration guides for RAG systems",
+    "Query analysis examples",
+    "Component suggestion guidelines"
+  ]
+}
+
+
+

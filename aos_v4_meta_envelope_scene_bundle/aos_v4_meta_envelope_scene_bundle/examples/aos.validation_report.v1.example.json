@@ -1,0 +1,10 @@
+{
+  "run_id": "urn:aos:run:validation:master_v5_pack",
+  "generated_at": "2026-02-12T12:45:00Z",
+  "validator_version": "0.1.0",
+  "ref_resolution_ok": true,
+  "schema_validation_ok": true,
+  "example_validation_ok": true,
+  "errors": [],
+  "warnings": []
+}

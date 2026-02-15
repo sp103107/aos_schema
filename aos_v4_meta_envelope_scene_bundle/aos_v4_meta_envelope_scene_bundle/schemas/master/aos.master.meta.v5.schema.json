@@ -1,0 +1,724 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aos.dev/schemas/master/aos.master.meta.v5.schema.json",
+  "title": "AoS Master Meta Schema v5",
+  "description": "Authoritative capability, governance, and execution contract for AoS-governed systems. v5 adds typed artifacts and schema-pack generation fields while keeping v4 semantics intact.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "declared_capabilities",
+    "session",
+    "governance",
+    "execution",
+    "tasks",
+    "agents",
+    "outputs",
+    "memory",
+    "audit"
+  ],
+  "allOf": [
+    {
+      "if": {
+        "required": [
+          "runtime"
+        ]
+      },
+      "then": {
+        "properties": {
+          "declared_capabilities": {
+            "required": [
+              "runtime"
+            ],
+            "properties": {
+              "runtime": {
+                "minItems": 1
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "artifact_id": {
+      "type": "string",
+      "pattern": "^urn:aos:artifact:[a-zA-Z0-9._-]+$"
+    },
+    "hash_sha256": {
+      "type": "string",
+      "pattern": "^(sha256:)?[a-f0-9]{64}$"
+    },
+    "artifact_type": {
+      "type": "string",
+      "enum": [
+        "schema",
+        "example_valid",
+        "example_invalid",
+        "manifest",
+        "changelog",
+        "validation_report",
+        "diff",
+        "doc_md",
+        "file"
+      ]
+    },
+    "artifact_ref": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "artifact_id"
+      ],
+      "properties": {
+        "artifact_id": {
+          "$ref": "#/$defs/artifact_id"
+        }
+      }
+    },
+    "artifact_decl": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "artifact_id",
+        "artifact_type"
+      ],
+      "properties": {
+        "artifact_id": {
+          "$ref": "#/$defs/artifact_id"
+        },
+        "artifact_type": {
+          "$ref": "#/$defs/artifact_type"
+        }
+      }
+    },
+    "cap_session": {
+      "type": "string",
+      "enum": [
+        "single_chat",
+        "multi_turn_chat",
+        "project",
+        "workflow",
+        "resume_pack",
+        "replayable"
+      ]
+    },
+    "cap_governance": {
+      "type": "string",
+      "enum": [
+        "judge_required",
+        "human_in_loop",
+        "halt_on_violation",
+        "deterministic_required",
+        "refusal_allowed"
+      ]
+    },
+    "cap_execution": {
+      "type": "string",
+      "enum": [
+        "plan_only",
+        "execute",
+        "execute_with_review",
+        "dry_run"
+      ]
+    },
+    "cap_task": {
+      "type": "string",
+      "enum": [
+        "planning",
+        "retrieval",
+        "transformation",
+        "validation",
+        "presentation",
+        "multi_stage_dag"
+      ]
+    },
+    "cap_agent": {
+      "type": "string",
+      "enum": [
+        "foreman",
+        "librarian",
+        "sorcerer",
+        "judge",
+        "messenger",
+        "human_executor",
+        "recorder",
+        "oracle"
+      ]
+    },
+    "cap_output": {
+      "type": "string",
+      "enum": [
+        "schema",
+        "example_valid",
+        "example_invalid",
+        "manifest",
+        "changelog",
+        "validation_report",
+        "diff",
+        "doc_md",
+        "file"
+      ]
+    },
+    "cap_memory_feature": {
+      "type": "string",
+      "enum": [
+        "working_set",
+        "ledger_append_only",
+        "long_term_knowledge",
+        "memory_write_declared"
+      ]
+    },
+    "cap_runtime": {
+      "type": "string",
+      "enum": [
+        "provider_agnostic",
+        "tool_use_allowed",
+        "offline_capable"
+      ]
+    },
+    "cap_audit": {
+      "type": "string",
+      "enum": [
+        "schema_validation",
+        "lint_enforced",
+        "episode_recorded",
+        "exportable_logs"
+      ]
+    },
+    "task_type": {
+      "type": "string",
+      "enum": [
+        "planning",
+        "retrieval",
+        "transformation",
+        "validation",
+        "presentation",
+        "multi_stage_dag"
+      ]
+    },
+    "agent_role": {
+      "type": "string",
+      "enum": [
+        "foreman",
+        "librarian",
+        "sorcerer",
+        "judge",
+        "messenger",
+        "recorder",
+        "oracle",
+        "human_executor"
+      ]
+    },
+    "forbidden_action": {
+      "type": "string",
+      "enum": [
+        "filesystem_write",
+        "network_access",
+        "external_io",
+        "execute_code",
+        "send_email",
+        "modify_calendar",
+        "delete_data",
+        "tool_use"
+      ]
+    },
+    "memory_tier": {
+      "type": "string",
+      "enum": [
+        "working_set",
+        "ledger",
+        "long_term"
+      ]
+    }
+  },
+  "properties": {
+    "declared_capabilities": {
+      "type": "object",
+      "description": "Supported capability superset for this system. Config blocks below represent enabled/selected subsets and may be narrower than these capabilities. Runtime may be omitted when environment-owned.",
+      "additionalProperties": false,
+      "required": [
+        "session",
+        "governance",
+        "execution",
+        "tasks",
+        "agents",
+        "outputs",
+        "memory",
+        "audit"
+      ],
+      "properties": {
+        "session": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/cap_session"
+          }
+        },
+        "governance": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/cap_governance"
+          }
+        },
+        "execution": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/cap_execution"
+          }
+        },
+        "tasks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/cap_task"
+          }
+        },
+        "agents": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/cap_agent"
+          }
+        },
+        "outputs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/cap_output"
+          }
+        },
+        "memory": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/cap_memory_feature"
+          }
+        },
+        "runtime": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/cap_runtime"
+          }
+        },
+        "audit": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/cap_audit"
+          }
+        }
+      }
+    },
+    "session": {
+      "type": "object",
+      "description": "Enabled session configuration for this run (selected subset); must be supported by declared_capabilities.session. session_type captures run modality; multi_turn_chat/resume_pack/replayable are supported features declared in declared_capabilities.session.",
+      "additionalProperties": false,
+      "required": [
+        "session_id",
+        "session_type",
+        "created_at"
+      ],
+      "properties": {
+        "session_id": {
+          "type": "string",
+          "minLength": 8
+        },
+        "session_type": {
+          "type": "string",
+          "description": "Run modality for this session.",
+          "enum": [
+            "single_chat",
+            "project",
+            "workflow"
+          ]
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "governance": {
+      "type": "object",
+      "description": "Enabled governance settings for this run; must be supported by declared_capabilities.governance.",
+      "additionalProperties": false,
+      "required": [
+        "judge_required",
+        "human_in_loop",
+        "halt_on_violation",
+        "deterministic_required",
+        "refusal_allowed"
+      ],
+      "properties": {
+        "judge_required": {
+          "type": "boolean"
+        },
+        "human_in_loop": {
+          "type": "boolean"
+        },
+        "halt_on_violation": {
+          "type": "boolean"
+        },
+        "deterministic_required": {
+          "type": "boolean"
+        },
+        "refusal_allowed": {
+          "type": "boolean"
+        }
+      }
+    },
+    "execution": {
+      "type": "object",
+      "description": "Enabled execution settings for this run (selected subset); must be supported by declared_capabilities.execution. mode is the base lifecycle; step_gated/simulation/replay_mode are feature flags.",
+      "additionalProperties": false,
+      "required": [
+        "mode",
+        "step_gated",
+        "simulation",
+        "replay_mode"
+      ],
+      "properties": {
+        "mode": {
+          "type": "string",
+          "description": "Base execution lifecycle mode.",
+          "enum": [
+            "plan_only",
+            "execute",
+            "execute_with_review",
+            "dry_run"
+          ]
+        },
+        "step_gated": {
+          "type": "boolean",
+          "description": "Feature flag: step gating."
+        },
+        "simulation": {
+          "type": "boolean",
+          "description": "Feature flag: simulation mode."
+        },
+        "replay_mode": {
+          "type": "boolean",
+          "description": "Feature flag: replay mode."
+        },
+        "max_steps": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "timeout_seconds": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "mode": {
+                "const": "plan_only"
+              }
+            },
+            "required": [
+              "mode"
+            ]
+          },
+          "then": {
+            "properties": {
+              "simulation": {
+                "const": false
+              },
+              "replay_mode": {
+                "const": false
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "replay_mode": {
+                "const": true
+              }
+            },
+            "required": [
+              "replay_mode"
+            ]
+          },
+          "then": {
+            "properties": {
+              "mode": {
+                "const": "dry_run"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "tasks": {
+      "type": "object",
+      "description": "Enabled task plan; task_type values should be supported by declared_capabilities.tasks.",
+      "additionalProperties": false,
+      "required": [
+        "tasks"
+      ],
+      "properties": {
+        "tasks": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "task_id",
+              "task_type",
+              "description",
+              "depends_on"
+            ],
+            "properties": {
+              "task_id": {
+                "type": "string"
+              },
+              "task_type": {
+                "$ref": "#/$defs/task_type"
+              },
+              "description": {
+                "type": "string"
+              },
+              "depends_on": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "inputs": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/artifact_ref"
+                }
+              },
+              "outputs": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/artifact_decl"
+                }
+              },
+              "target_schema_ids": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "validation_required": {
+                "type": "boolean"
+              }
+            }
+          }
+        }
+      }
+    },
+    "agents": {
+      "type": "object",
+      "description": "Enabled agent roles and constraints; roles/task types should be supported by declared_capabilities.agents/tasks.",
+      "additionalProperties": false,
+      "required": [
+        "agents"
+      ],
+      "properties": {
+        "agents": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "agent_id",
+              "roles",
+              "allowed_task_types"
+            ],
+            "properties": {
+              "agent_id": {
+                "type": "string"
+              },
+              "roles": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "$ref": "#/$defs/agent_role"
+                }
+              },
+              "allowed_task_types": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "$ref": "#/$defs/task_type"
+                }
+              },
+              "forbidden_actions": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/forbidden_action"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "outputs": {
+      "type": "object",
+      "description": "Enabled output artifact plan; artifact types should be supported by declared_capabilities.outputs.",
+      "additionalProperties": false,
+      "required": [
+        "artifacts"
+      ],
+      "properties": {
+        "artifacts": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "artifact_id",
+              "artifact_type",
+              "description",
+              "hash_sha256",
+              "produced_by_task_id"
+            ],
+            "properties": {
+              "artifact_id": {
+                "$ref": "#/$defs/artifact_id"
+              },
+              "artifact_type": {
+                "$ref": "#/$defs/artifact_type"
+              },
+              "description": {
+                "type": "string"
+              },
+              "hash_sha256": {
+                "$ref": "#/$defs/hash_sha256"
+              },
+              "produced_by_task_id": {
+                "type": "string"
+              },
+              "schema_id": {
+                "type": "string"
+              },
+              "path": {
+                "type": "string"
+              },
+              "content_type": {
+                "type": "string"
+              }
+            },
+            "allOf": [
+              {
+                "if": {
+                  "properties": {
+                    "artifact_type": {
+                      "const": "schema"
+                    }
+                  },
+                  "required": [
+                    "artifact_type"
+                  ]
+                },
+                "then": {
+                  "required": [
+                    "schema_id"
+                  ]
+                }
+              },
+              {
+                "if": {
+                  "properties": {
+                    "artifact_type": {
+                      "const": "file"
+                    }
+                  },
+                  "required": [
+                    "artifact_type"
+                  ]
+                },
+                "then": {
+                  "required": [
+                    "path",
+                    "content_type"
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "memory": {
+      "type": "object",
+      "description": "Enabled memory settings for this run; must be supported by declared_capabilities.memory.",
+      "additionalProperties": false,
+      "required": [
+        "allowed_tiers",
+        "writes_must_be_declared"
+      ],
+      "properties": {
+        "allowed_tiers": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/memory_tier"
+          }
+        },
+        "writes_must_be_declared": {
+          "type": "boolean"
+        },
+        "ledger_append_only": {
+          "type": "boolean"
+        }
+      }
+    },
+    "audit": {
+      "type": "object",
+      "description": "Enabled audit settings for this run; must be supported by declared_capabilities.audit. Canonical fields are record_episode and schema_validation_required; alias fields episode_recorded and schema_validation must be normalized by runtime, with canonical values winning on conflict.",
+      "additionalProperties": false,
+      "required": [
+        "record_episode",
+        "exportable_logs",
+        "schema_validation_required"
+      ],
+      "properties": {
+        "schema_validation": {
+          "type": "boolean",
+          "description": "Alias of schema_validation_required for capability alignment."
+        },
+        "lint_enforced": {
+          "type": "boolean",
+          "description": "If true, linting is enforced during execution; may be enforced outside this schema."
+        },
+        "episode_recorded": {
+          "type": "boolean",
+          "description": "Alias of record_episode for capability alignment."
+        },
+        "record_episode": {
+          "type": "boolean",
+          "description": "Enabled episode recording."
+        },
+        "exportable_logs": {
+          "type": "boolean",
+          "description": "Enabled exportable audit logs."
+        },
+        "schema_validation_required": {
+          "type": "boolean",
+          "description": "Enabled schema validation checks."
+        }
+      }
+    },
+    "runtime": {
+      "type": "object",
+      "description": "Enabled runtime configuration for this run; must be supported by declared_capabilities.runtime when present. May be omitted when environment-owned.",
+      "additionalProperties": false,
+      "properties": {
+        "provider_agnostic": {
+          "type": "boolean"
+        },
+        "tool_use_allowed": {
+          "type": "boolean"
+        },
+        "offline_capable": {
+          "type": "boolean"
+        }
+      }
+    }
+  }
+}

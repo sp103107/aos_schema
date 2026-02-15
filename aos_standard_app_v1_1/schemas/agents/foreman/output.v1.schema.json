@@ -1,0 +1,197 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "aos.schema.agent.foreman.output.v1",
+  "title": "AoS Foreman Agent Output Contract v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "status",
+    "planning_summary",
+    "plan",
+    "delegations",
+    "risks"
+  ],
+  "properties": {
+    "status": {
+      "type": "string",
+      "enum": [
+        "SUCCESS",
+        "PARTIAL_SUCCESS",
+        "FAILURE",
+        "NEEDS_HUMAN_INPUT"
+      ]
+    },
+    "planning_summary": {
+      "type": "string",
+      "minLength": 1
+    },
+    "plan": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "steps"
+      ],
+      "properties": {
+        "steps": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "step_id",
+              "title",
+              "description",
+              "owner_role",
+              "status"
+            ],
+            "properties": {
+              "step_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "title": {
+                "type": "string",
+                "minLength": 1
+              },
+              "description": {
+                "type": "string",
+                "minLength": 1
+              },
+              "owner_role": {
+                "type": "string",
+                "enum": [
+                  "Foreman",
+                  "Librarian",
+                  "Sorcerer",
+                  "Judge",
+                  "Messenger",
+                  "Recorder",
+                  "Human"
+                ]
+              },
+              "depends_on": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "default": []
+              },
+              "status": {
+                "type": "string",
+                "enum": [
+                  "todo",
+                  "in_progress",
+                  "blocked",
+                  "done"
+                ],
+                "default": "todo"
+              },
+              "acceptance_criteria": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "default": []
+              },
+              "artifacts_expected": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "default": []
+              }
+            }
+          }
+        }
+      }
+    },
+    "delegations": {
+      "type": "array",
+      "default": [],
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "role",
+          "task_id",
+          "objective",
+          "payload"
+        ],
+        "properties": {
+          "role": {
+            "type": "string",
+            "enum": [
+              "Librarian",
+              "Sorcerer",
+              "Judge",
+              "Messenger",
+              "Recorder"
+            ]
+          },
+          "task_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "objective": {
+            "type": "string",
+            "minLength": 1
+          },
+          "payload": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "priority": {
+            "type": "string",
+            "enum": [
+              "low",
+              "normal",
+              "high",
+              "urgent"
+            ],
+            "default": "normal"
+          }
+        }
+      }
+    },
+    "risks": {
+      "type": "array",
+      "default": [],
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "severity",
+          "description"
+        ],
+        "properties": {
+          "severity": {
+            "type": "string",
+            "enum": [
+              "LOW",
+              "MEDIUM",
+              "HIGH",
+              "CRITICAL"
+            ]
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1
+          },
+          "mitigation": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "notes": {
+      "type": "string",
+      "default": ""
+    },
+    "metrics": {
+      "type": "object",
+      "additionalProperties": true,
+      "default": {}
+    }
+  }
+}

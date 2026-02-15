@@ -1,0 +1,114 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "aos.schema.agent.librarian.input.v1",
+  "title": "AoS Librarian Agent Input Contract v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "task_id",
+    "query",
+    "intent",
+    "context_snapshot"
+  ],
+  "properties": {
+    "task_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "query": {
+      "type": "string",
+      "minLength": 3
+    },
+    "intent": {
+      "type": "string",
+      "enum": [
+        "lookup",
+        "summarize",
+        "compare",
+        "fact_check"
+      ]
+    },
+    "context_snapshot": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "source_id",
+          "content"
+        ],
+        "properties": {
+          "source_id": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "content": {
+            "type": "string"
+          }
+        }
+      },
+      "default": []
+    },
+    "filters": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "time_range": {
+          "type": "string",
+          "enum": [
+            "any",
+            "24h",
+            "7d",
+            "30d",
+            "1y"
+          ],
+          "default": "any"
+        },
+        "domains_allowlist": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": []
+        },
+        "domains_blocklist": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": []
+        }
+      },
+      "default": {}
+    },
+    "output_format": {
+      "type": "string",
+      "enum": [
+        "bullets",
+        "table",
+        "narrative"
+      ],
+      "default": "bullets"
+    },
+    "max_results": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 50,
+      "default": 10
+    },
+    "trace": {
+      "type": "object",
+      "additionalProperties": true,
+      "default": {}
+    }
+  }
+}

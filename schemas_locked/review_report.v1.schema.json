@@ -1,0 +1,126 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schema.aos.tools_bootstrap.review_report.v1",
+  "title": "Tool Inbox Review Report (v1)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "type",
+    "created_at",
+    "scan_root",
+    "summary",
+    "batches",
+    "findings",
+    "outputs"
+  ],
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "type": {
+      "const": "aos.review_report"
+    },
+    "created_at": {
+      "type": "string"
+    },
+    "scan_root": {
+      "type": "string"
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "files_total",
+        "dirs_total",
+        "tool_candidates",
+        "tool_roots",
+        "errors"
+      ],
+      "properties": {
+        "files_total": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "dirs_total": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "tool_candidates": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "tool_roots": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "errors": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "batches": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "batch_id",
+          "index",
+          "size",
+          "tool_roots"
+        ],
+        "properties": {
+          "batch_id": {
+            "type": "string"
+          },
+          "index": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "size": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "tool_roots": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "outputs": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "review_report_json",
+        "review_report_jsonl",
+        "proposed_tools_catalog_jsonl",
+        "proposed_vport_registry_jsonl"
+      ],
+      "properties": {
+        "review_report_json": {
+          "type": "string"
+        },
+        "review_report_jsonl": {
+          "type": "string"
+        },
+        "proposed_tools_catalog_jsonl": {
+          "type": "string"
+        },
+        "proposed_vport_registry_jsonl": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

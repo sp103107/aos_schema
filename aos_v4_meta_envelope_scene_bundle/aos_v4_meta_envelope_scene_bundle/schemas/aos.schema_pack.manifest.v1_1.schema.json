@@ -1,0 +1,161 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aos.dev/schemas/aos.schema_pack.manifest.v1_1.schema.json",
+  "title": "AoS Schema Pack Manifest v1.1",
+  "description": "Manifest for a generated schema pack containing schemas, examples, docs, and validation report. v1.1 adds optional traceability fields.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "pack_id",
+    "version",
+    "generated_at",
+    "draft",
+    "schemas",
+    "examples",
+    "docs",
+    "changelog",
+    "validation_report_ref"
+  ],
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^(sha256:)?[a-f0-9]{64}$"
+    },
+    "schema_entry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_id",
+        "path",
+        "sha256",
+        "title",
+        "version"
+      ],
+      "properties": {
+        "schema_id": {
+          "type": "string"
+        },
+        "path": {
+          "type": "string"
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "refs_to": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "title": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        }
+      }
+    },
+    "example_entry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "example_id",
+        "path",
+        "sha256",
+        "schema_id"
+      ],
+      "properties": {
+        "example_id": {
+          "type": "string"
+        },
+        "path": {
+          "type": "string"
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "schema_id": {
+          "type": "string"
+        }
+      }
+    },
+    "doc_entry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "properties": {
+        "path": {
+          "type": "string"
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    }
+  },
+  "properties": {
+    "pack_id": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string"
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "draft": {
+      "type": "boolean"
+    },
+    "generated_with_meta_id": {
+      "type": "string"
+    },
+    "generated_with_envelope_id": {
+      "type": "string"
+    },
+    "kernel_version": {
+      "type": "string"
+    },
+    "schemas": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/schema_entry"
+      }
+    },
+    "examples": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/example_entry"
+      }
+    },
+    "docs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/doc_entry"
+      }
+    },
+    "changelog": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "properties": {
+        "path": {
+          "type": "string"
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    },
+    "validation_report_ref": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "aos.schema.agent.judge.output.v1",
+  "title": "AoS Judge Agent Output Contract v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "status",
+    "verdict",
+    "reasoning_summary",
+    "issues"
+  ],
+  "properties": {
+    "status": {
+      "type": "string",
+      "enum": [
+        "SUCCESS",
+        "PARTIAL_SUCCESS",
+        "FAILURE",
+        "NEEDS_HUMAN_INPUT"
+      ]
+    },
+    "verdict": {
+      "type": "string",
+      "enum": [
+        "APPROVED",
+        "REJECTED",
+        "CONDITIONALLY_APPROVED",
+        "INCONCLUSIVE"
+      ]
+    },
+    "reasoning_summary": {
+      "type": "string"
+    },
+    "issues": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "severity",
+          "message"
+        ],
+        "properties": {
+          "severity": {
+            "type": "string",
+            "enum": [
+              "LOW",
+              "MEDIUM",
+              "HIGH",
+              "CRITICAL"
+            ]
+          },
+          "message": {
+            "type": "string"
+          },
+          "location": {
+            "type": "string"
+          },
+          "suggested_fix": {
+            "type": "string"
+          }
+        }
+      },
+      "default": []
+    },
+    "citations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "default": []
+    },
+    "notes": {
+      "type": "string",
+      "default": ""
+    },
+    "metrics": {
+      "type": "object",
+      "additionalProperties": true,
+      "default": {}
+    }
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "aos.vport.result.schema.v1",
+  "title": "AoS vPort Result Envelope",
+  "description": "Standardized result envelope for vPort invocations.",
+  "type": "object",
+  "required": [
+    "vport",
+    "status"
+  ],
+  "properties": {
+    "request_id": {
+      "type": "string",
+      "description": "Echoed from the call envelope if present."
+    },
+    "vport": {
+      "$ref": "aos.vport.id.schema.v1"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "success",
+        "error"
+      ]
+    },
+    "output": {
+      "type": "object",
+      "description": "Tool/program output on success.",
+      "default": {},
+      "additionalProperties": true
+    },
+    "error": {
+      "type": "object",
+      "description": "Error details if status = 'error'.",
+      "properties": {
+        "message": {
+          "type": "string"
+        },
+        "code": {
+          "type": "string"
+        },
+        "details": {
+          "type": "object",
+          "additionalProperties": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "meta": {
+      "type": "object",
+      "description": "Optional metadata (timing, retries, target info).",
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,55 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "aos.schema.base.agent_input.base.v1",
+  "title": "AoS Base Agent Input Contract v1",
+  "description": "Shared input contract for AoS agents and micro-agents. Specific agents extend this by adding required fields and constraining enums.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "task_id",
+    "role",
+    "intent",
+    "context_snapshot"
+  ],
+  "properties": {
+    "task_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "role": {
+      "type": "string",
+      "enum": [
+        "Foreman",
+        "Librarian",
+        "Sorcerer",
+        "Judge",
+        "Messenger",
+        "Recorder",
+        "MicroAgent"
+      ]
+    },
+    "intent": {
+      "type": "string",
+      "minLength": 1
+    },
+    "payload": {
+      "type": "object",
+      "additionalProperties": true,
+      "default": {}
+    },
+    "constraints": {
+      "type": "object",
+      "additionalProperties": true,
+      "default": {}
+    },
+    "context_snapshot": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "trace": {
+      "type": "object",
+      "additionalProperties": true,
+      "default": {}
+    }
+  }
+}

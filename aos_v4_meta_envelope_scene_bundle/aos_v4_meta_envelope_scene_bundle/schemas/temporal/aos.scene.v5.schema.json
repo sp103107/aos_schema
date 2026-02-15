@@ -1,0 +1,482 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aos.dev/schemas/temporal/aos.scene.v5.schema.json",
+  "title": "AoS Scene Schema v5",
+  "description": "Audit-grade scene contract v5: binds task execution to canonicalized hashes, ledger hashchain tip, node I/O schemas, policy gates, and replay metadata.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "scene_id",
+    "scene_version",
+    "episode_id",
+    "phase",
+    "started_at",
+    "scene_status",
+    "task_nodes",
+    "memory_checkpoint"
+  ],
+  "$defs": {
+    "urn_scene": {
+      "type": "string",
+      "pattern": "^urn:aos:scene:[a-zA-Z0-9._-]+$"
+    },
+    "urn_episode": {
+      "type": "string",
+      "pattern": "^urn:aos:episode:[a-zA-Z0-9._-]+$"
+    },
+    "urn_agent": {
+      "type": "string",
+      "pattern": "^urn:aos:agent:[a-zA-Z0-9._-]+$"
+    },
+    "urn_event": {
+      "type": "string",
+      "pattern": "^urn:aos:event:[a-zA-Z0-9._-]+$"
+    },
+    "urn_function": {
+      "type": "string",
+      "pattern": "^urn:aos:function:[a-zA-Z0-9._-]+$"
+    },
+    "urn_schema": {
+      "type": "string",
+      "pattern": "^urn:aos:schema:[a-zA-Z0-9._/-]+$"
+    },
+    "urn_policy": {
+      "type": "string",
+      "pattern": "^urn:aos:policy:[a-zA-Z0-9._/-]+$"
+    },
+    "urn_ledger": {
+      "type": "string",
+      "pattern": "^urn:aos:ledger:[a-zA-Z0-9._-]+$"
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^(sha256:)?[a-f0-9]{64}$"
+    },
+    "canonicalization": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "method"
+      ],
+      "properties": {
+        "method": {
+          "type": "string",
+          "enum": [
+            "json-c14n",
+            "stable-json-stringify",
+            "custom"
+          ]
+        },
+        "profile": {
+          "type": "string"
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    },
+    "hash_binding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "refs",
+        "hash",
+        "canonicalization"
+      ],
+      "properties": {
+        "refs": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        },
+        "hash": {
+          "$ref": "#/$defs/sha256"
+        },
+        "canonicalization": {
+          "$ref": "#/$defs/canonicalization"
+        }
+      }
+    },
+    "error_obj": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "code",
+        "message"
+      ],
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "string"
+        }
+      }
+    },
+    "node": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "node_id",
+        "agent_id",
+        "status"
+      ],
+      "properties": {
+        "node_id": {
+          "type": "string"
+        },
+        "agent_id": {
+          "$ref": "#/$defs/urn_agent"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "planned",
+            "executed",
+            "skipped",
+            "failed",
+            "halted"
+          ]
+        },
+        "function_id": {
+          "$ref": "#/$defs/urn_function"
+        },
+        "task_type": {
+          "type": "string"
+        },
+        "input_schema_ref": {
+          "$ref": "#/$defs/urn_schema"
+        },
+        "output_schema_ref": {
+          "$ref": "#/$defs/urn_schema"
+        },
+        "inputs": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "refs": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "hash": {
+              "$ref": "#/$defs/sha256"
+            },
+            "canonicalization": {
+              "$ref": "#/$defs/canonicalization"
+            }
+          }
+        },
+        "start_event_id": {
+          "$ref": "#/$defs/urn_event"
+        },
+        "end_event_id": {
+          "$ref": "#/$defs/urn_event"
+        },
+        "output_event_id": {
+          "$ref": "#/$defs/urn_event"
+        },
+        "output_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "side_effects_declared": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "memory_write_intent": {
+          "type": "string",
+          "enum": [
+            "none",
+            "working_set",
+            "ledger_propose",
+            "ledger_commit",
+            "ltm_propose"
+          ]
+        },
+        "policy_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/urn_policy"
+          }
+        },
+        "error": {
+          "$ref": "#/$defs/error_obj"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "executed"
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "required": [
+              "start_event_id",
+              "end_event_id"
+            ]
+          }
+        }
+      ]
+    },
+    "gate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "gate_type",
+        "decision",
+        "decision_event_id"
+      ],
+      "properties": {
+        "gate_type": {
+          "type": "string",
+          "enum": [
+            "judge",
+            "human",
+            "policy"
+          ]
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "approve",
+            "deny",
+            "revise",
+            "halt"
+          ]
+        },
+        "decision_event_id": {
+          "$ref": "#/$defs/urn_event"
+        },
+        "policy_ref": {
+          "$ref": "#/$defs/urn_policy"
+        },
+        "reason_code": {
+          "type": "string"
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    },
+    "signature": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "signer_id",
+        "algo",
+        "sig"
+      ],
+      "properties": {
+        "signer_id": {
+          "type": "string"
+        },
+        "algo": {
+          "type": "string",
+          "enum": [
+            "ed25519",
+            "secp256k1",
+            "rsa-pss",
+            "hmac-sha256"
+          ]
+        },
+        "sig": {
+          "type": "string"
+        },
+        "signed_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "covers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "properties": {
+    "scene_id": {
+      "$ref": "#/$defs/urn_scene"
+    },
+    "scene_version": {
+      "type": "string",
+      "const": "5.0"
+    },
+    "episode_id": {
+      "$ref": "#/$defs/urn_episode"
+    },
+    "phase": {
+      "type": "string",
+      "enum": [
+        "planning",
+        "validation",
+        "execution",
+        "verification",
+        "packaging",
+        "finalize"
+      ]
+    },
+    "started_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "completed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "scene_intent": {
+      "type": "string"
+    },
+    "scene_summary": {
+      "type": "string"
+    },
+    "inputs": {
+      "$ref": "#/$defs/hash_binding"
+    },
+    "outputs": {
+      "$ref": "#/$defs/hash_binding"
+    },
+    "replay": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "runner_id": {
+          "type": "string"
+        },
+        "runner_version": {
+          "type": "string"
+        },
+        "determinism_level": {
+          "type": "string",
+          "enum": [
+            "best_effort",
+            "strict"
+          ]
+        },
+        "environment_fingerprint_hash": {
+          "$ref": "#/$defs/sha256"
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    },
+    "task_nodes": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/node"
+      }
+    },
+    "gates": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/gate"
+      }
+    },
+    "scene_status": {
+      "type": "string",
+      "enum": [
+        "planned",
+        "active",
+        "completed",
+        "failed",
+        "halted"
+      ]
+    },
+    "memory_checkpoint": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ledger_ref",
+        "tip_event_id",
+        "tip_hash"
+      ],
+      "properties": {
+        "ledger_ref": {
+          "$ref": "#/$defs/urn_ledger"
+        },
+        "ledger_schema_ref": {
+          "$ref": "#/$defs/urn_schema"
+        },
+        "ledger_snapshot_hash": {
+          "$ref": "#/$defs/sha256"
+        },
+        "tip_event_id": {
+          "$ref": "#/$defs/urn_event"
+        },
+        "tip_hash": {
+          "$ref": "#/$defs/sha256"
+        },
+        "event_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "hashchain": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "prev_hash_field": {
+              "type": "string",
+              "default": "prev_hash"
+            },
+            "event_hash_field": {
+              "type": "string",
+              "default": "event_hash"
+            },
+            "canonicalization": {
+              "$ref": "#/$defs/canonicalization"
+            }
+          }
+        }
+      }
+    },
+    "signatures": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/signature"
+      }
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "required": [
+          "completed_at"
+        ]
+      },
+      "then": {
+        "properties": {
+          "scene_status": {
+            "enum": [
+              "completed",
+              "failed",
+              "halted"
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

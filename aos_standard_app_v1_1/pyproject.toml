@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=68.0.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "aos-standard-app"
+version = "1.0.0"
+description = "AoS Standard Application v1 - schema-first envelope runner with vPort registry"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "jsonschema>=4.21.0",
+]
+
+[project.scripts]
+aos-stdapp = "aos_runtime.cli:main"

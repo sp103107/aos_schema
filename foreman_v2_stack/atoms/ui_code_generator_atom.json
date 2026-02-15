@@ -1,0 +1,180 @@
+{
+  "atom_id": "ui_code_generator_atom_v3",
+  "component_name": "UI Code Generator",
+  "component_type": "code_factory",
+  "version": "3.0.0",
+  "created_at": "2025-09-09T23:30:00.000000",
+  "status": "active",
+  "description": "Generates complete UI code (HTML, CSS, JavaScript) for discovered requirements",
+  "fibonacci_level": 8,
+  "complexity_score": 8,
+  "capabilities": [
+    "multi_framework_code_generation",
+    "complete_ui_code_assembly",
+    "optimized_code_output",
+    "framework_specific_adaptation",
+    "code_style_consistency",
+    "performance_optimized_code",
+    "accessibility_compliant_code",
+    "interactive_demo_generation"
+  ],
+  "functions": [
+    {
+      "function_name": "assemble_html_code",
+      "description": "Assemble complete HTML code from components and layout",
+      "parameters": {
+        "ui_specification": "object",
+        "components": "array",
+        "layout_structure": "object",
+        "html_standards": "string"
+      },
+      "return_value": {
+        "type": "object",
+        "properties": {
+          "html_code": "string",
+          "html_structure": "object",
+          "semantic_elements": "array",
+          "accessibility_features": "array"
+        }
+      }
+    },
+    {
+      "function_name": "assemble_css_code",
+      "description": "Assemble complete CSS code with styling and responsive rules",
+      "parameters": {
+        "ui_specification": "object",
+        "components": "array",
+        "layout_structure": "object",
+        "style_preferences": "object"
+      },
+      "return_value": {
+        "type": "object",
+        "properties": {
+          "css_code": "string",
+          "css_structure": "object",
+          "responsive_rules": "array",
+          "performance_optimizations": "array"
+        }
+      }
+    },
+    {
+      "function_name": "assemble_javascript_code",
+      "description": "Assemble complete JavaScript code with interactions and functionality",
+      "parameters": {
+        "ui_specification": "object",
+        "components": "array",
+        "interaction_patterns": "array",
+        "rag_integration": "object"
+      },
+      "return_value": {
+        "type": "object",
+        "properties": {
+          "javascript_code": "string",
+          "js_structure": "object",
+          "interaction_handlers": "array",
+          "rag_integration_code": "string"
+        }
+      }
+    },
+    {
+      "function_name": "generate_framework_specific_code",
+      "description": "Generate code for specific frameworks (React, Vue, Angular)",
+      "parameters": {
+        "target_framework": "string",
+        "ui_specification": "object",
+        "components": "array",
+        "framework_conventions": "object"
+      },
+      "return_value": {
+        "type": "object",
+        "properties": {
+          "framework_code": "string",
+          "component_files": "array",
+          "configuration_files": "array",
+          "build_instructions": "object"
+        }
+      }
+    },
+    {
+      "function_name": "optimize_code_performance",
+      "description": "Optimize generated code for performance",
+      "parameters": {
+        "generated_code": "object",
+        "optimization_level": "string",
+        "performance_requirements": "object",
+        "target_platform": "string"
+      },
+      "return_value": {
+        "type": "object",
+        "properties": {
+          "optimized_code": "object",
+          "performance_improvements": "array",
+          "optimization_metrics": "object",
+          "recommendations": "array"
+        }
+      }
+    },
+    {
+      "function_name": "create_interactive_demo",
+      "description": "Create interactive demo with generated code",
+      "parameters": {
+        "ui_components": "array",
+        "demo_scenarios": "array",
+        "user_interactions": "array",
+        "rag_integration": "object"
+      },
+      "return_value": {
+        "type": "object",
+        "properties": {
+          "demo_url": "string",
+          "demo_files": "array",
+          "interactive_features": "array",
+          "user_flows": "array"
+        }
+      }
+    }
+  ],
+  "dependencies": [
+    "ui_layout_generator_atom",
+    "ui_component_generator_atom"
+  ],
+  "integration_points": [
+    "ui_layout_generator_atom",
+    "ui_component_generator_atom",
+    "ui_requirement_discovery_atom"
+  ],
+  "use_cases": [
+    "Generate complete UI code for web applications",
+    "Create framework-specific implementations",
+    "Generate interactive demos and prototypes",
+    "Optimize code for performance and accessibility"
+  ],
+  "agi_bootstrapping_relevance": "Critical for producing production-ready UI code that integrates with RAG systems and meets modern web standards",
+  "performance_characteristics": {
+    "execution_time": "3-8 seconds",
+    "memory_usage": "moderate",
+    "scalability": "high",
+    "concurrent_operations": "supported"
+  },
+  "security_considerations": [
+    "Secure code generation",
+    "Protected framework access",
+    "Controlled optimization processes",
+    "Safe demo generation"
+  ],
+  "testing_requirements": [
+    "Unit tests for code generation",
+    "Integration tests with layout and component generators",
+    "Performance tests for generated code",
+    "Framework compatibility tests"
+  ],
+  "documentation_requirements": [
+    "Code generation API documentation",
+    "Framework integration guides",
+    "Performance optimization documentation",
+    "Demo creation guidelines"
+  ]
+}
+
+
+

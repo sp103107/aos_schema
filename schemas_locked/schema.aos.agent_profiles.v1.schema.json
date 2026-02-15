@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "AoS Agent Profiles Schema",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "project_id",
+    "agents"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string"
+    },
+    "project_id": {
+      "type": "string"
+    },
+    "agents": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "meta/agent.v2.1.schema.json"
+      }
+    }
+  },
+  "additionalProperties": false
+}

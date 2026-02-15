@@ -1,0 +1,106 @@
+{
+  "component_id": "foreman_v2",
+  "task_patterns": {
+    "orchestration_workflow": {
+      "description": "Complete orchestration workflow with planning and execution",
+      "steps": [
+        "task_planning",
+        "resource_allocation",
+        "execution_coordination",
+        "monitoring_tracking",
+        "result_aggregation"
+      ],
+      "input_requirements": [
+        "task_definitions",
+        "resource_requirements",
+        "execution_constraints"
+      ],
+      "output_requirements": [
+        "execution_results",
+        "performance_metrics",
+        "orchestration_summary"
+      ],
+      "success_criteria": [
+        "all_tasks_completed",
+        "performance_targets_met",
+        "resource_utilization_optimized"
+      ]
+    },
+    "testing_workflow": {
+      "description": "Comprehensive testing workflow for orchestration system",
+      "steps": [
+        "test_planning",
+        "test_execution",
+        "result_validation",
+        "performance_analysis",
+        "report_generation"
+      ],
+      "input_requirements": [
+        "test_scenarios",
+        "validation_criteria",
+        "performance_benchmarks"
+      ],
+      "output_requirements": [
+        "test_results",
+        "validation_reports",
+        "performance_evaluations"
+      ],
+      "success_criteria": [
+        "all_tests_passed",
+        "performance_benchmarks_met",
+        "validation_criteria_satisfied"
+      ]
+    },
+    "ai_planning_workflow": {
+      "description": "AI-powered planning workflow for orchestration",
+      "steps": [
+        "data_analysis",
+        "ai_planning",
+        "optimization_calculation",
+        "plan_validation",
+        "implementation_preparation"
+      ],
+      "input_requirements": [
+        "planning_data",
+        "ai_models",
+        "optimization_parameters"
+      ],
+      "output_requirements": [
+        "ai_generated_plans",
+        "optimization_recommendations",
+        "implementation_guidelines"
+      ],
+      "success_criteria": [
+        "plans_generated",
+        "optimization_achieved",
+        "implementation_ready"
+      ]
+    },
+    "health_monitoring_workflow": {
+      "description": "Health monitoring and alerting workflow",
+      "steps": [
+        "health_check_execution",
+        "status_analysis",
+        "alert_evaluation",
+        "notification_dispatch",
+        "recovery_planning"
+      ],
+      "input_requirements": [
+        "health_checks",
+        "alert_thresholds",
+        "notification_configs"
+      ],
+      "output_requirements": [
+        "health_reports",
+        "alert_notifications",
+        "recovery_recommendations"
+      ],
+      "success_criteria": [
+        "health_checks_completed",
+        "alerts_processed",
+        "system_health_maintained"
+      ]
+    }
+  }
+}
+

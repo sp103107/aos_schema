@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schema.aos.tools_bootstrap.template_ledger_entry.v1",
+  "title": "Template Ledger Entry (v1)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "type",
+    "created_at",
+    "actor",
+    "action",
+    "artifacts",
+    "provenance"
+  ],
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "type": {
+      "const": "aos.ledger_entry"
+    },
+    "created_at": {
+      "type": "string"
+    },
+    "actor": {
+      "type": "string",
+      "description": "human|cursor|aos.agent.*"
+    },
+    "action": {
+      "type": "string"
+    },
+    "artifacts": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "input_locks_sha256",
+        "notes"
+      ],
+      "properties": {
+        "input_locks_sha256": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

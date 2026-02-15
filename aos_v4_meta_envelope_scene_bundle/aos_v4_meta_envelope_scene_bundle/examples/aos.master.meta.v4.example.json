@@ -1,0 +1,149 @@
+{
+  "declared_capabilities": {
+    "session": [
+      "single_chat",
+      "workflow"
+    ],
+    "governance": [
+      "judge_required",
+      "human_in_loop",
+      "halt_on_violation",
+      "deterministic_required",
+      "refusal_allowed"
+    ],
+    "execution": [
+      "plan_only",
+      "execute",
+      "execute_with_review",
+      "dry_run",
+      "step_gated",
+      "simulation",
+      "replay_mode"
+    ],
+    "tasks": [
+      "planning",
+      "validation",
+      "multi_stage_dag"
+    ],
+    "agents": [
+      "foreman",
+      "judge",
+      "recorder"
+    ],
+    "outputs": [
+      "reports",
+      "artifacts",
+      "structured_json"
+    ],
+    "memory": [
+      "working_set",
+      "ledger_append_only",
+      "long_term_knowledge",
+      "memory_write_declared"
+    ],
+    "audit": [
+      "schema_validation",
+      "lint_enforced",
+      "episode_recorded",
+      "exportable_logs"
+    ]
+  },
+  "session": {
+    "session_id": "urn:aos:session:master_meta_v4_example",
+    "session_type": "workflow",
+    "created_at": "2026-02-12T12:00:00Z"
+  },
+  "governance": {
+    "judge_required": true,
+    "human_in_loop": false,
+    "halt_on_violation": true,
+    "deterministic_required": true,
+    "refusal_allowed": true
+  },
+  "execution": {
+    "mode": "execute_with_review",
+    "step_gated": true,
+    "simulation": false,
+    "replay_mode": false,
+    "max_steps": 50,
+    "timeout_seconds": 600
+  },
+  "tasks": {
+    "tasks": [
+      {
+        "task_id": "urn:aos:task:master_meta_v4_example:plan",
+        "task_type": "planning",
+        "description": "Create plan.",
+        "depends_on": []
+      },
+      {
+        "task_id": "urn:aos:task:master_meta_v4_example:multi_stage",
+        "task_type": "multi_stage_dag",
+        "description": "Run multi-stage pipeline.",
+        "depends_on": [
+          "urn:aos:task:master_meta_v4_example:plan"
+        ]
+      }
+    ]
+  },
+  "agents": {
+    "agents": [
+      {
+        "agent_id": "urn:aos:agent:foreman:master_meta_v4_example",
+        "roles": [
+          "foreman"
+        ],
+        "allowed_task_types": [
+          "planning",
+          "multi_stage_dag"
+        ],
+        "forbidden_actions": [
+          "delete_data",
+          "external_io"
+        ]
+      },
+      {
+        "agent_id": "urn:aos:agent:judge:master_meta_v4_example",
+        "roles": [
+          "judge"
+        ],
+        "allowed_task_types": [
+          "validation"
+        ],
+        "forbidden_actions": [
+          "filesystem_write",
+          "network_access"
+        ]
+      }
+    ]
+  },
+  "outputs": {
+    "artifacts": [
+      {
+        "artifact_type": "reports",
+        "description": "Final review report."
+      },
+      {
+        "artifact_type": "custom:trace_bundle",
+        "description": "Custom trace bundle."
+      }
+    ]
+  },
+  "memory": {
+    "allowed_tiers": [
+      "working_set",
+      "ledger",
+      "long_term"
+    ],
+    "writes_must_be_declared": true,
+    "ledger_append_only": true
+  },
+  "audit": {
+    "record_episode": true,
+    "exportable_logs": true,
+    "schema_validation_required": true,
+    "lint_enforced": true,
+    "schema_validation": true,
+    "episode_recorded": true
+  }
+}

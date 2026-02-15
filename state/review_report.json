@@ -1,0 +1,23 @@
+{
+  "id": "review_report.v1",
+  "type": "aos.review_report",
+  "created_at": "2025-12-20T19:56:30Z",
+  "scan_root": "/mnt/data/aos_tools_bootstrap_v2/inbox",
+  "summary": {
+    "files_total": 0,
+    "dirs_total": 0,
+    "tool_candidates": 0,
+    "tool_roots": 0,
+    "errors": 0
+  },
+  "batches": [],
+  "findings": [
+    "No tool folders found under inbox/."
+  ],
+  "outputs": {
+    "review_report_json": "state/review_report.json",
+    "review_report_jsonl": "state/review_report.jsonl",
+    "proposed_tools_catalog_jsonl": "registry/tools_catalog.proposed.jsonl",
+    "proposed_vport_registry_jsonl": "registry/vport_registry.proposed.jsonl"
+  }
+}

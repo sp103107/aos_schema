@@ -1,0 +1,111 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "aos.schema.agent.foreman.input.v1",
+  "title": "AoS Foreman Agent Input Contract v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "task_id",
+    "objective",
+    "intent",
+    "constraints",
+    "context_snapshot"
+  ],
+  "properties": {
+    "task_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "objective": {
+      "type": "string",
+      "minLength": 1
+    },
+    "intent": {
+      "type": "string",
+      "enum": [
+        "plan",
+        "orchestrate",
+        "route",
+        "decompose",
+        "review_plan"
+      ]
+    },
+    "constraints": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "deterministic"
+      ],
+      "properties": {
+        "output_format": {
+          "type": "string",
+          "default": "Seven_Sacred_Sections"
+        },
+        "deterministic": {
+          "type": "boolean",
+          "default": true
+        },
+        "max_steps": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 500,
+          "default": 50
+        },
+        "allowed_agents": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "Foreman",
+              "Librarian",
+              "Sorcerer",
+              "Judge",
+              "Messenger",
+              "Recorder"
+            ]
+          },
+          "default": [
+            "Foreman",
+            "Librarian",
+            "Sorcerer",
+            "Judge",
+            "Messenger"
+          ]
+        },
+        "forbidden_tools": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": []
+        }
+      }
+    },
+    "inputs": {
+      "type": "object",
+      "additionalProperties": true,
+      "default": {}
+    },
+    "context_snapshot": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "requested_outputs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "default": []
+    },
+    "routing_hints": {
+      "type": "object",
+      "additionalProperties": true,
+      "default": {}
+    },
+    "trace": {
+      "type": "object",
+      "additionalProperties": true,
+      "default": {}
+    }
+  }
+}

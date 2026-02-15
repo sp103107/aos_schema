@@ -1,0 +1,121 @@
+{
+  "id": "aos.tools_bootstrap.project.v1",
+  "type": "aos.tools_bootstrap.project",
+  "version": "2.0.0",
+  "created_at": "2025-12-20T19:56:29Z",
+  "provenance": {
+    "registry_sha256": "84c6740f9e3eb61a0b57a306af5658b9c7064837e5c118437f389ce808884fd9",
+    "registry_path": "/mnt/data/chatgpt_registry.json",
+    "created_at_utc": "2025-12-20T19:53:22Z"
+  },
+  "paths": {
+    "repo_root": "/mnt/data/aos_tools_bootstrap_v1",
+    "tools_dir": "tools/",
+    "schemas_dir": "schemas_locked/",
+    "registry_dir": "registry/",
+    "roadmap_dir": "roadmap/",
+    "state_dir": "state/",
+    "templates_dir": "templates/",
+    "docs_dir": "docs/",
+    "examples_dir": "examples/",
+    "inbox_dir": "inbox/",
+    "scripts_dir": "scripts/"
+  },
+  "rules": {
+    "schema_first": true,
+    "no_hallucinated_fields": true,
+    "all_actions_logged_jsonl": true,
+    "atomic_step_policy": "One atomic change-set per STAGE_###. Each stage must append exactly 1 ledger entry and 1 episode entry (if used).",
+    "mobile_callable": true,
+    "mcp_packet_contract": {
+      "request_fields": [
+        "vport",
+        "action",
+        "payload",
+        "timestamp",
+        "callback_id",
+        "compliance_metadata"
+      ],
+      "response_fields": [
+        "success",
+        "data",
+        "error",
+        "compliance_metadata"
+      ]
+    }
+  },
+  "locks": [
+    {
+      "name": "AoS_Constitution_v1.docx",
+      "path": "/mnt/data/AoS_Constitution_v1.docx",
+      "sha256": "96b672669f8dfbd690a9734b049b79ca2d290bf6b24e7a1f317782e3a1164547",
+      "bytes": 37608,
+      "locked_at": "2025-12-20T19:53:22Z"
+    },
+    {
+      "name": "AoS_Annex_v1.docx",
+      "path": "/mnt/data/AoS_Annex_v1.docx",
+      "sha256": "0649b1370461f1020ea68a3607de10b5ab4be4d84dd8fbe795e41c349e238cc3",
+      "bytes": 37664,
+      "locked_at": "2025-12-20T19:53:22Z"
+    },
+    {
+      "name": "aos_schemas.bundle.v1.jsonl",
+      "path": "/mnt/data/aos_schemas.bundle.v1.jsonl",
+      "sha256": "69adce683e0e6aced1012c9bd4e95cccf24c203c312682d07341381f3b787fe1",
+      "bytes": 2598,
+      "locked_at": "2025-12-20T19:53:22Z"
+    },
+    {
+      "name": "mcp_packet.md",
+      "path": "/mnt/data/mcp_packet.md",
+      "sha256": "2346f96cf4b9ec4a7aea9838025b76476767211393c50270141b3f2645c5b699",
+      "bytes": 564,
+      "locked_at": "2025-12-20T19:53:22Z"
+    },
+    {
+      "name": "chatgpt_registry.json",
+      "path": "/mnt/data/chatgpt_registry.json",
+      "sha256": "84c6740f9e3eb61a0b57a306af5658b9c7064837e5c118437f389ce808884fd9",
+      "bytes": 8953,
+      "locked_at": "2025-12-20T19:53:22Z"
+    },
+    {
+      "name": "chatgpt_schema.json",
+      "path": "/mnt/data/chatgpt_schema.json",
+      "sha256": "5cb7d63be07075399a3fcc0a877c268ec8b956f11a42a8d91b7d23eff7f53d25",
+      "bytes": 7136,
+      "locked_at": "2025-12-20T19:53:22Z"
+    },
+    {
+      "name": "chatgpt_workflow.json",
+      "path": "/mnt/data/chatgpt_workflow.json",
+      "sha256": "47850ca0c324ad1cca4963805d23b96aec82ce81da4ca6a3c0652efbeeb6aec7",
+      "bytes": 7734,
+      "locked_at": "2025-12-20T19:53:22Z"
+    },
+    {
+      "name": "chatgpt_core.json",
+      "path": "/mnt/data/chatgpt_core.json",
+      "sha256": "4d586140aa8f2ca2d266daadc04faa10553cc9e83df9038e85ce2afbb37412d0",
+      "bytes": 2266,
+      "locked_at": "2025-12-20T19:53:22Z"
+    },
+    {
+      "name": "chatgpt_config.json",
+      "path": "/mnt/data/chatgpt_config.json",
+      "sha256": "109fb6b7bcf7e4debbe0d5248ba44c757c9448185c0cbf56d267dd45cdb45cf1",
+      "bytes": 2205,
+      "locked_at": "2025-12-20T19:53:22Z"
+    }
+  ],
+  "registries": {
+    "tools_catalog_jsonl": "registry/tools_catalog.jsonl",
+    "vport_registry_jsonl": "registry/vport_registry.jsonl",
+    "knowledge_ingestion_index_jsonl": "registry/knowledge_ingestion_index.jsonl",
+    "template_ledger_jsonl": "roadmap/template_ledger.jsonl",
+    "roadmap_jsonl": "roadmap/roadmap.jsonl",
+    "done_jsonl": "roadmap/done.jsonl",
+    "batch_plan_jsonl": "registry/batch_plan.jsonl"
+  }
+}

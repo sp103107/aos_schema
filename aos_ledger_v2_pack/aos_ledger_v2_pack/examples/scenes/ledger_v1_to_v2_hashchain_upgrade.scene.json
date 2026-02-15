@@ -1,0 +1,128 @@
+{
+  "scene_id": "urn:aos:scene:ledger_v1_to_v2_hashchain_upgrade",
+  "scene_version": "4.0",
+  "episode_id": "urn:aos:episode:ledger_hashchain_upgrade_v2",
+  "phase": "execution",
+  "started_at": "2026-02-12T02:10:00Z",
+  "completed_at": "2026-02-12T02:35:00Z",
+  "scene_intent": "Upgrade AoS event ledger schema from v1 to v2 to enforce deterministic hashchain (prev_hash/event_hash), declare canonicalization profile, and require checkpoint tip anchoring.",
+  "scene_summary": "Authored aos.event_ledger.v2.schema.json with strict constraints and added canonicalization+hashing blocks. Validated as Draft 2020-12 and produced upgrade checklist + episode chart. Implementation to compute hashes uses declared canonicalization profile; hashes here are placeholders.",
+  "inputs": {
+    "refs": [
+      "urn:aos:schema:ledger/aos.event_ledger.v1.schema.json@prior",
+      "urn:aos:schema:temporal/aos.scene.v4.schema.json",
+      "urn:aos:schema:master/aos.master.meta.v4.schema.json"
+    ],
+    "hash": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "canonicalization": {
+      "method": "json-c14n",
+      "profile": "aos-json-c14n-v1"
+    }
+  },
+  "outputs": {
+    "refs": [
+      "urn:aos:schema:ledger/aos.event_ledger.v2.schema.json",
+      "urn:aos:artifact:episode_ledger_v1_to_v2.md",
+      "urn:aos:artifact:change_checklist_ledger_v2.md"
+    ],
+    "hash": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "canonicalization": {
+      "method": "json-c14n",
+      "profile": "aos-json-c14n-v1"
+    }
+  },
+  "replay": {
+    "runner_id": "urn:aos:runner:stdapp",
+    "runner_version": "1.1.0",
+    "determinism_level": "best_effort",
+    "environment_fingerprint_hash": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+    "notes": "Strict determinism requires pinned canonicalization + JSON serialization rules in code."
+  },
+  "task_nodes": [
+    {
+      "node_id": "author_ledger_v2_schema",
+      "agent_id": "urn:aos:agent:sorcerer_meta_v1",
+      "status": "executed",
+      "function_id": "urn:aos:function:author_jsonschema_v1",
+      "task_type": "transformation",
+      "start_event_id": "urn:aos:event:ev_l2_0001",
+      "end_event_id": "urn:aos:event:ev_l2_0002",
+      "output_refs": [
+        "urn:aos:schema:ledger/aos.event_ledger.v2.schema.json"
+      ],
+      "side_effects_declared": [
+        "filesystem_write:schema"
+      ],
+      "memory_write_intent": "ledger_propose",
+      "policy_refs": [
+        "urn:aos:policy:filesystem/write_allowed"
+      ]
+    },
+    {
+      "node_id": "validate_schema_draft2020_12",
+      "agent_id": "urn:aos:agent:judge_meta_v1",
+      "status": "executed",
+      "function_id": "urn:aos:function:validate_jsonschema_v1",
+      "task_type": "validation",
+      "start_event_id": "urn:aos:event:ev_l2_0003",
+      "end_event_id": "urn:aos:event:ev_l2_0004",
+      "output_refs": [
+        "urn:aos:artifact:validation_report_ledger_v2.md"
+      ],
+      "side_effects_declared": [
+        "none"
+      ],
+      "memory_write_intent": "ledger_propose",
+      "policy_refs": [
+        "urn:aos:policy:governance/judge_required"
+      ]
+    },
+    {
+      "node_id": "record_episode_and_checkpoint",
+      "agent_id": "urn:aos:agent:recorder_meta_v1",
+      "status": "executed",
+      "function_id": "urn:aos:function:record_changelog_v1",
+      "task_type": "recording",
+      "start_event_id": "urn:aos:event:ev_l2_0005",
+      "end_event_id": "urn:aos:event:ev_l2_0006",
+      "output_refs": [
+        "urn:aos:artifact:CHANGELOG_ledger_v2.md"
+      ],
+      "side_effects_declared": [
+        "ledger_append"
+      ],
+      "memory_write_intent": "ledger_commit",
+      "policy_refs": [
+        "urn:aos:policy:ledger/append_only"
+      ]
+    }
+  ],
+  "gates": [
+    {
+      "gate_type": "judge",
+      "decision": "approve",
+      "decision_event_id": "urn:aos:event:ev_l2_0004",
+      "policy_ref": "urn:aos:policy:governance/judge_required",
+      "reason_code": "SCHEMA_VALIDATION_PASS",
+      "notes": "Ledger v2 enforces hashchain and declares canonicalization profile required for deterministic replay."
+    }
+  ],
+  "scene_status": "completed",
+  "memory_checkpoint": {
+    "ledger_ref": "urn:aos:ledger:run_2026_02_12_003",
+    "ledger_schema_ref": "urn:aos:schema:ledger:aos.event_ledger.v2",
+    "ledger_snapshot_hash": "sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+    "tip_event_id": "urn:aos:event:ev_l2_0006",
+    "tip_hash": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+    "event_count": 6,
+    "hashchain": {
+      "prev_hash_field": "prev_hash",
+      "event_hash_field": "event_hash",
+      "canonicalization": {
+        "method": "json-c14n",
+        "profile": "aos-json-c14n-v1"
+      }
+    }
+  },
+  "notes": "Hashes are placeholders; compute using canonicalization.method/profile in implementation. event_hash excludes itself."
+}

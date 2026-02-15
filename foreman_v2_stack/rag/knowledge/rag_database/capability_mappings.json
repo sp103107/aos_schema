@@ -1,0 +1,155 @@
+{
+  "component_id": "foreman_v2",
+  "capabilities": {
+    "task_orchestration": {
+      "primary_functions": [
+        "execute",
+        "task_orchestration_vport"
+      ],
+      "supporting_functions": [
+        "orchestration_system_vport",
+        "orchestration_integration"
+      ],
+      "input_types": [
+        "task_definitions",
+        "orchestration_plans",
+        "execution_strategies"
+      ],
+      "output_types": [
+        "execution_results",
+        "orchestration_reports",
+        "performance_metrics"
+      ]
+    },
+    "system_management": {
+      "primary_functions": [
+        "get_info",
+        "orchestration_system_vport"
+      ],
+      "supporting_functions": [
+        "orchestration_health_checker",
+        "dynamic_foreman_v2_discovery"
+      ],
+      "input_types": [
+        "system_queries",
+        "management_commands",
+        "configuration_data"
+      ],
+      "output_types": [
+        "system_status",
+        "management_reports",
+        "configuration_summaries"
+      ]
+    },
+    "testing_and_validation": {
+      "primary_functions": [
+        "orchestration_test_suite",
+        "comprehensive_orchestration_test_runner"
+      ],
+      "supporting_functions": [
+        "simple_orchestration_test",
+        "test_orchestration_step_by_step"
+      ],
+      "input_types": [
+        "test_scenarios",
+        "validation_rules",
+        "test_configurations"
+      ],
+      "output_types": [
+        "test_results",
+        "validation_reports",
+        "performance_evaluations"
+      ]
+    },
+    "ai_planning": {
+      "primary_functions": [
+        "create_ai_orchestration_spreadsheet",
+        "calculate_orchestration_priority"
+      ],
+      "supporting_functions": [
+        "execute",
+        "task_orchestration_vport"
+      ],
+      "input_types": [
+        "planning_data",
+        "ai_configurations",
+        "optimization_parameters"
+      ],
+      "output_types": [
+        "planning_results",
+        "optimization_recommendations",
+        "ai_generated_plans"
+      ]
+    },
+    "health_monitoring": {
+      "primary_functions": [
+        "orchestration_health_checker",
+        "test_rtx_health_monitoring"
+      ],
+      "supporting_functions": [
+        "get_info",
+        "dynamic_foreman_v2_discovery"
+      ],
+      "input_types": [
+        "health_checks",
+        "monitoring_configs",
+        "alert_settings"
+      ],
+      "output_types": [
+        "health_reports",
+        "alert_notifications",
+        "monitoring_metrics"
+      ]
+    }
+  },
+  "capability_hierarchy": {
+    "task_orchestration": {
+      "level": "primary",
+      "dependencies": [
+        "system_management",
+        "ai_planning"
+      ],
+      "complexity": 3,
+      "input_complexity": 3,
+      "output_complexity": 3
+    },
+    "system_management": {
+      "level": "primary",
+      "dependencies": [
+        "health_monitoring"
+      ],
+      "complexity": 2,
+      "input_complexity": 2,
+      "output_complexity": 2
+    },
+    "testing_and_validation": {
+      "level": "primary",
+      "dependencies": [
+        "task_orchestration",
+        "system_management"
+      ],
+      "complexity": 2,
+      "input_complexity": 2,
+      "output_complexity": 2
+    },
+    "ai_planning": {
+      "level": "primary",
+      "dependencies": [
+        "task_orchestration"
+      ],
+      "complexity": 3,
+      "input_complexity": 3,
+      "output_complexity": 3
+    },
+    "health_monitoring": {
+      "level": "secondary",
+      "dependencies": [
+        "system_management"
+      ],
+      "complexity": 2,
+      "input_complexity": 2,
+      "output_complexity": 2
+    }
+  }
+}
+

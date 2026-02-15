@@ -1,0 +1,103 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "aos.vport.registry_entry.schema.v1",
+  "title": "AoS vPort Registry Entry",
+  "description": "Mapping from a vPort id to a concrete execution target (python, binary, MCP, HTTP, etc.).",
+  "type": "object",
+  "required": [
+    "vport",
+    "call_type",
+    "target"
+  ],
+  "properties": {
+    "vport": {
+      "$ref": "aos.vport.id.schema.v1"
+    },
+    "description": {
+      "type": "string",
+      "description": "Human-readable description of what this vPort does."
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "call_type": {
+      "type": "string",
+      "description": "How the vPort should be executed.",
+      "enum": [
+        "python",
+        "bin",
+        "mcp",
+        "http"
+      ]
+    },
+    "target": {
+      "type": "object",
+      "description": "Call-type-specific configuration.",
+      "properties": {
+        "python_module": {
+          "type": "string",
+          "description": "Python module path for call_type = 'python', e.g. 'apps.labelgen.main'."
+        },
+        "python_handler": {
+          "type": "string",
+          "description": "Handler function name for call_type = 'python', e.g. 'run_labelgen'."
+        },
+        "bin_command": {
+          "type": "string",
+          "description": "Executable for call_type = 'bin', e.g. '/usr/local/bin/labelgen'."
+        },
+        "bin_args_template": {
+          "type": "array",
+          "description": "Argument template list for 'bin'. You may use '{payload_json}' placeholder.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "mcp_server_id": {
+          "type": "string",
+          "description": "Logical id for MCP server for call_type = 'mcp'."
+        },
+        "mcp_tool_name": {
+          "type": "string",
+          "description": "Tool name exposed by MCP server."
+        },
+        "http_method": {
+          "type": "string",
+          "description": "HTTP method for call_type = 'http'.",
+          "enum": [
+            "GET",
+            "POST",
+            "PUT",
+            "PATCH",
+            "DELETE"
+          ]
+        },
+        "http_url_template": {
+          "type": "string",
+          "description": "URL template for 'http'. You may embed '{payload_json}' or other placeholders."
+        },
+        "http_headers_template": {
+          "type": "object",
+          "description": "Default headers for HTTP calls.",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "default_timeout_ms": {
+      "type": "integer",
+      "minimum": 1,
+      "default": 30000
+    },
+    "enabled": {
+      "type": "boolean",
+      "default": true
+    }
+  },
+  "additionalProperties": false
+}

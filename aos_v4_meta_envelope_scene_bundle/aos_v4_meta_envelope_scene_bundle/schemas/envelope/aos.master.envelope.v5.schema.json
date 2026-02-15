@@ -1,0 +1,303 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aos.dev/schemas/envelope/aos.master.envelope.v5.schema.json",
+  "title": "AoS Master Envelope v5",
+  "description": "Ingress wrapper declaring platform capabilities + execution hints + embedded master meta. v5 keeps v4 semantics while embedding v5 meta by default and allowing v4 for migration.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "envelope_version",
+    "envelope_kind",
+    "invocation_type",
+    "platform_capabilities",
+    "execution_hint",
+    "embedded_master_meta"
+  ],
+  "$defs": {
+    "urn_req": {
+      "type": "string",
+      "pattern": "^urn:aos:req:[a-zA-Z0-9._-]+$"
+    },
+    "urn_season": {
+      "type": "string",
+      "pattern": "^urn:aos:season:[a-zA-Z0-9._-]+$"
+    },
+    "urn_episode": {
+      "type": "string",
+      "pattern": "^urn:aos:episode:[a-zA-Z0-9._-]+$"
+    },
+    "urn_scene": {
+      "type": "string",
+      "pattern": "^urn:aos:scene:[a-zA-Z0-9._-]+$"
+    }
+  },
+  "properties": {
+    "envelope_version": {
+      "type": "string",
+      "const": "aos.master.envelope.v5"
+    },
+    "envelope_kind": {
+      "type": "string",
+      "enum": [
+        "task_request",
+        "task_result",
+        "event",
+        "checkpoint",
+        "status",
+        "error"
+      ]
+    },
+    "request_id": {
+      "$ref": "#/$defs/urn_req"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "invocation_type": {
+      "type": "string",
+      "enum": [
+        "chat_ui",
+        "api_call",
+        "local_llm",
+        "cli",
+        "ci_pipeline"
+      ]
+    },
+    "platform_capabilities": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "artifact_generation",
+        "file_generation",
+        "file_download",
+        "search_allowed"
+      ],
+      "properties": {
+        "artifact_generation": {
+          "type": "boolean"
+        },
+        "file_generation": {
+          "type": "boolean"
+        },
+        "file_download": {
+          "type": "boolean"
+        },
+        "search_allowed": {
+          "type": "boolean"
+        },
+        "external_io": {
+          "type": "boolean",
+          "default": false
+        },
+        "tooling": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "web_search": {
+              "type": "boolean"
+            },
+            "local_code_execution": {
+              "type": "boolean"
+            },
+            "connectors": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "google_drive": {
+                  "type": "boolean"
+                },
+                "github": {
+                  "type": "boolean"
+                },
+                "gmail_read": {
+                  "type": "boolean"
+                },
+                "gcal_read": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "execution_hint": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "trust_level"
+      ],
+      "properties": {
+        "trust_level": {
+          "type": "string",
+          "enum": [
+            "low",
+            "medium",
+            "high"
+          ]
+        },
+        "ephemeral": {
+          "type": "boolean",
+          "default": true
+        },
+        "requires_human_confirmation": {
+          "type": "boolean",
+          "default": true
+        },
+        "determinism_target": {
+          "type": "string",
+          "enum": [
+            "best_effort",
+            "strict"
+          ],
+          "default": "best_effort"
+        },
+        "max_steps": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "timeout_seconds": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    },
+    "temporal": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "season_id",
+        "episode_id",
+        "scene_id",
+        "phase"
+      ],
+      "properties": {
+        "season_id": {
+          "$ref": "#/$defs/urn_season"
+        },
+        "episode_id": {
+          "$ref": "#/$defs/urn_episode"
+        },
+        "scene_id": {
+          "$ref": "#/$defs/urn_scene"
+        },
+        "phase": {
+          "type": "string",
+          "enum": [
+            "planning",
+            "validation",
+            "execution",
+            "verification",
+            "packaging",
+            "finalize"
+          ]
+        }
+      }
+    },
+    "embedded_master_meta": {
+      "description": "Embedded master meta contract. v5 envelopes should embed v5 meta; v4 meta is allowed for migration.",
+      "oneOf": [
+        {
+          "$ref": "https://aos.dev/schemas/master/aos.master.meta.v5.schema.json"
+        },
+        {
+          "$ref": "https://aos.dev/schemas/master/aos.master.meta.v4.schema.json"
+        }
+      ]
+    },
+    "embedded_master_meta_ref": {
+      "type": "string",
+      "description": "Optional external reference to the master meta schema $id used for validation."
+    },
+    "kernel_manifest_ref": {
+      "type": "string"
+    },
+    "capability_resolution": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "strategy": {
+          "type": "string",
+          "enum": [
+            "intersection",
+            "union",
+            "master_only"
+          ]
+        },
+        "layers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "task": {
+      "type": "object",
+      "description": "Task request payload (domain-specific)."
+    },
+    "result": {
+      "type": "object",
+      "description": "Task result payload (domain-specific)."
+    },
+    "errors": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "code",
+          "message"
+        ],
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          },
+          "details": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "required": [
+          "envelope_kind"
+        ],
+        "properties": {
+          "envelope_kind": {
+            "const": "task_request"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "task"
+        ]
+      }
+    },
+    {
+      "if": {
+        "required": [
+          "envelope_kind"
+        ],
+        "properties": {
+          "envelope_kind": {
+            "const": "task_result"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "result"
+        ]
+      }
+    }
+  ]
+}

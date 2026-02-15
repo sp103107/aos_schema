@@ -1,0 +1,348 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "aos.schema.meta.agent.v2_1",
+  "title": "AoS Agent Meta Schema v2.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "meta_info",
+    "identity",
+    "configuration",
+    "cognitive_architecture",
+    "capabilities",
+    "interface_contracts",
+    "observability",
+    "routing_logic"
+  ],
+  "properties": {
+    "meta_info": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_version",
+        "created_at",
+        "updated_at",
+        "author",
+        "license"
+      ],
+      "properties": {
+        "schema_version": {
+          "type": "string",
+          "enum": [
+            "agent.v2.1"
+          ]
+        },
+        "created_at": {
+          "type": "string"
+        },
+        "updated_at": {
+          "type": "string"
+        },
+        "author": {
+          "type": "string"
+        },
+        "license": {
+          "type": "string"
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": []
+        }
+      }
+    },
+    "identity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "urn",
+        "name",
+        "role",
+        "version"
+      ],
+      "properties": {
+        "urn": {
+          "type": "string",
+          "pattern": "^urn:aos:agent:[a-z0-9_.-]+$"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 2
+        },
+        "role": {
+          "type": "string",
+          "enum": [
+            "Foreman",
+            "Librarian",
+            "Sorcerer",
+            "Judge",
+            "Messenger"
+          ]
+        },
+        "version": {
+          "type": "string",
+          "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+        },
+        "description": {
+          "type": "string"
+        },
+        "owner": {
+          "type": "string"
+        }
+      }
+    },
+    "configuration": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "llm_profile",
+        "behavior"
+      ],
+      "properties": {
+        "llm_profile": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "temperature",
+            "max_tokens",
+            "system_prompt_strategy"
+          ],
+          "properties": {
+            "temperature": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 2,
+              "default": 0.2
+            },
+            "max_tokens": {
+              "type": "integer",
+              "minimum": 128,
+              "maximum": 32768,
+              "default": 4096
+            },
+            "model_preference": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "default": []
+            },
+            "system_prompt_strategy": {
+              "type": "string",
+              "enum": [
+                "strict",
+                "balanced",
+                "creative"
+              ],
+              "default": "strict"
+            }
+          }
+        },
+        "behavior": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "deterministic",
+            "tone",
+            "verbosity"
+          ],
+          "properties": {
+            "deterministic": {
+              "type": "boolean",
+              "default": true
+            },
+            "tone": {
+              "type": "string",
+              "enum": [
+                "neutral",
+                "professional",
+                "friendly",
+                "playful",
+                "strict"
+              ],
+              "default": "professional"
+            },
+            "verbosity": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 10,
+              "default": 2
+            },
+            "format_standard": {
+              "type": "string",
+              "default": "Seven_Sacred_Sections"
+            }
+          }
+        }
+      }
+    },
+    "cognitive_architecture": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "core_loop",
+        "memory_policy"
+      ],
+      "properties": {
+        "core_loop": {
+          "type": "string"
+        },
+        "memory_policy": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "store",
+            "retrieve",
+            "forget"
+          ],
+          "properties": {
+            "store": {
+              "type": "string"
+            },
+            "retrieve": {
+              "type": "string"
+            },
+            "forget": {
+              "type": "string"
+            }
+          }
+        },
+        "guardrails": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": []
+        }
+      }
+    },
+    "capabilities": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "can_read_files",
+        "can_write_files",
+        "can_call_tools",
+        "domains"
+      ],
+      "properties": {
+        "can_read_files": {
+          "type": "boolean",
+          "default": true
+        },
+        "can_write_files": {
+          "type": "boolean",
+          "default": false
+        },
+        "can_call_tools": {
+          "type": "boolean",
+          "default": false
+        },
+        "domains": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "interface_contracts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "input_schema",
+        "output_schema"
+      ],
+      "properties": {
+        "input_schema": {
+          "type": "string"
+        },
+        "output_schema": {
+          "type": "string"
+        },
+        "examples": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "default": []
+        }
+      }
+    },
+    "observability": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "log_level",
+        "trace_fields"
+      ],
+      "properties": {
+        "log_level": {
+          "type": "string",
+          "enum": [
+            "DEBUG",
+            "INFO",
+            "WARN",
+            "ERROR"
+          ],
+          "default": "INFO"
+        },
+        "trace_fields": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": []
+        },
+        "metrics": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": []
+        }
+      }
+    },
+    "routing_logic": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "default_vport",
+        "fallbacks"
+      ],
+      "properties": {
+        "default_vport": {
+          "type": "string"
+        },
+        "fallbacks": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "strategy"
+            ],
+            "properties": {
+              "strategy": {
+                "type": "string",
+                "enum": [
+                  "retry",
+                  "alternate_model",
+                  "alternate_agent",
+                  "human_handoff"
+                ]
+              },
+              "value": {
+                "type": "string"
+              }
+            }
+          },
+          "default": []
+        }
+      }
+    }
+  }
+}

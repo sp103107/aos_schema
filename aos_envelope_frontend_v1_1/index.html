@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>AoS / MCP Task Envelope Builder v1.1</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    :root {
+      /* Dark theme defaults */
+      color-scheme: dark light;
+      --bg: #020617;
+      --bg-elevated: #0b1120;
+      --border-subtle: #1f2937;
+      --border-strong: #374151;
+      --text-main: #e5e7eb;
+      --text-muted: #9ca3af;
+      --accent: #38bdf8;
+      --accent-soft: rgba(56, 189, 248, 0.1);
+      --danger: #f97373;
+      --radius: 0.75rem;
+      --shadow-soft: 0 18px 40px rgba(15, 23, 42, 0.7);
+      --btn-bg: #111827;
+      --btn-bg-secondary: #020617;
+      --btn-border: #1f2937;
+      --header-bg: #020617e6;
+      --helper-bg: #020617;
+      --textarea-bg: #020617;
+    }
+
+    :root.light {
+      /* Light theme overrides */
+      color-scheme: light dark;
+      --bg: #f3f4f6;
+      --bg-elevated: #ffffff;
+      --border-subtle: #e5e7eb;
+      --border-strong: #d1d5db;
+      --text-main: #111827;
+      --text-muted: #6b7280;
+      --accent: #0ea5e9;
+      --accent-soft: rgba(14, 165, 233, 0.08);
+      --danger: #b91c1c;
+      --shadow-soft: 0 14px 30px rgba(15, 23, 42, 0.12);
+      --btn-bg: #0f172a;
+      --btn-bg-secondary: #f9fafb;
+      --btn-border: #d1d5db;
+      --header-bg: #ffffffee;
+      --helper-bg: #f9fafb;
+      --textarea-bg: #f9fafb;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: var(--bg);
+      color: var(--text-main);
+      background: radial-gradient(circle at top, var(--bg) 0, var(--bg) 30%, var(--bg) 100%);
+    }
+
+    header {
+      padding: 0.9rem 1.25rem;
+      border-bottom: 1px solid var(--border-subtle);
+      background: var(--header-bg);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(12px);
+    }
+
+    .header-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.1rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+    }
+
+    header p {
+      margin: 0.25rem 0 0;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    main {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 1rem 1.1rem 2rem;
+    }
+
+    .card {
+      background: radial-gradient(circle at top left, var(--bg-elevated), var(--bg) 120%);
+      border-radius: var(--radius);
+      border: 1px solid var(--border-subtle);
+      padding: 1rem 1.1rem 1.1rem;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .card + .card {
+      margin-top: 1rem;
+    }
+
+    h2 {
+      margin: 0 0 0.35rem;
+      font-size: 1rem;
+    }
+
+    h3 {
+      margin: 0 0 0.25rem;
+      font-size: 0.95rem;
+    }
+
+    section > small,
+    .card small {
+      display: block;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-bottom: 0.65rem;
+    }
+
+    /* CTA card */
+    .cta-card {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    .cta-icon {
+      flex-shrink: 0;
+      width: 3rem;
+      height: 3rem;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.3);
+    }
+
+    .cta-body {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .cta-body p {
+      margin: 0.2rem 0 0.55rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .cta-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* Forms and layout */
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      margin-top: 0.75rem;
+    }
+
+    @media (min-width: 768px) {
+      .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .grid .card.full-width {
+        grid-column: 1 / -1;
+      }
+    }
+
+    label {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 500;
+      margin-top: 0.35rem;
+      margin-bottom: 0.15rem;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 0.55rem 0.6rem;
+      border-radius: 0.55rem;
+      border: 1px solid var(--border-strong);
+      background: var(--textarea-bg);
+      color: var(--text-main);
+      font-size: 0.82rem;
+      outline: none;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+      min-height: 40px;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.4);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 70px;
+    }
+
+    .hint {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      margin-top: 0.25rem;
+    }
+
+    .advanced-label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin-bottom: 0.15rem;
+    }
+
+    /* Buttons */
+    button {
+      border-radius: 999px;
+      border: 1px solid var(--btn-border);
+      padding: 0.55rem 1.1rem;
+      font-size: 0.82rem;
+      font-weight: 500;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.25rem;
+      background: var(--btn-bg-secondary);
+      color: var(--text-main);
+      transition: background 0.12s ease, transform 0.05s ease, box-shadow 0.12s ease, border-color 0.12s ease, filter 0.12s ease;
+      min-height: 38px;
+    }
+
+    button.primary {
+      background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+      border-color: rgba(8, 47, 73, 0.7);
+      color: #0b1120;
+      box-shadow: 0 10px 25px rgba(56, 189, 248, 0.4);
+    }
+
+    button.secondary {
+      background: var(--btn-bg-secondary);
+    }
+
+    button:hover {
+      filter: brightness(1.05);
+    }
+
+    button:active {
+      transform: translateY(1px);
+      filter: brightness(0.96);
+      box-shadow: none;
+    }
+
+    .status {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+
+    .status.error {
+      color: var(--danger);
+    }
+
+    /* Theme toggle */
+    .theme-toggle-btn {
+      font-size: 0.78rem;
+      padding: 0.35rem 0.75rem;
+      min-height: 32px;
+      background: var(--btn-bg-secondary);
+    }
+
+    .theme-toggle-btn span {
+      font-size: 0.9rem;
+    }
+
+    /* Details / output */
+    details.details-card {
+      margin-top: 1rem;
+      border-radius: var(--radius);
+      border: 1px solid var(--border-subtle);
+      background: var(--bg-elevated);
+      padding: 0.8rem 1rem 1rem;
+      box-shadow: var(--shadow-soft);
+    }
+
+    details > summary {
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+
+    details > summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .summary-title {
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
+    .summary-hint {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+
+    .details-inner {
+      margin-top: 0.75rem;
+    }
+
+    .output-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .output-card textarea {
+      min-height: 220px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 0.78rem;
+    }
+
+    /* Helper box */
+    .helper-box {
+      margin-top: 1rem;
+      border-radius: var(--radius);
+      border: 1px dashed var(--border-subtle);
+      padding: 0.8rem 1rem;
+      background: var(--helper-bg);
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .helper-box ol {
+      margin: 0.35rem 0 0;
+      padding-left: 1.2rem;
+    }
+
+    .helper-box li {
+      margin-bottom: 0.2rem;
+    }
+
+    /* Utility */
+    .field-row {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .field-row > div {
+      flex: 1;
+      min-width: 0;
+    }
+
+    @media (max-width: 480px) {
+      header {
+        padding-inline: 1rem;
+      }
+      main {
+        padding-inline: 1rem;
+      }
+      .cta-card {
+        align-items: flex-start;
+      }
+      .cta-icon {
+        width: 2.6rem;
+        height: 2.6rem;
+        font-size: 1.4rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-row">
+      <div>
+        <h1>Task Envelope Builder</h1>
+        <p>Create AoS / MCP-compatible task envelopes as files you can share.</p>
+      </div>
+      <button id="theme_toggle" type="button" class="theme-toggle-btn" aria-pressed="false">
+        <span id="theme_icon">🌙</span>
+        <span id="theme_label">Dark</span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Envelope CTA -->
+    <section class="card cta-card">
+      <div class="cta-icon" aria-hidden="true">📨</div>
+      <div class="cta-body">
+        <h2>Create envelope file</h2>
+        <p>We’ll package your task into a JSON file that your AoS backend can watch for and execute.</p>
+        <div class="cta-actions">
+          <button id="create_envelope_btn" type="button" class="primary">
+            Create envelope
+          </button>
+          <span id="status" class="status">Not generated yet</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Form sections -->
+    <section class="grid">
+      <!-- Task details -->
+      <div class="card">
+        <h2>Task details</h2>
+        <small>Describe what you want the system to do.</small>
+
+        <label for="task_id">Task ID</label>
+        <input id="task_id" type="text" placeholder="task_001" value="task_001" />
+
+        <label for="objective">Task description</label>
+        <textarea
+          id="objective"
+          placeholder="Example: Summarize the latest project notes into a 7-section AoS report."
+        ></textarea>
+
+        <label for="notes">Notes (optional)</label>
+        <textarea id="notes" placeholder="Any extra context or hints for this task."></textarea>
+      </div>
+
+      <!-- Where to run this -->
+      <div class="card">
+        <h2>Where to run this</h2>
+        <small>Choose the AoS role / agent that should handle the task.</small>
+
+        <label for="agent_role">Agent role</label>
+        <select id="agent_role">
+          <option value="Foreman" selected>Foreman</option>
+          <option value="Librarian">Librarian</option>
+          <option value="Sorcerer">Sorcerer</option>
+          <option value="Judge">Judge</option>
+          <option value="Messenger">Messenger</option>
+        </select>
+
+        <label for="agent_domain">Agent domain</label>
+        <input id="agent_domain" type="text" placeholder="aos.domain.core" value="aos.domain.core" />
+
+        <label for="agent_urn">Agent URN</label>
+        <input id="agent_urn" type="text" placeholder="urn:aos:agent:foreman.core" />
+        <p class="hint">If blank, we’ll derive <code>urn:aos:agent:&lt;role&gt;.core</code>.</p>
+
+        <label for="vport">vPort</label>
+        <input id="vport" type="text" placeholder="router" value="router" />
+      </div>
+
+      <!-- Project & episode -->
+      <div class="card">
+        <div class="advanced-label">Advanced</div>
+        <h2>Project &amp; episode</h2>
+        <small>Optional tags for grouping runs. Safe to leave at defaults.</small>
+
+        <label for="schema_version">Schema version</label>
+        <input id="schema_version" type="text" value="aos.envelope.overlay.v1" />
+
+        <label for="project_id">Project ID</label>
+        <input id="project_id" type="text" placeholder="proj_main" value="proj_main" />
+
+        <label for="episode_id">Episode ID</label>
+        <input id="episode_id" type="text" placeholder="episode_0001" value="episode_0001" />
+
+        <label for="bundle_id">Bundle / Domain ID</label>
+        <input id="bundle_id" type="text" value="aos.domain.core" />
+      </div>
+
+      <!-- Advanced transport settings -->
+      <div class="card">
+        <div class="advanced-label">Advanced</div>
+        <h2>Transport settings</h2>
+        <small>Usually safe to leave as-is unless your system says otherwise.</small>
+
+        <label for="protocol_version">Protocol version</label>
+        <input id="protocol_version" type="text" value="mcp.v1" />
+
+        <label for="communication_pattern">Communication pattern</label>
+        <input id="communication_pattern" type="text" value="request_response" />
+
+        <label for="callback_id">Callback ID (optional)</label>
+        <input id="callback_id" type="text" placeholder="auto or integration-specific value" />
+      </div>
+
+      <!-- Payload (JSON) -->
+      <div class="card full-width">
+        <div class="advanced-label">Advanced</div>
+        <h2>Payload (JSON)</h2>
+        <small>Optional advanced config. Leave as empty objects <code>{}</code> if you’re not sure.</small>
+
+        <label for="inputs_json">Inputs (JSON)</label>
+        <textarea id="inputs_json" placeholder='Example: { "query": "Hello world" }'></textarea>
+
+        <label for="constraints_json">Constraints (JSON)</label>
+        <textarea id="constraints_json" placeholder='Example: { "max_tokens": 512 }'></textarea>
+
+        <p class="hint">
+          If these are blank, they’ll default to empty objects <code>{}</code>.
+        </p>
+      </div>
+    </section>
+
+    <!-- Envelope details + actions -->
+    <details id="details_panel" class="details-card">
+      <summary>
+        <span class="summary-title">Envelope details (JSON)</span>
+        <span class="summary-hint">Advanced view &mdash; optional</span>
+      </summary>
+      <div class="details-inner">
+        <small>For advanced users or debugging. You can ignore this and just share the file.</small>
+
+        <div class="output-actions">
+          <button id="copy_btn" type="button" class="secondary">Copy JSON</button>
+          <button id="download_btn" type="button" class="secondary">Download .json</button>
+        </div>
+
+        <div class="card output-card">
+          <textarea id="output_json" readonly></textarea>
+        </div>
+      </div>
+    </details>
+
+    <!-- Helper instructions -->
+    <section class="helper-box">
+      <h3>How to use this file</h3>
+      <ol>
+        <li>Fill in the fields above (or keep the defaults).</li>
+        <li>Tap <strong>Create envelope</strong>.</li>
+        <li>Tap <strong>Download .json</strong> or <strong>Copy JSON</strong>.</li>
+        <li>Email or upload the file/JSON to the place your AoS watcher is monitoring.</li>
+        <li>Your backend watcher will pick up the envelope and run the task.</li>
+      </ol>
+    </section>
+  </main>
+
+  <script>
+    function setStatus(message, isError = false) {
+      const statusEl = document.getElementById("status");
+      if (!statusEl) return;
+      statusEl.textContent = message;
+      if (isError) {
+        statusEl.classList.add("error");
+      } else {
+        statusEl.classList.remove("error");
+      }
+    }
+
+    function safeParseJson(text, fallback) {
+      if (!text || !text.trim()) return fallback;
+      try {
+        return JSON.parse(text);
+      } catch (e) {
+        console.warn("JSON parse error:", e);
+        return fallback;
+      }
+    }
+
+    function buildEnvelope() {
+      // Project & episode
+      const schemaVersion =
+        document.getElementById("schema_version").value || "aos.envelope.overlay.v1";
+      const projectId = document.getElementById("project_id").value || "proj_main";
+      const episodeId = document.getElementById("episode_id").value || "episode_0001";
+      const bundleId = document.getElementById("bundle_id").value || "aos.domain.core";
+
+      // Task
+      const taskId = document.getElementById("task_id").value || "task_001";
+      const objective = document.getElementById("objective").value || "";
+      const notes = document.getElementById("notes").value || "";
+
+      // Target / agent
+      const agentRole = document.getElementById("agent_role").value || "Foreman";
+      const agentDomain = document.getElementById("agent_domain").value || "aos.domain.core";
+      let agentUrn = document.getElementById("agent_urn").value || "";
+      if (!agentUrn.trim()) {
+        agentUrn = `urn:aos:agent:${agentRole.toLowerCase()}.core`;
+      }
+
+      // Transport / MCP
+      const vport = document.getElementById("vport").value || "";
+      const protocolVersion =
+        document.getElementById("protocol_version").value || "mcp.v1";
+      let communicationPattern =
+        document.getElementById("communication_pattern").value || "request_response";
+      if (!["request_response", "fire_and_forget", "stream"].includes(communicationPattern)) {
+        communicationPattern = "request_response";
+      }
+      const callbackId = document.getElementById("callback_id").value || "";
+
+      // Payload JSON
+      const inputsText = document.getElementById("inputs_json").value;
+      const constraintsText = document.getElementById("constraints_json").value;
+      const inputs = safeParseJson(inputsText, {});
+      const constraints = safeParseJson(constraintsText, {});
+
+      if (objective && inputs.objective === undefined) {
+        inputs.objective = objective;
+      }
+      if (notes && inputs.notes === undefined) {
+        inputs.notes = notes;
+      }
+
+      const envelope = {
+        schema_version: schemaVersion,
+        type: "task",
+        id: taskId,
+        bundle_id: bundleId,
+        project: {
+          project_id: projectId,
+          episode_id: episodeId
+        },
+        target: {
+          role: agentRole,
+          domain: agentDomain,
+          urn: agentUrn
+        },
+        transport: {
+          vport: vport,
+          protocol_version: protocolVersion,
+          communication_pattern: communicationPattern,
+          callback_id: callbackId
+        },
+        payload: {
+          inputs: inputs,
+          constraints: constraints
+        }
+      };
+
+      const outputEl = document.getElementById("output_json");
+      if (outputEl) {
+        outputEl.value = JSON.stringify(envelope, null, 2);
+      }
+
+      const detailsPanel = document.getElementById("details_panel");
+      if (detailsPanel && !detailsPanel.open) {
+        detailsPanel.open = true;
+      }
+
+      setStatus("Ready to share");
+      return envelope;
+    }
+
+    function validateRequired() {
+      const missing = [];
+
+      const taskId = document.getElementById("task_id").value.trim();
+      const role = document.getElementById("agent_role").value.trim();
+      const vport = document.getElementById("vport").value.trim();
+
+      if (!taskId) missing.push("Task ID");
+      if (!role) missing.push("Agent role");
+      if (!vport) missing.push("vPort");
+
+      return missing;
+    }
+
+    document.getElementById("create_envelope_btn").addEventListener("click", function () {
+      const missing = validateRequired();
+      if (missing.length > 0) {
+        setStatus("Missing: " + missing.join(", "), true);
+        return;
+      }
+      try {
+        buildEnvelope();
+      } catch (e) {
+        console.error(e);
+        setStatus("Something went wrong while building the envelope.", true);
+      }
+    });
+
+    document.getElementById("copy_btn").addEventListener("click", async function () {
+      const outputEl = document.getElementById("output_json");
+      if (!outputEl || !outputEl.value.trim()) {
+        setStatus("Nothing to copy. Create an envelope first.", true);
+        return;
+      }
+      try {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          await navigator.clipboard.writeText(outputEl.value);
+          setStatus("Copied JSON to clipboard");
+        } else {
+          // Fallback: select text for manual copy
+          outputEl.focus();
+          outputEl.select();
+          setStatus("Select all and copy manually (clipboard API not available).");
+        }
+      } catch (e) {
+        console.error(e);
+        setStatus("Copy failed", true);
+      }
+    });
+
+    document.getElementById("download_btn").addEventListener("click", function () {
+      let outputEl = document.getElementById("output_json");
+      try {
+        if (!outputEl || !outputEl.value.trim()) {
+          // Build first if we have nothing
+          const missing = validateRequired();
+          if (missing.length > 0) {
+            setStatus("Missing: " + missing.join(", "), true);
+            return;
+          }
+          buildEnvelope();
+          outputEl = document.getElementById("output_json");
+        }
+
+        const jsonText = outputEl.value;
+        if (!jsonText.trim()) {
+          setStatus("Nothing to download. Create an envelope first.", true);
+          return;
+        }
+
+        // Try to read the task id for a nicer filename
+        let taskId = "task";
+        try {
+          const parsed = JSON.parse(jsonText);
+          if (parsed && parsed.id) {
+            taskId = String(parsed.id).replace(/[^\w.-]+/g, "_");
+          }
+        } catch {
+          // ignore parse errors and keep default
+        }
+
+        const now = new Date().toISOString().replace(/[:]/g, "-");
+        const filename = `task_envelope_${taskId}_${now}.json`;
+
+        const blob = new Blob([jsonText], { type: "application/json" });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+
+        setStatus("Envelope file downloaded");
+      } catch (e) {
+        console.error(e);
+        setStatus("Download failed", true);
+      }
+    });
+
+    // Theme toggle
+    const THEME_KEY = "aos_envelope_theme";
+
+    function applyTheme(theme) {
+      const root = document.documentElement;
+      const btn = document.getElementById("theme_toggle");
+      const icon = document.getElementById("theme_icon");
+      const label = document.getElementById("theme_label");
+      if (!root || !btn || !icon || !label) return;
+
+      if (theme === "light") {
+        root.classList.add("light");
+        btn.setAttribute("aria-pressed", "true");
+        icon.textContent = "☀️";
+        label.textContent = "Light";
+      } else {
+        root.classList.remove("light");
+        btn.setAttribute("aria-pressed", "false");
+        icon.textContent = "🌙";
+        label.textContent = "Dark";
+      }
+    }
+
+    function initTheme() {
+      let theme = localStorage.getItem(THEME_KEY);
+      if (theme !== "light" && theme !== "dark") {
+        // default to dark
+        theme = "dark";
+      }
+      applyTheme(theme);
+
+      const btn = document.getElementById("theme_toggle");
+      if (!btn) return;
+      btn.addEventListener("click", () => {
+        const current = document.documentElement.classList.contains("light")
+          ? "light"
+          : "dark";
+        const next = current === "light" ? "dark" : "light";
+        localStorage.setItem(THEME_KEY, next);
+        applyTheme(next);
+      });
+    }
+
+    // Init on load
+    initTheme();
+  </script>
+</body>
+</html>

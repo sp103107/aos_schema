@@ -1,0 +1,224 @@
+{
+  "envelope_version": "aos.master.envelope.v5_1",
+  "envelope_kind": "task_request",
+  "invocation_type": "cli",
+  "platform_capabilities": {
+    "artifact_generation": true,
+    "file_generation": true,
+    "file_download": true,
+    "search_allowed": false
+  },
+  "execution_hint": {
+    "trust_level": "medium",
+    "ephemeral": true,
+    "requires_human_confirmation": true,
+    "determinism_target": "best_effort",
+    "max_steps": 50,
+    "timeout_seconds": 600
+  },
+  "embedded_master_meta": {
+    "declared_capabilities": {
+      "session": [
+        "single_chat",
+        "workflow"
+      ],
+      "governance": [
+        "judge_required",
+        "human_in_loop",
+        "halt_on_violation",
+        "deterministic_required",
+        "refusal_allowed"
+      ],
+      "execution": [
+        "plan_only",
+        "execute",
+        "execute_with_review",
+        "dry_run"
+      ],
+      "tasks": [
+        "planning",
+        "validation",
+        "multi_stage_dag"
+      ],
+      "agents": [
+        "foreman",
+        "judge",
+        "recorder"
+      ],
+      "outputs": [
+        "schema",
+        "manifest",
+        "validation_report",
+        "doc_md",
+        "file"
+      ],
+      "memory": [
+        "working_set",
+        "ledger_append_only",
+        "long_term_knowledge",
+        "memory_write_declared"
+      ],
+      "audit": [
+        "schema_validation",
+        "lint_enforced",
+        "episode_recorded",
+        "exportable_logs"
+      ]
+    },
+    "session": {
+      "session_id": "urn:aos:session:master_meta_v5_1_example",
+      "session_type": "workflow",
+      "created_at": "2026-02-12T12:00:00Z"
+    },
+    "governance": {
+      "judge_required": true,
+      "human_in_loop": false,
+      "halt_on_violation": true,
+      "deterministic_required": true,
+      "refusal_allowed": true
+    },
+    "execution": {
+      "mode": "execute_with_review",
+      "step_gated": true,
+      "simulation": false,
+      "replay_mode": false,
+      "max_steps": 50,
+      "timeout_seconds": 600
+    },
+    "tasks": {
+      "tasks": [
+        {
+          "task_id": "urn:aos:task:meta_v5_1_example:plan",
+          "task_type": "planning",
+          "description": "Define schema pack plan.",
+          "depends_on": [],
+          "inputs": [],
+          "outputs": [
+            {
+              "artifact_id": "urn:aos:artifact:meta_v5_1_example:schema",
+              "artifact_type": "schema"
+            }
+          ],
+          "target_schema_ids": [
+            "https://aos.dev/schemas/master/aos.master.meta.v5_1.schema.json"
+          ],
+          "validation_required": true
+        },
+        {
+          "task_id": "urn:aos:task:meta_v5_1_example:pack",
+          "task_type": "validation",
+          "description": "Assemble schema pack and validation report.",
+          "depends_on": [
+            "urn:aos:task:meta_v5_1_example:plan"
+          ],
+          "inputs": [
+            {
+              "artifact_id": "urn:aos:artifact:meta_v5_1_example:schema"
+            }
+          ],
+          "outputs": [
+            {
+              "artifact_id": "urn:aos:artifact:meta_v5_1_example:manifest",
+              "artifact_type": "manifest"
+            },
+            {
+              "artifact_id": "urn:aos:artifact:meta_v5_1_example:validation",
+              "artifact_type": "validation_report"
+            },
+            {
+              "artifact_id": "urn:aos:artifact:meta_v5_1_example:readme",
+              "artifact_type": "file"
+            }
+          ],
+          "validation_required": true
+        }
+      ]
+    },
+    "agents": {
+      "agents": [
+        {
+          "agent_id": "urn:aos:agent:foreman:meta_v5_1_example",
+          "roles": [
+            "foreman"
+          ],
+          "allowed_task_types": [
+            "planning",
+            "multi_stage_dag"
+          ],
+          "forbidden_actions": [
+            "delete_data",
+            "external_io"
+          ]
+        },
+        {
+          "agent_id": "urn:aos:agent:judge:meta_v5_1_example",
+          "roles": [
+            "judge"
+          ],
+          "allowed_task_types": [
+            "validation"
+          ],
+          "forbidden_actions": [
+            "filesystem_write",
+            "network_access"
+          ]
+        }
+      ]
+    },
+    "outputs": {
+      "artifacts": [
+        {
+          "artifact_id": "urn:aos:artifact:meta_v5_1_example:schema",
+          "artifact_type": "schema",
+          "description": "Master meta schema v5.1.",
+          "hash_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "produced_by_task_id": "urn:aos:task:meta_v5_1_example:plan",
+          "schema_id": "https://aos.dev/schemas/master/aos.master.meta.v5_1.schema.json"
+        },
+        {
+          "artifact_id": "urn:aos:artifact:meta_v5_1_example:manifest",
+          "artifact_type": "manifest",
+          "description": "Schema pack manifest.",
+          "hash_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "produced_by_task_id": "urn:aos:task:meta_v5_1_example:pack"
+        },
+        {
+          "artifact_id": "urn:aos:artifact:meta_v5_1_example:validation",
+          "artifact_type": "validation_report",
+          "description": "Validation report for schema pack.",
+          "hash_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+          "produced_by_task_id": "urn:aos:task:meta_v5_1_example:pack"
+        },
+        {
+          "artifact_id": "urn:aos:artifact:meta_v5_1_example:readme",
+          "artifact_type": "file",
+          "description": "Pack README.",
+          "hash_sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+          "produced_by_task_id": "urn:aos:task:meta_v5_1_example:pack",
+          "path": "docs/README.md",
+          "content_type": "text/markdown"
+        }
+      ]
+    },
+    "memory": {
+      "allowed_tiers": [
+        "working_set",
+        "ledger",
+        "long_term"
+      ],
+      "writes_must_be_declared": true,
+      "ledger_append_only": true
+    },
+    "audit": {
+      "record_episode": true,
+      "exportable_logs": true,
+      "schema_validation_required": true,
+      "lint_enforced": true,
+      "schema_validation": true,
+      "episode_recorded": true
+    }
+  },
+  "task": {
+    "intent": "Generate schema pack artifacts."
+  }
+}

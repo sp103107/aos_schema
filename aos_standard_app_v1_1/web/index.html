@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>AoS Standard App — Envelope Builder v1.1</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    *{box-sizing:border-box}
+    :root{
+      color-scheme:dark light;
+      --bg:#020617;--bg-elev:#0b1120;--border:#1f2937;--border2:#374151;
+      --text:#e5e7eb;--muted:#9ca3af;--accent:#38bdf8;--accentSoft:rgba(56,189,248,.10);
+      --danger:#f97373;--radius:.75rem;--shadow:0 18px 40px rgba(15,23,42,.7);
+      --btn:#111827;--btn2:#020617;--header:#020617e6;--field:#020617;
+    }
+    :root.light{
+      color-scheme:light dark;
+      --bg:#f3f4f6;--bg-elev:#fff;--border:#e5e7eb;--border2:#d1d5db;
+      --text:#111827;--muted:#6b7280;--accent:#0ea5e9;--accentSoft:rgba(14,165,233,.08);
+      --danger:#b91c1c;--shadow:0 14px 30px rgba(15,23,42,.12);
+      --btn:#0f172a;--btn2:#f9fafb;--header:#ffffffee;--field:#f9fafb;
+    }
+    body{
+      font-family:system-ui,-apple-system,Segoe UI,sans-serif;
+      margin:0;background:radial-gradient(circle at top,var(--bg) 0,var(--bg) 30%,var(--bg) 100%);
+      color:var(--text);
+    }
+    header{
+      padding:.9rem 1.25rem;border-bottom:1px solid var(--border);background:var(--header);
+      position:sticky;top:0;z-index:10;backdrop-filter:blur(12px);
+    }
+    .header-row{display:flex;align-items:center;justify-content:space-between;gap:.75rem}
+    header h1{margin:0;font-size:1.1rem;font-weight:600;letter-spacing:.03em}
+    header p{margin:.25rem 0 0;font-size:.78rem;color:var(--muted)}
+    main{max-width:960px;margin:0 auto;padding:1rem 1.1rem 2rem}
+    .card{
+      background:radial-gradient(circle at top left,var(--bg-elev),var(--bg) 120%);
+      border-radius:var(--radius);border:1px solid var(--border);padding:1rem 1.1rem 1.1rem;
+      box-shadow:var(--shadow);
+    }
+    .card + .card{margin-top:1rem}
+    h2{margin:0 0 .35rem;font-size:1rem}
+    h3{margin:0 0 .25rem;font-size:.95rem}
+    .card small{display:block;font-size:.75rem;color:var(--muted);margin-bottom:.65rem}
+    .cta-card{display:flex;align-items:center;gap:.9rem;margin-bottom:1rem}
+    .cta-icon{width:3rem;height:3rem;border-radius:999px;background:var(--accentSoft);
+      display:flex;align-items:center;justify-content:center;font-size:1.6rem;box-shadow:0 0 0 1px rgba(56,189,248,.3)}
+    .cta-body{flex:1;min-width:0}
+    .cta-body p{margin:.2rem 0 .55rem;font-size:.8rem;color:var(--muted)}
+    .cta-actions{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem}
+    .grid{display:grid;grid-template-columns:1fr;gap:1rem;margin-top:.75rem}
+    @media(min-width:768px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .grid .full{grid-column:1/-1}}
+    label{display:block;font-size:.78rem;font-weight:500;margin-top:.35rem;margin-bottom:.15rem}
+    input,select,textarea{
+      width:100%;padding:.55rem .6rem;border-radius:.55rem;border:1px solid var(--border2);
+      background:var(--field);color:var(--text);font-size:.82rem;outline:none;min-height:40px;
+      transition:border-color .15s ease,box-shadow .15s ease,background .15s ease;
+    }
+    input:focus,select:focus,textarea:focus{border-color:var(--accent);box-shadow:0 0 0 1px rgba(56,189,248,.4)}
+    textarea{resize:vertical;min-height:70px}
+    .hint{font-size:.7rem;color:var(--muted);margin-top:.25rem}
+    .advanced{font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:.15rem}
+    button{
+      border-radius:999px;border:1px solid var(--border);padding:.55rem 1.1rem;font-size:.82rem;
+      font-weight:500;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:.25rem;
+      background:var(--btn2);color:var(--text);min-height:38px;
+      transition:filter .12s ease,transform .05s ease,box-shadow .12s ease;
+    }
+    button.primary{
+      background:linear-gradient(135deg,#38bdf8,#0ea5e9);
+      border-color:rgba(8,47,73,.7);color:#0b1120;box-shadow:0 10px 25px rgba(56,189,248,.4)
+    }
+    button:hover{filter:brightness(1.05)}
+    button:active{transform:translateY(1px);filter:brightness(.96);box-shadow:none}
+    .status{font-size:.72rem;color:var(--muted)}
+    .status.error{color:var(--danger)}
+    .theme-toggle{font-size:.78rem;padding:.35rem .75rem;min-height:32px;background:var(--btn2)}
+    .tab-nav{
+      display:flex;gap:.5rem;margin-bottom:1rem;border-radius:var(--radius);
+      border:1px solid var(--border);background:var(--bg-elev);padding:.25rem
+    }
+    .tab-btn{flex:1;justify-content:center;font-size:.82rem;background:transparent;border-radius:calc(var(--radius) - .15rem)}
+    .tab-btn.active{background:var(--accentSoft);border-color:var(--accent);color:var(--accent)}
+    .tab-panel{display:none}
+    .tab-panel.active{display:block}
+    details.details-card{margin-top:1rem;border-radius:var(--radius);border:1px solid var(--border);
+      background:var(--bg-elev);padding:.8rem 1rem 1rem;box-shadow:var(--shadow)}
+    summary{cursor:pointer;list-style:none;display:flex;align-items:baseline;justify-content:space-between;gap:.5rem}
+    summary::-webkit-details-marker{display:none}
+    .summary-title{font-size:.95rem;font-weight:500}
+    .summary-hint{font-size:.72rem;color:var(--muted)}
+    .details-inner{margin-top:.75rem}
+    .output-actions{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;margin-bottom:.5rem}
+    .mono textarea{min-height:220px;font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;font-size:.78rem}
+    .helper{margin-top:1rem;border-radius:var(--radius);border:1px dashed var(--border);padding:.8rem 1rem;background:var(--btn2);font-size:.78rem;color:var(--muted)}
+    .helper ol{margin:.35rem 0 0;padding-left:1.2rem}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-row">
+      <div>
+        <h1>AoS Standard App — Envelope Builder</h1>
+        <p>Generates an <code>aos.envelope.overlay.v1</code> JSON file that matches the Python runner schema.</p>
+      </div>
+      <button id="theme_toggle" type="button" class="theme-toggle" aria-pressed="false">
+        <span id="theme_icon">🌙</span> <span id="theme_label">Dark</span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <nav class="tab-nav">
+      <button class="tab-btn active" data-tab-target="tab_envelope" type="button">Task envelope</button>
+      <button class="tab-btn" data-tab-target="tab_agents" type="button">Core agent config</button>
+    </nav>
+
+    <div id="tab_envelope" class="tab-panel active">
+      <section class="card cta-card">
+        <div class="cta-icon" aria-hidden="true">📨</div>
+        <div class="cta-body">
+          <h2>Create envelope file</h2>
+          <p>Builds a schema-valid envelope for <code>aos-stdapp</code> (CLI runner).</p>
+          <div class="cta-actions">
+            <button id="create_envelope_btn" type="button" class="primary">Create envelope</button>
+            <span id="status" class="status">Not generated yet</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="grid">
+        <div class="card">
+          <h2>Task details</h2>
+          <small>What do you want the system to do?</small>
+
+          <label for="task_id">Task ID</label>
+          <input id="task_id" type="text" placeholder="task_001" value="task_001"/>
+
+          <label for="objective">Objective</label>
+          <textarea id="objective" placeholder="Example: Summarize project notes into a 7-section AoS report."></textarea>
+
+          <label for="notes">Notes (optional)</label>
+          <textarea id="notes" placeholder="Extra context (saved into payload.inputs.notes)."></textarea>
+        </div>
+
+        <div class="card">
+          <h2>Target agent</h2>
+          <small>Mapped to <code>target</code> in the envelope schema.</small>
+
+          <label for="agent_role">Role</label>
+          <select id="agent_role">
+            <option value="Foreman" selected>Foreman</option>
+            <option value="Librarian">Librarian</option>
+            <option value="Sorcerer">Sorcerer</option>
+            <option value="Judge">Judge</option>
+            <option value="Messenger">Messenger</option>
+          </select>
+
+          <label for="agent_domain">Domain</label>
+          <input id="agent_domain" type="text" value="aos.domain.core"/>
+
+          <label for="agent_urn">URN (required by schema)</label>
+          <input id="agent_urn" type="text" placeholder="urn:aos:agent:foreman.core"/>
+          <p class="hint">If blank, we auto-generate <code>urn:aos:agent:&lt;role&gt;.core</code>.</p>
+
+          <label for="vport">vPort</label>
+          <input id="vport" type="text" value="router"/>
+        </div>
+
+        <div class="card">
+          <div class="advanced">Advanced</div>
+          <h2>Project & episode</h2>
+          <small>Tags used for grouping runs.</small>
+
+          <label for="schema_version">Schema version</label>
+          <input id="schema_version" type="text" value="aos.envelope.overlay.v1"/>
+
+          <label for="project_id">Project ID</label>
+          <input id="project_id" type="text" value="proj_main"/>
+
+          <label for="episode_id">Episode ID</label>
+          <input id="episode_id" type="text" value="episode_0001"/>
+
+          <label for="bundle_id">Bundle / Domain ID (optional)</label>
+          <input id="bundle_id" type="text" value="aos.domain.core"/>
+        </div>
+
+        <div class="card">
+          <div class="advanced">Advanced</div>
+          <h2>Transport</h2>
+          <small>Mapped to <code>transport</code> in the envelope schema.</small>
+
+          <label for="protocol_version">Protocol version</label>
+          <input id="protocol_version" type="text" value="1.0"/>
+
+          <label for="communication_pattern">Communication pattern</label>
+          <select id="communication_pattern">
+            <option value="request_response" selected>request_response</option>
+            <option value="fire_and_forget">fire_and_forget</option>
+            <option value="stream">stream</option>
+          </select>
+
+          <label for="callback_id">Callback ID (optional)</label>
+          <input id="callback_id" type="text" placeholder="auto or integration-specific value"/>
+        </div>
+
+        <div class="card full mono">
+          <div class="advanced">Advanced</div>
+          <h2>Payload (JSON)</h2>
+          <small>These become <code>payload.inputs</code> and <code>payload.constraints</code>.</small>
+
+          <label for="inputs_json">Inputs JSON</label>
+          <textarea id="inputs_json" placeholder='Example: {"intent":"run","sources":["/path/doc.md"]}'></textarea>
+
+          <label for="constraints_json">Constraints JSON</label>
+          <textarea id="constraints_json" placeholder='Example: {"max_tokens": 512}'></textarea>
+
+          <p class="hint">Objective and Notes are merged into <code>payload.inputs</code> unless you already provided them.</p>
+        </div>
+      </section>
+
+      <details id="details_panel" class="details-card">
+        <summary>
+          <span class="summary-title">Envelope details (JSON)</span>
+          <span class="summary-hint">Optional debug view</span>
+        </summary>
+        <div class="details-inner">
+          <small>Schema-valid envelope output.</small>
+          <div class="output-actions">
+            <button id="copy_btn" type="button">Copy JSON</button>
+            <button id="download_btn" type="button">Download envelope</button>
+            <button id="download_bundle_btn" type="button">Download bundle</button>
+          </div>
+          <div class="card mono">
+            <textarea id="output_json" readonly></textarea>
+          </div>
+        </div>
+      </details>
+
+      <section class="helper">
+        <h3>How to run</h3>
+        <ol>
+          <li>Download the envelope or bundle JSON.</li>
+          <li>Run: <code>python -m aos_runtime.cli path/to/file.json</code></li>
+          <li>Runner validates schema, resolves vPort handler, and runs the selected role.</li>
+        </ol>
+      </section>
+    </div>
+
+    <div id="tab_agents" class="tab-panel">
+      <section class="card mono">
+        <h2>Core agent config (JSON)</h2>
+        <small>Optional. Included in bundle for your watcher to consume.</small>
+        <div class="output-actions">
+          <button id="copy_agents_btn" type="button">Copy JSON</button>
+          <button id="download_agents_btn" type="button">Download agents</button>
+        </div>
+        <div class="card mono">
+          <textarea id="agent_profiles_json"></textarea>
+        </div>
+        <p class="hint">Default filename: <code>agent_profiles_core_v1.json</code></p>
+      </section>
+    </div>
+  </main>
+
+<script>
+  function setStatus(message, isError=false){
+    const el=document.getElementById("status"); if(!el) return;
+    el.textContent=message; el.classList.toggle("error", !!isError);
+  }
+  function safeParseJson(text, fallback){
+    if(!text || !text.trim()) return fallback;
+    try { return JSON.parse(text); } catch(e){ console.warn("JSON parse error", e); return fallback; }
+  }
+  function slug(s){ return String(s||"").trim().replace(/[^\w.-]+/g,"_") || "task"; }
+
+  function buildEnvelope(){
+    const schemaVersion = document.getElementById("schema_version").value || "aos.envelope.overlay.v1";
+    const projectId = document.getElementById("project_id").value || "proj_main";
+    const episodeId = document.getElementById("episode_id").value || "episode_0001";
+    const bundleId = document.getElementById("bundle_id").value || null;
+
+    const taskId = document.getElementById("task_id").value || "task_001";
+    const objective = document.getElementById("objective").value || "";
+    const notes = document.getElementById("notes").value || "";
+
+    const role = document.getElementById("agent_role").value || "Foreman";
+    const domain = document.getElementById("agent_domain").value || "aos.domain.core";
+    let urn = document.getElementById("agent_urn").value || "";
+    if(!urn.trim()){
+      urn = `urn:aos:agent:${role.toLowerCase()}.core`;
+    }
+
+    const vport = document.getElementById("vport").value || "router";
+    const protocolVersion = document.getElementById("protocol_version").value || "1.0";
+    const communicationPattern = document.getElementById("communication_pattern").value || "request_response";
+    const callbackId = document.getElementById("callback_id").value || "";
+
+    const inputsObj = safeParseJson(document.getElementById("inputs_json").value, {});
+    const constraintsObj = safeParseJson(document.getElementById("constraints_json").value, {});
+
+    // Merge UI fields into payload.inputs (without clobbering user-provided keys)
+    if(objective && (inputsObj.objective === undefined)) inputsObj.objective = objective;
+    if(notes && (inputsObj.notes === undefined)) inputsObj.notes = notes;
+
+    const envelope = {
+      schema_version: schemaVersion,
+      type: "task",
+      id: taskId,
+      project: { project_id: projectId, episode_id: episodeId },
+      target: { role: role, domain: domain, urn: urn },
+      transport: { vport: vport, protocol_version: protocolVersion, communication_pattern: communicationPattern, callback_id: callbackId },
+      payload: { inputs: inputsObj, constraints: constraintsObj }
+    };
+    if(bundleId) envelope.bundle_id = bundleId;
+
+    const out=document.getElementById("output_json");
+    if(out) out.value = JSON.stringify(envelope, null, 2);
+
+    const details=document.getElementById("details_panel");
+    if(details && !details.open) details.open = true;
+
+    setStatus("Envelope ready (schema-valid)");
+    return envelope;
+  }
+
+  function validateRequired(){
+    const missing=[];
+    const taskId=(document.getElementById("task_id").value||"").trim();
+    const role=(document.getElementById("agent_role").value||"").trim();
+    const vport=(document.getElementById("vport").value||"").trim();
+    if(!taskId) missing.push("Task ID");
+    if(!role) missing.push("Role");
+    if(!vport) missing.push("vPort");
+    return missing;
+  }
+
+  document.getElementById("create_envelope_btn").addEventListener("click", () => {
+    const missing=validateRequired();
+    if(missing.length){ setStatus("Missing: "+missing.join(", "), true); return; }
+    try { buildEnvelope(); } catch(e){ console.error(e); setStatus("Failed building envelope.", true); }
+  });
+
+  document.getElementById("copy_btn").addEventListener("click", async () => {
+    const out=document.getElementById("output_json");
+    if(!out || !out.value.trim()){ setStatus("Nothing to copy. Create an envelope first.", true); return; }
+    try {
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        await navigator.clipboard.writeText(out.value);
+        setStatus("Copied envelope JSON");
+      } else { out.focus(); out.select(); setStatus("Select all and copy manually."); }
+    } catch(e){ console.error(e); setStatus("Copy failed", true); }
+  });
+
+  function downloadText(filename, text){
+    const blob=new Blob([text],{type:"application/json"});
+    const url=URL.createObjectURL(blob);
+    const a=document.createElement("a");
+    a.href=url; a.download=filename; document.body.appendChild(a); a.click();
+    document.body.removeChild(a); URL.revokeObjectURL(url);
+  }
+
+  document.getElementById("download_btn").addEventListener("click", () => {
+    try{
+      let out=document.getElementById("output_json");
+      if(!out || !out.value.trim()){
+        const missing=validateRequired();
+        if(missing.length){ setStatus("Missing: "+missing.join(", "), true); return; }
+        buildEnvelope(); out=document.getElementById("output_json");
+      }
+      const obj=safeParseJson(out.value, null);
+      const now=new Date().toISOString().replace(/[:]/g,"-");
+      downloadText(`task_envelope_${slug(obj?.id)}_${now}.json`, JSON.stringify(obj,null,2));
+      setStatus("Envelope downloaded");
+    } catch(e){ console.error(e); setStatus("Download failed", true); }
+  });
+
+  // Bundle = { envelope, agent_profiles }
+  document.getElementById("download_bundle_btn").addEventListener("click", () => {
+    try{
+      let out=document.getElementById("output_json");
+      if(!out || !out.value.trim()){
+        const missing=validateRequired();
+        if(missing.length){ setStatus("Missing: "+missing.join(", "), true); return; }
+        buildEnvelope(); out=document.getElementById("output_json");
+      }
+      const envelopeObj=safeParseJson(out.value, null);
+
+      const agentTa=document.getElementById("agent_profiles_json");
+      if(agentTa && !agentTa.value.trim()){
+        agentTa.value = JSON.stringify(CORE_AGENT_PROFILES, null, 2);
+      }
+      const agentObj=safeParseJson(agentTa ? agentTa.value : "", null);
+
+      const bundle={ envelope: envelopeObj, agent_profiles: agentObj };
+      const now=new Date().toISOString().replace(/[:]/g,"-");
+      downloadText(`aos_bundle_${slug(envelopeObj?.id)}_${now}.json`, JSON.stringify(bundle,null,2));
+      setStatus("Bundle downloaded");
+    } catch(e){ console.error(e); setStatus("Bundle download failed", true); }
+  });
+
+  // Tabs
+  (function initTabs(){
+    const buttons=document.querySelectorAll(".tab-btn");
+    const panels=document.querySelectorAll(".tab-panel");
+    buttons.forEach(btn=>{
+      btn.addEventListener("click", ()=>{
+        const id=btn.getAttribute("data-tab-target");
+        buttons.forEach(b=>b.classList.remove("active"));
+        panels.forEach(p=>p.classList.remove("active"));
+        btn.classList.add("active");
+        const target=document.getElementById(id);
+        if(target) target.classList.add("active");
+      });
+    });
+  })();
+
+  // Agent profiles default
+  const CORE_AGENT_PROFILES = {
+    schema_version: "aos.agent_profiles.v1",
+    project_id: "aos.core",
+    agents: {
+      "Foreman.Core": { id: "agent.foreman.core.v1", type: "agent", version: "1.0.0", role: "Foreman", domain: "aos.domain.core",
+        profile: "AoS_Foreman_Core_Profile", description: "Orchestration + planning + 7-section standard.", behavior_flags: {schema_first:true,no_fluff:true,nd_friendly:true,deterministic:true,mcp_aware:true},
+        sections:["Overview","Plan","Actions","Artifacts","Next_Steps","Risks","Loop_Status"], routing_rules:[{id:"default",match:{task_type:"any"},target:{vport:"router",handler:"foreman"}}] },
+      "Librarian.Core": { id: "agent.librarian.core.v1", type: "agent", version: "1.0.0", role: "Librarian", domain: "aos.domain.core",
+        profile: "AoS_Librarian_Core_Profile", description: "Retrieval + RAG + structured notes.", behavior_flags: {schema_first:true,no_fluff:true,nd_friendly:true,deterministic:true,mcp_aware:true},
+        sections:["Overview","Plan","Actions","Artifacts","Next_Steps","Risks","Loop_Status"], routing_rules:[{id:"default",match:{task_type:"any"},target:{vport:"router",handler:"librarian"}}] },
+      "Sorcerer.Core": { id: "agent.sorcerer.core.v1", type: "agent", version: "1.0.0", role: "Sorcerer", domain: "aos.domain.core",
+        profile: "AoS_Sorcerer_Core_Profile", description: "Generation + drafting + synthesis.", behavior_flags: {schema_first:true,no_fluff:true,nd_friendly:true,deterministic:true,mcp_aware:true},
+        sections:["Overview","Plan","Actions","Artifacts","Next_Steps","Risks","Loop_Status"], routing_rules:[{id:"default",match:{task_type:"any"},target:{vport:"router",handler:"sorcerer"}}] },
+      "Judge.Core": { id: "agent.judge.core.v1", type: "agent", version: "1.0.0", role: "Judge", domain: "aos.domain.core",
+        profile: "AoS_Judge_Core_Profile", description: "Validation + evaluation + checks.", behavior_flags: {schema_first:true,no_fluff:true,nd_friendly:true,deterministic:true,mcp_aware:true},
+        sections:["Overview","Plan","Actions","Artifacts","Next_Steps","Risks","Loop_Status"], routing_rules:[{id:"default",match:{task_type:"any"},target:{vport:"router",handler:"judge"}}] },
+      "Messenger.Core": { id: "agent.messenger.core.v1", type: "agent", version: "1.0.0", role: "Messenger", domain: "aos.domain.core",
+        profile: "AoS_Messenger_Core_Profile", description: "Formatting + delivery output.", behavior_flags: {schema_first:true,no_fluff:true,nd_friendly:true,deterministic:true,mcp_aware:true},
+        sections:["Overview","Plan","Actions","Artifacts","Next_Steps","Risks","Loop_Status"], routing_rules:[{id:"default",match:{task_type:"any"},target:{vport:"router",handler:"messenger"}}] }
+    }
+  };
+
+  (function initAgentProfiles(){
+    const ta=document.getElementById("agent_profiles_json");
+    if(ta && !ta.value.trim()) ta.value = JSON.stringify(CORE_AGENT_PROFILES, null, 2);
+
+    document.getElementById("copy_agents_btn").addEventListener("click", async () => {
+      if(!ta.value.trim()){ setStatus("Agent profiles JSON is empty.", true); return; }
+      try {
+        if(navigator.clipboard && navigator.clipboard.writeText){
+          await navigator.clipboard.writeText(ta.value);
+          setStatus("Copied agent profiles JSON");
+        } else { ta.focus(); ta.select(); setStatus("Select all and copy manually."); }
+      } catch(e){ console.error(e); setStatus("Copy failed", true); }
+    });
+
+    document.getElementById("download_agents_btn").addEventListener("click", () => {
+      if(!ta.value.trim()){ setStatus("Nothing to download for agent profiles.", true); return; }
+      try { downloadText("agent_profiles_core_v1.json", ta.value); setStatus("Agent profiles downloaded"); }
+      catch(e){ console.error(e); setStatus("Download failed", true); }
+    });
+  })();
+
+  // Theme
+  const THEME_KEY="aos_stdapp_theme";
+  function applyTheme(theme){
+    const root=document.documentElement;
+    const btn=document.getElementById("theme_toggle");
+    const icon=document.getElementById("theme_icon");
+    const label=document.getElementById("theme_label");
+    if(theme==="light"){ root.classList.add("light"); btn.setAttribute("aria-pressed","true"); icon.textContent="☀️"; label.textContent="Light"; }
+    else { root.classList.remove("light"); btn.setAttribute("aria-pressed","false"); icon.textContent="🌙"; label.textContent="Dark"; }
+  }
+  (function initTheme(){
+    let theme=localStorage.getItem(THEME_KEY);
+    if(theme!=="light" && theme!=="dark") theme="dark";
+    applyTheme(theme);
+    document.getElementById("theme_toggle").addEventListener("click",()=>{
+      const current=document.documentElement.classList.contains("light") ? "light":"dark";
+      const next=current==="light" ? "dark":"light";
+      localStorage.setItem(THEME_KEY,next);
+      applyTheme(next);
+    });
+  })();
+</script>
+</body>
+</html>

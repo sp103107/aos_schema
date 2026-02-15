@@ -1,0 +1,219 @@
+{
+  "atom_id": "dynamic_foreman_v2_discovery",
+  "component_name": "Dynamic Foreman v2 Discovery",
+  "component_type": "foreman_v2",
+  "aos_version": "3.0.0",
+  "created_at": "2025-01-28T10:00:00Z",
+  "status": "ACTIVE",
+  "hash_id": "7481a0375db336a4",
+  "sha256_hash": "a1b2c3d4e5f6789012345678901234567890abcdef1234567890abcdef123456",
+  "source_file": "AoS_v3/foreman_v2_stack/handlers/dynamic_foreman_v2_discovery_handler.py",
+  "capabilities": [
+    "foreman_v2",
+    "orchestration",
+    "job_management",
+    "worker_pool_management",
+    "saga_coordination",
+    "task_orchestration",
+    "workflow_management",
+    "scheduling",
+    "health_monitoring",
+    "job_specification",
+    "worker_management",
+    "task_distribution",
+    "coordination",
+    "monitoring",
+    "execution",
+    "management"
+  ],
+  "dependencies": [
+    "foreman_v2_core_handler",
+    "task_orchestration_vport_handler",
+    "orchestration_system_vport_handler"
+  ],
+  "resource_requirements": {
+    "cpu": "medium",
+    "memory": "512MB",
+    "storage": "100MB",
+    "network": "low"
+  },
+  "configuration": {
+    "port": 8002,
+    "max_workers": 100,
+    "timeout": 300,
+    "saga_timeout": 600,
+    "health_check_interval": 30,
+    "job_queue_size": 1000
+  },
+  "functions": [
+    {
+      "name": "check_system_health",
+      "description": "Check the health status of the foreman v2 system",
+      "parameters": ["system_id"],
+      "returns": "Dict[str, Any]",
+      "capabilities": ["health_monitoring"]
+    },
+    {
+      "name": "create_mcp_message",
+      "description": "Create MCP protocol message for communication",
+      "parameters": ["message_type", "payload"],
+      "returns": "Dict[str, Any]",
+      "capabilities": ["communication"]
+    },
+    {
+      "name": "discover_vports_via_foreman_v2",
+      "description": "Discover VPorts using foreman v2 discovery mechanism",
+      "parameters": ["discovery_config"],
+      "returns": "List[Dict[str, Any]]",
+      "capabilities": ["discovery", "foreman_v2"]
+    },
+    {
+      "name": "discover_foreman_v2_files",
+      "description": "Discover foreman v2 files in the system",
+      "parameters": ["file_pattern"],
+      "returns": "List[str]",
+      "capabilities": ["file_discovery"]
+    },
+    {
+      "name": "analyze_foreman_v2_file",
+      "description": "Analyze a foreman v2 file for component information",
+      "parameters": ["file_path"],
+      "returns": "Dict[str, Any]",
+      "capabilities": ["analysis"]
+    },
+    {
+      "name": "create_foreman_v2_stack",
+      "description": "Create a new foreman v2 stack",
+      "parameters": ["stack_config"],
+      "returns": "Dict[str, Any]",
+      "capabilities": ["stack_creation"]
+    },
+    {
+      "name": "create_component_schema",
+      "description": "Create schema for a component",
+      "parameters": ["component_info"],
+      "returns": "Dict[str, Any]",
+      "capabilities": ["schema_generation"]
+    },
+    {
+      "name": "generate_csv_runner_data",
+      "description": "Generate CSV runner data for components",
+      "parameters": ["component_list"],
+      "returns": "List[Dict[str, Any]]",
+      "capabilities": ["csv_generation"]
+    },
+    {
+      "name": "generate_handlers",
+      "description": "Generate handlers for discovered components",
+      "parameters": ["component_schemas"],
+      "returns": "List[str]",
+      "capabilities": ["handler_generation"]
+    },
+    {
+      "name": "create_component_handler",
+      "description": "Create a handler for a specific component",
+      "parameters": ["component_info"],
+      "returns": "str",
+      "capabilities": ["handler_creation"]
+    },
+    {
+      "name": "execute_function",
+      "description": "Execute a specific function from the component",
+      "parameters": ["function_name", "parameters"],
+      "returns": "Dict[str, Any]",
+      "capabilities": ["function_execution"]
+    },
+    {
+      "name": "get_component_info",
+      "description": "Get information about the component",
+      "parameters": [],
+      "returns": "Dict[str, Any]",
+      "capabilities": ["info_retrieval"]
+    },
+    {
+      "name": "generate_configuration",
+      "description": "Generate configuration for components",
+      "parameters": ["component_type"],
+      "returns": "Dict[str, Any]",
+      "capabilities": ["config_generation"]
+    },
+    {
+      "name": "generate_documentation",
+      "description": "Generate documentation for components",
+      "parameters": ["component_info"],
+      "returns": "str",
+      "capabilities": ["documentation_generation"]
+    },
+    {
+      "name": "generate_summary",
+      "description": "Generate summary of discovery results",
+      "parameters": ["discovery_results"],
+      "returns": "Dict[str, Any]",
+      "capabilities": ["summary_generation"]
+    },
+    {
+      "name": "run_dynamic_discovery",
+      "description": "Run the dynamic discovery process",
+      "parameters": ["discovery_config"],
+      "returns": "Dict[str, Any]",
+      "capabilities": ["discovery_execution"]
+    },
+    {
+      "name": "main",
+      "description": "Main entry point for the discovery handler",
+      "parameters": [],
+      "returns": "None",
+      "capabilities": ["main_execution"]
+    }
+  ],
+  "mcp_endpoints": {
+    "discovery": {
+      "port": 8002,
+      "protocol": "MCP",
+      "endpoint": "/discovery"
+    },
+    "health": {
+      "port": 8002,
+      "protocol": "MCP",
+      "endpoint": "/health"
+    },
+    "orchestration": {
+      "port": 8002,
+      "protocol": "MCP",
+      "endpoint": "/orchestration"
+    }
+  },
+  "compliance": {
+    "protocol_version": "3.0.0",
+    "communication_pattern": "MCP_PACKET_VPORT",
+    "mcp_compliant": true,
+    "envelope_format": "JSON v3 & Binary v2",
+    "security": "AES-256 & TLS 1.3"
+  },
+  "integration_points": [
+    "foreman_v2_core_handler",
+    "task_orchestration_vport_handler",
+    "orchestration_system_vport_handler",
+    "worker_manager_atom",
+    "job_orchestrator_atom",
+    "saga_coordinator_atom"
+  ],
+  "performance_metrics": {
+    "discovery_speed": "high",
+    "memory_efficiency": "medium",
+    "cpu_utilization": "low",
+    "network_bandwidth": "low"
+  },
+  "error_handling": {
+    "retry_attempts": 3,
+    "backoff_strategy": "exponential",
+    "timeout": 300,
+    "fallback_mechanism": "graceful_degradation"
+  },
+  "monitoring": {
+    "health_check_interval": 30,
+    "metrics_collection": true,
+    "alerting": true,
+    "logging_level": "INFO"
+  }
+}

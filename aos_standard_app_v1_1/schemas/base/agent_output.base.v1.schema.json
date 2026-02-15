@@ -1,0 +1,53 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "aos.schema.base.agent_output.base.v1",
+  "title": "AoS Base Agent Output Contract v1",
+  "description": "Shared output contract for AoS agents and micro-agents. Specific agents extend this by adding structured fields.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "status",
+    "summary"
+  ],
+  "properties": {
+    "status": {
+      "type": "string",
+      "enum": [
+        "SUCCESS",
+        "PARTIAL_SUCCESS",
+        "FAILURE",
+        "NEEDS_HUMAN_INPUT"
+      ]
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 1
+    },
+    "artifacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "default": []
+    },
+    "issues": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "default": []
+    },
+    "metrics": {
+      "type": "object",
+      "additionalProperties": true,
+      "default": {}
+    },
+    "trace": {
+      "type": "object",
+      "additionalProperties": true,
+      "default": {}
+    }
+  }
+}

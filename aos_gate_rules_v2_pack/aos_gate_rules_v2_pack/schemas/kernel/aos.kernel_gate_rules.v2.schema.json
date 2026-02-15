@@ -1,0 +1,438 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aos.dev/schemas/kernel/aos.kernel_gate_rules.v2.schema.json",
+  "title": "AoS Kernel Gate Rules Schema v2",
+  "description": "Enforceable gating contract for AoS. v2 defines gate rules as machine-checkable requirements tied to ledger events, evidence, and decision authority. Designed to prevent drift by making approvals/denials auditable and replayable.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "gate_rules_id",
+    "gate_rules_version",
+    "created_at",
+    "policy_mode",
+    "rules",
+    "defaults"
+  ],
+  "properties": {
+    "gate_rules_id": {
+      "type": "string",
+      "pattern": "^urn:aos:gate_rules:[a-zA-Z0-9._-]+$"
+    },
+    "gate_rules_version": {
+      "type": "string",
+      "const": "2.0"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "policy_mode": {
+      "type": "string",
+      "enum": [
+        "enforce",
+        "audit_only"
+      ],
+      "description": "enforce = runtime must halt on deny/halt; audit_only = record but do not halt automatically."
+    },
+    "defaults": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "on_missing_gate",
+        "consensus"
+      ],
+      "properties": {
+        "on_missing_gate": {
+          "type": "string",
+          "enum": [
+            "deny",
+            "halt",
+            "revise"
+          ],
+          "description": "If a required gate is missing, what is the default outcome?"
+        },
+        "consensus": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "threshold",
+            "min_votes"
+          ],
+          "properties": {
+            "threshold": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "min_votes": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "tie_breaker": {
+              "type": "string",
+              "enum": [
+                "judge",
+                "human",
+                "deny",
+                "halt"
+              ],
+              "default": "judge"
+            }
+          }
+        }
+      }
+    },
+    "rules": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/gate_rule"
+      }
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "$defs": {
+    "urn_event": {
+      "type": "string",
+      "pattern": "^urn:aos:event:[a-zA-Z0-9._-]+$"
+    },
+    "urn_policy": {
+      "type": "string",
+      "pattern": "^urn:aos:policy:[a-zA-Z0-9._/-]+$"
+    },
+    "urn_scene": {
+      "type": "string",
+      "pattern": "^urn:aos:scene:[a-zA-Z0-9._-]+$"
+    },
+    "urn_episode": {
+      "type": "string",
+      "pattern": "^urn:aos:episode:[a-zA-Z0-9._-]+$"
+    },
+    "urn_agent": {
+      "type": "string",
+      "pattern": "^urn:aos:agent:[a-zA-Z0-9._-]+$"
+    },
+    "decision": {
+      "type": "string",
+      "enum": [
+        "approve",
+        "deny",
+        "revise",
+        "halt"
+      ]
+    },
+    "gate_type": {
+      "type": "string",
+      "enum": [
+        "judge",
+        "human",
+        "policy",
+        "consensus"
+      ]
+    },
+    "phase": {
+      "type": "string",
+      "enum": [
+        "planning",
+        "validation",
+        "execution",
+        "verification",
+        "packaging",
+        "finalize"
+      ]
+    },
+    "evidence_ref": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ref_type",
+        "ref"
+      ],
+      "properties": {
+        "ref_type": {
+          "type": "string",
+          "enum": [
+            "artifact",
+            "schema",
+            "ledger_event",
+            "url",
+            "note"
+          ]
+        },
+        "ref": {
+          "type": "string"
+        },
+        "hash": {
+          "type": "string",
+          "pattern": "^(sha256:)?[a-f0-9]{64}$"
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    },
+    "authority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "authority_type"
+      ],
+      "properties": {
+        "authority_type": {
+          "type": "string",
+          "enum": [
+            "agent",
+            "human_role",
+            "policy_engine"
+          ]
+        },
+        "agent_id": {
+          "$ref": "#/$defs/urn_agent"
+        },
+        "human_role": {
+          "type": "string",
+          "description": "e.g., owner, reviewer, operator"
+        },
+        "policy_engine_id": {
+          "type": "string",
+          "description": "Identifier for policy engine (OPA, Cedar, custom)."
+        },
+        "allowed_decisions": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/decision"
+          }
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "authority_type": {
+                "const": "agent"
+              }
+            },
+            "required": [
+              "authority_type"
+            ]
+          },
+          "then": {
+            "required": [
+              "agent_id"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "authority_type": {
+                "const": "human_role"
+              }
+            },
+            "required": [
+              "authority_type"
+            ]
+          },
+          "then": {
+            "required": [
+              "human_role"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "authority_type": {
+                "const": "policy_engine"
+              }
+            },
+            "required": [
+              "authority_type"
+            ]
+          },
+          "then": {
+            "required": [
+              "policy_engine_id"
+            ]
+          }
+        }
+      ]
+    },
+    "gate_rule": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "rule_id",
+        "gate_type",
+        "applies_to",
+        "required",
+        "authority",
+        "decision_requirements"
+      ],
+      "properties": {
+        "rule_id": {
+          "type": "string",
+          "pattern": "^urn:aos:gate_rule:[a-zA-Z0-9._-]+$"
+        },
+        "gate_type": {
+          "$ref": "#/$defs/gate_type"
+        },
+        "required": {
+          "type": "boolean",
+          "default": true
+        },
+        "applies_to": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "phases"
+          ],
+          "properties": {
+            "phases": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "$ref": "#/$defs/phase"
+              }
+            },
+            "task_types": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "function_ids": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^urn:aos:function:[a-zA-Z0-9._-]+$"
+              }
+            },
+            "agent_ids": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/urn_agent"
+              }
+            },
+            "episode_ids": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/urn_episode"
+              }
+            },
+            "scene_ids": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/urn_scene"
+              }
+            }
+          }
+        },
+        "authority": {
+          "$ref": "#/$defs/authority"
+        },
+        "policy_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/urn_policy"
+          },
+          "description": "Policies that justify/define this gate."
+        },
+        "decision_requirements": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "decision_event_type",
+            "requires_ledger_event",
+            "min_evidence"
+          ],
+          "properties": {
+            "decision_event_type": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Ledger event_type emitted when decision is made (e.g., GATE_DECISION)."
+            },
+            "requires_ledger_event": {
+              "type": "boolean",
+              "const": true
+            },
+            "min_evidence": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "required_evidence_types": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": [
+                  "artifact",
+                  "schema",
+                  "ledger_event",
+                  "url",
+                  "note"
+                ]
+              }
+            },
+            "allowed_decisions": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "$ref": "#/$defs/decision"
+              }
+            },
+            "deny_is_terminal": {
+              "type": "boolean",
+              "default": false,
+              "description": "If true, deny means halt scene/episode immediately."
+            }
+          }
+        },
+        "runtime_effect": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "on_approve": {
+              "type": "string",
+              "enum": [
+                "continue",
+                "checkpoint_optional",
+                "checkpoint_required"
+              ],
+              "default": "continue"
+            },
+            "on_revise": {
+              "type": "string",
+              "enum": [
+                "return_to_planning",
+                "return_to_validation",
+                "halt"
+              ],
+              "default": "return_to_planning"
+            },
+            "on_deny": {
+              "type": "string",
+              "enum": [
+                "halt",
+                "return_to_planning"
+              ],
+              "default": "halt"
+            },
+            "on_halt": {
+              "type": "string",
+              "enum": [
+                "halt"
+              ],
+              "const": "halt"
+            }
+          }
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

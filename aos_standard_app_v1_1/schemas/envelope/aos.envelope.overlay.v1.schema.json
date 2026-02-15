@@ -1,0 +1,140 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "aos.schema.envelope.overlay.v1",
+  "title": "AoS Envelope Overlay v1",
+  "description": "A transport-friendly task envelope used to command AoS base agents via vPorts with overlay payloads.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "type",
+    "id",
+    "project",
+    "target",
+    "transport",
+    "payload"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "enum": [
+        "aos.envelope.overlay.v1"
+      ]
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "task"
+      ]
+    },
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Envelope/task id"
+    },
+    "bundle_id": {
+      "type": "string"
+    },
+    "project": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "project_id",
+        "episode_id"
+      ],
+      "properties": {
+        "project_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "episode_id": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "target": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "role",
+        "domain",
+        "urn"
+      ],
+      "properties": {
+        "role": {
+          "type": "string",
+          "enum": [
+            "Foreman",
+            "Librarian",
+            "Sorcerer",
+            "Judge",
+            "Messenger"
+          ]
+        },
+        "domain": {
+          "type": "string",
+          "minLength": 1
+        },
+        "urn": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "transport": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "vport",
+        "protocol_version",
+        "communication_pattern"
+      ],
+      "properties": {
+        "vport": {
+          "type": "string",
+          "minLength": 1
+        },
+        "callback_id": {
+          "type": "string"
+        },
+        "protocol_version": {
+          "type": "string",
+          "default": "mcp.v1"
+        },
+        "communication_pattern": {
+          "type": "string",
+          "enum": [
+            "request_response",
+            "fire_and_forget",
+            "stream"
+          ],
+          "default": "request_response"
+        }
+      }
+    },
+    "payload": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "inputs",
+        "constraints"
+      ],
+      "properties": {
+        "inputs": {
+          "type": "object",
+          "additionalProperties": true
+        },
+        "constraints": {
+          "type": "object",
+          "additionalProperties": true
+        }
+      }
+    },
+    "trace": {
+      "type": "object",
+      "additionalProperties": true,
+      "default": {}
+    }
+  }
+}

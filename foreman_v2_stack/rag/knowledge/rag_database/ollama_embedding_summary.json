@@ -1,0 +1,30 @@
+{
+  "embedding_summary_id": "ollama_embedding_summary_1756873283",
+  "generated_at": "2025-09-03T00:21:23.274125",
+  "embedding_metadata": {
+    "total_atoms": 11,
+    "embedding_models_used": [
+      "ollama_nomic-embed-text",
+      "ollama_all-minilm"
+    ],
+    "successful_embeddings": 22,
+    "failed_embeddings": 0,
+    "timestamp": "2025-09-03T00:21:21.189566",
+    "success_rate": 1.0
+  },
+  "vector_tree_enhancement": {
+    "original_node_count": 28,
+    "new_node_count": 0,
+    "total_node_count": 1,
+    "enhancement_ratio": 0.0,
+    "embedding_models_used": [
+      "ollama_nomic-embed-text",
+      "ollama_all-minilm"
+    ],
+    "timestamp": "2025-09-03T00:21:23.253028"
+  },
+  "files_updated": [
+    "C:\\Users\\sp103\\OneDrive\\Desktop\\hubd\\llm_hub\\AoS_v3\\foreman_v2_stack\\rag_database\\ollama_enhanced_knowledge_base.json",
+    "C:\\Users\\sp103\\OneDrive\\Desktop\\hubd\\llm_hub\\AoS_v3\\foreman_v2_stack\\vector_trees\\ollama_enhanced_vector_tree.json"
+  ]
+}

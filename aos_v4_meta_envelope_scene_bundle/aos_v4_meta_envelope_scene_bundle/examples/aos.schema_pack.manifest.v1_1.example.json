@@ -1,0 +1,51 @@
+{
+  "pack_id": "urn:aos:schema-pack:master_v5_1",
+  "version": "5.1.0",
+  "generated_at": "2026-02-12T12:30:00Z",
+  "draft": false,
+  "generated_with_meta_id": "https://aos.dev/schemas/master/aos.master.meta.v5_1.schema.json",
+  "generated_with_envelope_id": "https://aos.dev/schemas/envelope/aos.master.envelope.v5_1.schema.json",
+  "kernel_version": "0.1.0",
+  "schemas": [
+    {
+      "schema_id": "https://aos.dev/schemas/master/aos.master.meta.v5_1.schema.json",
+      "path": "schemas/master/aos.master.meta.v5_1.schema.json",
+      "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "title": "AoS Master Meta Schema v5.1",
+      "version": "5.1"
+    },
+    {
+      "schema_id": "https://aos.dev/schemas/envelope/aos.master.envelope.v5_1.schema.json",
+      "path": "schemas/envelope/aos.master.envelope.v5_1.schema.json",
+      "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "title": "AoS Master Envelope v5.1",
+      "version": "5.1"
+    },
+    {
+      "schema_id": "https://aos.dev/schemas/temporal/aos.scene.v5_1.schema.json",
+      "path": "schemas/temporal/aos.scene.v5_1.schema.json",
+      "sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+      "title": "AoS Scene Schema v5.1",
+      "version": "5.1"
+    }
+  ],
+  "examples": [
+    {
+      "example_id": "urn:aos:example:envelope_v5_1_task_request",
+      "path": "examples/aos.master.envelope.v5_1.task_request.example.json",
+      "sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+      "schema_id": "https://aos.dev/schemas/envelope/aos.master.envelope.v5_1.schema.json"
+    }
+  ],
+  "docs": [
+    {
+      "path": "CHANGELOG.md",
+      "sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+    }
+  ],
+  "changelog": {
+    "path": "CHANGELOG.md",
+    "sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+  },
+  "validation_report_ref": "examples/aos.validation_report.v1.example.json"
+}

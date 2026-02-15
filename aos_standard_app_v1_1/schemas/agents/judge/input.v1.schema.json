@@ -1,0 +1,63 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "aos.schema.agent.judge.input.v1",
+  "title": "AoS Judge Agent Input Contract v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "task_id",
+    "subject",
+    "evaluation_type",
+    "payload",
+    "context_snapshot"
+  ],
+  "properties": {
+    "task_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "subject": {
+      "type": "string"
+    },
+    "evaluation_type": {
+      "type": "string",
+      "enum": [
+        "schema_validation",
+        "policy_compliance",
+        "safety_check",
+        "quality_review",
+        "consistency_check"
+      ]
+    },
+    "payload": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "context_snapshot": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "strictness": {
+      "type": "string",
+      "enum": [
+        "low",
+        "medium",
+        "high",
+        "max"
+      ],
+      "default": "high"
+    },
+    "expected_schema": {
+      "type": "string"
+    },
+    "notes": {
+      "type": "string",
+      "default": ""
+    },
+    "trace": {
+      "type": "object",
+      "additionalProperties": true,
+      "default": {}
+    }
+  }
+}

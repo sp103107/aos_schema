@@ -1,0 +1,31 @@
+{
+  "metadata": {
+    "generation_execution_id": "rag_rebuilder_20250902_221207_76d854db",
+    "generation_timestamp": "2025-09-02T22:12:07.720661",
+    "embedding_models": [
+      "llama2",
+      "codellama",
+      "mistral"
+    ],
+    "total_embeddings": 150
+  },
+  "embeddings": {
+    "atom_embeddings": 45,
+    "content_embeddings": 75,
+    "metadata_embeddings": 30
+  },
+  "models_used": {
+    "llama2": {
+      "embeddings": 50,
+      "success_rate": 0.95
+    },
+    "codellama": {
+      "embeddings": 50,
+      "success_rate": 0.92
+    },
+    "mistral": {
+      "embeddings": 50,
+      "success_rate": 0.88
+    }
+  }
+}

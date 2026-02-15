@@ -1,0 +1,48 @@
+{
+  "pack_id": "urn:aos:schema-pack:master_v5",
+  "version": "5.0.0",
+  "generated_at": "2026-02-12T12:30:00Z",
+  "draft": false,
+  "schemas": [
+    {
+      "schema_id": "https://aos.dev/schemas/master/aos.master.meta.v5.schema.json",
+      "path": "schemas/master/aos.master.meta.v5.schema.json",
+      "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "title": "AoS Master Meta Schema v5",
+      "version": "5"
+    },
+    {
+      "schema_id": "https://aos.dev/schemas/envelope/aos.master.envelope.v5.schema.json",
+      "path": "schemas/envelope/aos.master.envelope.v5.schema.json",
+      "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "title": "AoS Master Envelope v5",
+      "version": "5"
+    },
+    {
+      "schema_id": "https://aos.dev/schemas/temporal/aos.scene.v5.schema.json",
+      "path": "schemas/temporal/aos.scene.v5.schema.json",
+      "sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+      "title": "AoS Scene Schema v5",
+      "version": "5"
+    }
+  ],
+  "examples": [
+    {
+      "example_id": "urn:aos:example:envelope_v5_task_request",
+      "path": "examples/aos.master.envelope.v5.task_request.example.json",
+      "sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+      "schema_id": "https://aos.dev/schemas/envelope/aos.master.envelope.v5.schema.json"
+    }
+  ],
+  "docs": [
+    {
+      "path": "docs/changes/aos.master.meta.v4.changelog.md",
+      "sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+    }
+  ],
+  "changelog": {
+    "path": "docs/changes/aos.master.meta.v4.changelog.md",
+    "sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+  },
+  "validation_report_ref": "examples/aos.validation_report.v1.example.json"
+}

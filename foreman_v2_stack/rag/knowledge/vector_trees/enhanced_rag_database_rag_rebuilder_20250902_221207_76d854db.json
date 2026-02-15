@@ -1,0 +1,3820 @@
+st{
+  "metadata": {
+    "rebuild_execution_id": "rag_rebuilder_20250902_221207_76d854db",
+    "rebuild_timestamp": "2025-09-02T22:12:07.715451",
+    "total_atoms_integrated": 12,
+    "rebuild_version": "3.0.0"
+  },
+  "atoms": [
+    {
+      "atom_id": "advanced_hashing_atom_v3",
+      "component_name": "advanced_hashing",
+      "component_type": "hashing_system",
+      "version": "3.0.0",
+      "fibonacci_level": 7,
+      "complexity_score": 8,
+      "description": "AOS v3 Atom CSV Runtime Standards Compliant Advanced Hashing System for Atom Identification and Integrity Verification",
+      "created_at": "2025-09-03T02:01:00Z",
+      "status": "active",
+      "dna_hash": "901234567890123456789012345678901abcdef1234567890abcdef123456789012",
+      "capabilities": [
+        "multi_algorithm_hashing",
+        "atom_content_hashing",
+        "metadata_hashing",
+        "integrity_verification",
+        "hash_collision_detection",
+        "hash_registry_management",
+        "hash_based_routing",
+        "content_fingerprinting",
+        "version_control_hashing",
+        "security_hashing",
+        "aos_v3_compliance",
+        "gold_star_standards"
+      ],
+      "functions": [
+        "generate_content_hash",
+        "generate_metadata_hash",
+        "generate_atom_hash",
+        "verify_hash_integrity",
+        "detect_hash_collisions",
+        "register_hash_entry",
+        "query_hash_registry",
+        "generate_fingerprint",
+        "hash_based_route",
+        "version_hash_content",
+        "secure_hash_content",
+        "validate_hash_format"
+      ],
+      "dependencies": [
+        "hashlib",
+        "json",
+        "pathlib",
+        "logging",
+        "datetime",
+        "time",
+        "asyncio",
+        "typing",
+        "dataclasses",
+        "base64",
+        "hmac",
+        "secrets"
+      ],
+      "resource_requirements": {
+        "cpu_cores": 4,
+        "memory_mb": 8192,
+        "storage_gb": 10,
+        "network_mbps": 100
+      },
+      "execution_flow": [
+        "initialize_hashing_system",
+        "load_hash_algorithms",
+        "setup_hash_registry",
+        "generate_content_hash",
+        "generate_metadata_hash",
+        "generate_atom_hash",
+        "verify_hash_integrity",
+        "register_hash_entry",
+        "validate_hash_format",
+        "save_hash_results"
+      ],
+      "health_checks": [
+        "hash_algorithm_availability",
+        "hash_registry_accessibility",
+        "content_hashing_functionality",
+        "metadata_hashing_functionality",
+        "integrity_verification_capability",
+        "collision_detection_functionality",
+        "hash_routing_capability",
+        "fingerprint_generation_capability"
+      ],
+      "endpoint": "advanced_hashing.execute",
+      "mcp_compliance": {
+        "protocol_version": "3.0",
+        "communication_pattern": "MCP_PACKET_VPORT",
+        "handler_vport": "advanced_hashing",
+        "response_timestamp": "2025-09-03T02:01:00Z",
+        "mcp_compliant": true
+      },
+      "hashing_system": {
+        "multi_algorithm_support": true,
+        "content_hashing": true,
+        "metadata_hashing": true,
+        "integrity_verification": true,
+        "collision_detection": true,
+        "hash_registry": true
+      },
+      "function_schemas": {
+        "generate_content_hash": {
+          "input": {
+            "content": "string",
+            "algorithm": "string",
+            "encoding": "string"
+          },
+          "output": {
+            "hash_id": "string",
+            "content_hash": "string",
+            "algorithm_used": "string",
+            "hash_metadata": "object"
+          }
+        },
+        "generate_metadata_hash": {
+          "input": {
+            "metadata": "object",
+            "algorithm": "string",
+            "include_timestamp": "boolean"
+          },
+          "output": {
+            "hash_id": "string",
+            "metadata_hash": "string",
+            "algorithm_used": "string",
+            "hash_metadata": "object"
+          }
+        },
+        "generate_atom_hash": {
+          "input": {
+            "atom_content": "object",
+            "atom_metadata": "object",
+            "algorithm": "string"
+          },
+          "output": {
+            "hash_id": "string",
+            "atom_hash": "string",
+            "content_hash": "string",
+            "metadata_hash": "string",
+            "combined_hash": "string",
+            "hash_metadata": "object"
+          }
+        },
+        "verify_hash_integrity": {
+          "input": {
+            "original_content": "string",
+            "stored_hash": "string",
+            "algorithm": "string"
+          },
+          "output": {
+            "verification_id": "string",
+            "integrity_verified": "boolean",
+            "verification_score": "float",
+            "verification_metadata": "object"
+          }
+        },
+        "detect_hash_collisions": {
+          "input": {
+            "hash_registry": "object",
+            "new_hash": "string",
+            "collision_threshold": "float"
+          },
+          "output": {
+            "detection_id": "string",
+            "collision_detected": "boolean",
+            "collision_probability": "float",
+            "collision_metadata": "object"
+          }
+        },
+        "register_hash_entry": {
+          "input": {
+            "hash_value": "string",
+            "content_reference": "string",
+            "metadata": "object",
+            "registration_timestamp": "string"
+          },
+          "output": {
+            "registration_id": "string",
+            "registration_success": "boolean",
+            "registry_entry": "object",
+            "registration_metadata": "object"
+          }
+        },
+        "query_hash_registry": {
+          "input": {
+            "query_hash": "string",
+            "query_type": "string",
+            "include_metadata": "boolean"
+          },
+          "output": {
+            "query_id": "string",
+            "query_results": [
+              "object"
+            ],
+            "total_matches": "integer",
+            "query_metadata": "object"
+          }
+        },
+        "generate_fingerprint": {
+          "input": {
+            "content": "object",
+            "fingerprint_algorithm": "string",
+            "fingerprint_length": "integer"
+          },
+          "output": {
+            "fingerprint_id": "string",
+            "fingerprint": "string",
+            "fingerprint_metadata": "object"
+          }
+        },
+        "hash_based_route": {
+          "input": {
+            "hash_value": "string",
+            "routing_table": "object",
+            "routing_strategy": "string"
+          },
+          "output": {
+            "routing_id": "string",
+            "routed_destination": "string",
+            "routing_confidence": "float",
+            "routing_metadata": "object"
+          }
+        }
+      },
+      "error_handling": {
+        "intelligent_error_recovery": true,
+        "fallback_strategies": [
+          "retry_hashing",
+          "alternative_algorithm",
+          "partial_hashing",
+          "graceful_degradation"
+        ],
+        "error_categories": [
+          "hash_algorithm_errors",
+          "content_processing_errors",
+          "registry_errors",
+          "verification_errors",
+          "collision_errors",
+          "routing_errors"
+        ]
+      },
+      "performance_metrics": {
+        "hash_generation_success_rate": 0.99,
+        "integrity_verification_success": 0.98,
+        "collision_detection_success": 0.95,
+        "registry_operation_success": 0.97,
+        "routing_success_rate": 0.94,
+        "overall_hashing_score": 0.97
+      },
+      "mesh_network_integration": {
+        "peer_discovery": true,
+        "distributed_hashing": true,
+        "fault_tolerance": true,
+        "load_balancing": true,
+        "service_mesh": true
+      },
+      "aos_v3_compliance": {
+        "atom_architecture": true,
+        "hash_based_identification": true,
+        "master_registry_integration": true,
+        "gold_star_standards": true,
+        "csv_runtime_engine": true,
+        "fibonacci_complexity": true,
+        "mcp_v3_compliance": true,
+        "neurodivergent_friendly": true,
+        "self_documenting_code": true,
+        "intelligent_error_recovery": true,
+        "adaptive_behavior": true,
+        "learning_capabilities": true,
+        "mesh_network_orchestration": true,
+        "advanced_ai_integration": true
+      },
+      "configuration": {
+        "supported_algorithms": [
+          "sha256",
+          "sha512",
+          "blake2b",
+          "blake2s",
+          "sha3_256",
+          "sha3_512"
+        ],
+        "default_algorithm": "sha256",
+        "hash_registry_path": "hash_registry.json",
+        "collision_threshold": 0.001,
+        "fingerprint_length": 32,
+        "hash_timeout_seconds": 300,
+        "max_retries": 3,
+        "backup_enabled": true,
+        "validation_testing": true,
+        "parallel_processing": true
+      },
+      "metadata": {
+        "author": "AoS v3 Gold Star Team",
+        "maintainer": "Advanced Hashing System",
+        "documentation": "ADVANCED_HASHING_GUIDE.md",
+        "license": "AoS v3 Gold Star Standards",
+        "tags": [
+          "hashing",
+          "advanced",
+          "integrity",
+          "verification",
+          "fingerprinting",
+          "aos_v3",
+          "gold_star"
+        ]
+      },
+      "file_path": "atoms\\advanced_hashing_atom.json"
+    },
+    {
+      "atom_id": "dynamic_foreman_v2_discovery",
+      "component_name": "Dynamic Foreman v2 Discovery",
+      "component_type": "foreman_v2",
+      "aos_version": "3.0.0",
+      "created_at": "2025-01-28T10:00:00Z",
+      "status": "ACTIVE",
+      "hash_id": "7481a0375db336a4",
+      "sha256_hash": "a1b2c3d4e5f6789012345678901234567890abcdef1234567890abcdef123456",
+      "source_file": "AoS_v3/foreman_v2_stack/handlers/dynamic_foreman_v2_discovery_handler.py",
+      "capabilities": [
+        "foreman_v2",
+        "orchestration",
+        "job_management",
+        "worker_pool_management",
+        "saga_coordination",
+        "task_orchestration",
+        "workflow_management",
+        "scheduling",
+        "health_monitoring",
+        "job_specification",
+        "worker_management",
+        "task_distribution",
+        "coordination",
+        "monitoring",
+        "execution",
+        "management"
+      ],
+      "dependencies": [
+        "foreman_v2_core_handler",
+        "task_orchestration_vport_handler",
+        "orchestration_system_vport_handler"
+      ],
+      "resource_requirements": {
+        "cpu": "medium",
+        "memory": "512MB",
+        "storage": "100MB",
+        "network": "low"
+      },
+      "configuration": {
+        "port": 8002,
+        "max_workers": 100,
+        "timeout": 300,
+        "saga_timeout": 600,
+        "health_check_interval": 30,
+        "job_queue_size": 1000
+      },
+      "functions": [
+        {
+          "name": "check_system_health",
+          "description": "Check the health status of the foreman v2 system",
+          "parameters": [
+            "system_id"
+          ],
+          "returns": "Dict[str, Any]",
+          "capabilities": [
+            "health_monitoring"
+          ]
+        },
+        {
+          "name": "create_mcp_message",
+          "description": "Create MCP protocol message for communication",
+          "parameters": [
+            "message_type",
+            "payload"
+          ],
+          "returns": "Dict[str, Any]",
+          "capabilities": [
+            "communication"
+          ]
+        },
+        {
+          "name": "discover_vports_via_foreman_v2",
+          "description": "Discover VPorts using foreman v2 discovery mechanism",
+          "parameters": [
+            "discovery_config"
+          ],
+          "returns": "List[Dict[str, Any]]",
+          "capabilities": [
+            "discovery",
+            "foreman_v2"
+          ]
+        },
+        {
+          "name": "discover_foreman_v2_files",
+          "description": "Discover foreman v2 files in the system",
+          "parameters": [
+            "file_pattern"
+          ],
+          "returns": "List[str]",
+          "capabilities": [
+            "file_discovery"
+          ]
+        },
+        {
+          "name": "analyze_foreman_v2_file",
+          "description": "Analyze a foreman v2 file for component information",
+          "parameters": [
+            "file_path"
+          ],
+          "returns": "Dict[str, Any]",
+          "capabilities": [
+            "analysis"
+          ]
+        },
+        {
+          "name": "create_foreman_v2_stack",
+          "description": "Create a new foreman v2 stack",
+          "parameters": [
+            "stack_config"
+          ],
+          "returns": "Dict[str, Any]",
+          "capabilities": [
+            "stack_creation"
+          ]
+        },
+        {
+          "name": "create_component_schema",
+          "description": "Create schema for a component",
+          "parameters": [
+            "component_info"
+          ],
+          "returns": "Dict[str, Any]",
+          "capabilities": [
+            "schema_generation"
+          ]
+        },
+        {
+          "name": "generate_csv_runner_data",
+          "description": "Generate CSV runner data for components",
+          "parameters": [
+            "component_list"
+          ],
+          "returns": "List[Dict[str, Any]]",
+          "capabilities": [
+            "csv_generation"
+          ]
+        },
+        {
+          "name": "generate_handlers",
+          "description": "Generate handlers for discovered components",
+          "parameters": [
+            "component_schemas"
+          ],
+          "returns": "List[str]",
+          "capabilities": [
+            "handler_generation"
+          ]
+        },
+        {
+          "name": "create_component_handler",
+          "description": "Create a handler for a specific component",
+          "parameters": [
+            "component_info"
+          ],
+          "returns": "str",
+          "capabilities": [
+            "handler_creation"
+          ]
+        },
+        {
+          "name": "execute_function",
+          "description": "Execute a specific function from the component",
+          "parameters": [
+            "function_name",
+            "parameters"
+          ],
+          "returns": "Dict[str, Any]",
+          "capabilities": [
+            "function_execution"
+          ]
+        },
+        {
+          "name": "get_component_info",
+          "description": "Get information about the component",
+          "parameters": [],
+          "returns": "Dict[str, Any]",
+          "capabilities": [
+            "info_retrieval"
+          ]
+        },
+        {
+          "name": "generate_configuration",
+          "description": "Generate configuration for components",
+          "parameters": [
+            "component_type"
+          ],
+          "returns": "Dict[str, Any]",
+          "capabilities": [
+            "config_generation"
+          ]
+        },
+        {
+          "name": "generate_documentation",
+          "description": "Generate documentation for components",
+          "parameters": [
+            "component_info"
+          ],
+          "returns": "str",
+          "capabilities": [
+            "documentation_generation"
+          ]
+        },
+        {
+          "name": "generate_summary",
+          "description": "Generate summary of discovery results",
+          "parameters": [
+            "discovery_results"
+          ],
+          "returns": "Dict[str, Any]",
+          "capabilities": [
+            "summary_generation"
+          ]
+        },
+        {
+          "name": "run_dynamic_discovery",
+          "description": "Run the dynamic discovery process",
+          "parameters": [
+            "discovery_config"
+          ],
+          "returns": "Dict[str, Any]",
+          "capabilities": [
+            "discovery_execution"
+          ]
+        },
+        {
+          "name": "main",
+          "description": "Main entry point for the discovery handler",
+          "parameters": [],
+          "returns": "None",
+          "capabilities": [
+            "main_execution"
+          ]
+        }
+      ],
+      "mcp_endpoints": {
+        "discovery": {
+          "port": 8002,
+          "protocol": "MCP",
+          "endpoint": "/discovery"
+        },
+        "health": {
+          "port": 8002,
+          "protocol": "MCP",
+          "endpoint": "/health"
+        },
+        "orchestration": {
+          "port": 8002,
+          "protocol": "MCP",
+          "endpoint": "/orchestration"
+        }
+      },
+      "compliance": {
+        "protocol_version": "3.0.0",
+        "communication_pattern": "MCP_PACKET_VPORT",
+        "mcp_compliant": true,
+        "envelope_format": "JSON v3 & Binary v2",
+        "security": "AES-256 & TLS 1.3"
+      },
+      "integration_points": [
+        "foreman_v2_core_handler",
+        "task_orchestration_vport_handler",
+        "orchestration_system_vport_handler",
+        "worker_manager_atom",
+        "job_orchestrator_atom",
+        "saga_coordinator_atom"
+      ],
+      "performance_metrics": {
+        "discovery_speed": "high",
+        "memory_efficiency": "medium",
+        "cpu_utilization": "low",
+        "network_bandwidth": "low"
+      },
+      "error_handling": {
+        "retry_attempts": 3,
+        "backoff_strategy": "exponential",
+        "timeout": 300,
+        "fallback_mechanism": "graceful_degradation"
+      },
+      "monitoring": {
+        "health_check_interval": 30,
+        "metrics_collection": true,
+        "alerting": true,
+        "logging_level": "INFO"
+      },
+      "file_path": "atoms\\dynamic_foreman_v2_discovery_atom.json"
+    },
+    {
+      "atom_id": "foreman_v2_aos_v3_runtime_integration_atom_v3",
+      "component_name": "foreman_v2_aos_v3_runtime_integration",
+      "component_type": "foreman_v2_orchestration",
+      "version": "3.0.0",
+      "created_at": "2025-01-28T17:00:00Z",
+      "last_updated": "2025-01-28T17:00:00Z",
+      "fibonacci_level": 6,
+      "complexity_score": 8,
+      "capabilities": [
+        "aos_v3_runtime_standards_compliance",
+        "atom_csv_runtime_engine_integration",
+        "master_registry_integration",
+        "asset_discovery_and_management",
+        "tool_discovery_and_registration",
+        "prompt_generator_integration",
+        "orchestration_system_integration",
+        "vector_embedding_system_integration",
+        "hash_based_identification",
+        "mesh_network_orchestration",
+        "dynamic_tool_addition",
+        "runtime_standards_validation",
+        "system_health_monitoring",
+        "capability_mapping",
+        "dependency_management",
+        "endpoint_discovery"
+      ],
+      "functions": [
+        "initialize_aos_v3_runtime_integration",
+        "load_master_atom_registry",
+        "discover_available_assets",
+        "register_with_master_registry",
+        "discover_prompt_generator_system",
+        "discover_orchestration_system",
+        "discover_vector_embedding_system",
+        "discover_available_tools",
+        "validate_runtime_standards_compliance",
+        "generate_atom_hash",
+        "create_asset_mapping",
+        "register_new_tools",
+        "update_capability_registry",
+        "monitor_system_health",
+        "orchestrate_system_integration",
+        "generate_integration_report",
+        "cleanup_integration_resources"
+      ],
+      "configuration": {
+        "timeout": 900,
+        "max_retries": 5,
+        "batch_size": 10,
+        "fibonacci_progression": {
+          "current_level": 6,
+          "next_level": 7,
+          "complexity_multiplier": 8,
+          "dependencies_required": 6
+        },
+        "gold_star_standards": {
+          "neurodivergent_friendly": true,
+          "self_documenting_code": true,
+          "intelligent_error_recovery": true,
+          "adaptive_behavior": true,
+          "learning_capabilities": true,
+          "mesh_network_orchestration": true,
+          "advanced_ai_integration": true
+        },
+        "aos_v3_runtime_standards": {
+          "atom_architecture": true,
+          "hash_based_identification": true,
+          "master_registry_integration": true,
+          "csv_runtime_engine": true,
+          "fibonacci_complexity": true,
+          "mcp_v3_compliance": true,
+          "gold_star_standards": true
+        }
+      },
+      "dependencies": [
+        "dynamic_foreman_v2_discovery_atom_v3",
+        "marketplace_prompt_generator_atom_v3",
+        "orchestration_system_atom_v3",
+        "vector_embedding_generator_atom_v3",
+        "master_registry_atom_v3",
+        "asset_discovery_atom_v3"
+      ],
+      "resource_requirements": {
+        "memory": "4GB",
+        "cpu": "8 cores",
+        "storage": "2GB",
+        "network": "high_bandwidth"
+      },
+      "execution_flow": [
+        "receive_integration_request",
+        "validate_aos_v3_standards",
+        "check_dependencies",
+        "check_fibonacci_level",
+        "initialize_integration_system",
+        "load_master_registry",
+        "discover_available_assets",
+        "register_system_components",
+        "validate_runtime_compliance",
+        "generate_integration_report",
+        "return_integration_status"
+      ],
+      "health_checks": [
+        "connectivity_check",
+        "performance_check",
+        "dependency_check",
+        "fibonacci_level_check",
+        "aos_v3_standards_check",
+        "asset_discovery_check",
+        "master_registry_check",
+        "tool_registration_check"
+      ],
+      "endpoint": "foreman_v2_stack.foreman_v2_aos_v3_runtime_integration.execute",
+      "mcp_compliance": {
+        "protocol_version": "3.0.0",
+        "communication_pattern": "MCP_PACKET_VPORT",
+        "envelope_format": "JSON v3",
+        "security_standard": "AES-256",
+        "tls_version": "1.3"
+      },
+      "rag_integration": {
+        "knowledge_base_path": "rag_database/foreman_v2_aos_v3_integration_knowledge_base.json",
+        "vector_tree_path": "vector_trees/foreman_v2_aos_v3_integration_vector_tree.json",
+        "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+        "similarity_threshold": 0.85,
+        "context_window": 2048
+      },
+      "function_schemas": {
+        "initialize_aos_v3_runtime_integration": {
+          "name": "initialize_aos_v3_runtime_integration",
+          "description": "Initialize Foreman v2 AOS v3 Runtime Standards Integration",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "integration_config": {
+                "type": "object",
+                "description": "Integration configuration"
+              }
+            }
+          },
+          "output_schema": {
+            "type": "object",
+            "properties": {
+              "success": {
+                "type": "boolean",
+                "description": "Initialization success status"
+              },
+              "integration_status": {
+                "type": "string",
+                "description": "Integration status message"
+              }
+            }
+          }
+        },
+        "discover_available_assets": {
+          "name": "discover_available_assets",
+          "description": "Discover all available assets in AOS v3 system",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "discovery_patterns": {
+                "type": "array",
+                "description": "Discovery patterns to search for"
+              }
+            }
+          },
+          "output_schema": {
+            "type": "object",
+            "properties": {
+              "discovered_assets": {
+                "type": "array",
+                "description": "List of discovered assets"
+              },
+              "asset_count": {
+                "type": "integer",
+                "description": "Number of discovered assets"
+              }
+            }
+          }
+        },
+        "discover_prompt_generator_system": {
+          "name": "discover_prompt_generator_system",
+          "description": "Discover and integrate marketplace prompt generator system",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "system_path": {
+                "type": "string",
+                "description": "Path to prompt generator system"
+              }
+            }
+          },
+          "output_schema": {
+            "type": "object",
+            "properties": {
+              "prompt_generator_status": {
+                "type": "object",
+                "description": "Prompt generator system status"
+              },
+              "available_generators": {
+                "type": "array",
+                "description": "Available prompt generators"
+              }
+            }
+          }
+        },
+        "discover_orchestration_system": {
+          "name": "discover_orchestration_system",
+          "description": "Discover and integrate orchestration system",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "system_path": {
+                "type": "string",
+                "description": "Path to orchestration system"
+              }
+            }
+          },
+          "output_schema": {
+            "type": "object",
+            "properties": {
+              "orchestration_status": {
+                "type": "object",
+                "description": "Orchestration system status"
+              },
+              "available_orchestrators": {
+                "type": "array",
+                "description": "Available orchestrators"
+              }
+            }
+          }
+        },
+        "discover_vector_embedding_system": {
+          "name": "discover_vector_embedding_system",
+          "description": "Discover and integrate vector embedding system",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "system_path": {
+                "type": "string",
+                "description": "Path to vector embedding system"
+              }
+            }
+          },
+          "output_schema": {
+            "type": "object",
+            "properties": {
+              "vector_embedding_status": {
+                "type": "object",
+                "description": "Vector embedding system status"
+              },
+              "available_embeddings": {
+                "type": "array",
+                "description": "Available embedding systems"
+              }
+            }
+          }
+        },
+        "discover_available_tools": {
+          "name": "discover_available_tools",
+          "description": "Discover all available tools in the AOS v3 system",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "tool_patterns": {
+                "type": "array",
+                "description": "Tool discovery patterns"
+              }
+            }
+          },
+          "output_schema": {
+            "type": "object",
+            "properties": {
+              "discovered_tools": {
+                "type": "array",
+                "description": "List of discovered tools"
+              },
+              "tool_categories": {
+                "type": "object",
+                "description": "Tools categorized by type"
+              }
+            }
+          }
+        },
+        "register_new_tools": {
+          "name": "register_new_tools",
+          "description": "Register new tools with the AOS v3 system",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "tool_definition": {
+                "type": "object",
+                "description": "Tool definition to register"
+              }
+            }
+          },
+          "output_schema": {
+            "type": "object",
+            "properties": {
+              "registration_success": {
+                "type": "boolean",
+                "description": "Registration success status"
+              },
+              "tool_hash": {
+                "type": "string",
+                "description": "Generated tool hash"
+              }
+            }
+          }
+        },
+        "validate_runtime_standards_compliance": {
+          "name": "validate_runtime_standards_compliance",
+          "description": "Validate AOS v3 runtime standards compliance",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "validation_target": {
+                "type": "string",
+                "description": "Target to validate"
+              }
+            }
+          },
+          "output_schema": {
+            "type": "object",
+            "properties": {
+              "compliance_status": {
+                "type": "boolean",
+                "description": "Compliance status"
+              },
+              "validation_report": {
+                "type": "object",
+                "description": "Detailed validation report"
+              }
+            }
+          }
+        }
+      },
+      "error_handling": {
+        "retry_strategies": {
+          "initialization": [
+            "retry_connection",
+            "fallback_config",
+            "graceful_degradation"
+          ],
+          "asset_discovery": [
+            "retry_discovery",
+            "cached_discovery",
+            "manual_discovery"
+          ],
+          "tool_registration": [
+            "retry_registration",
+            "fallback_registration",
+            "manual_registration"
+          ],
+          "standards_validation": [
+            "retry_validation",
+            "partial_validation",
+            "manual_validation"
+          ]
+        },
+        "fallback_mechanisms": {
+          "discovery_failure": "cached_asset_list",
+          "registration_failure": "offline_registration",
+          "validation_failure": "basic_validation",
+          "integration_failure": "partial_integration"
+        }
+      },
+      "performance_metrics": {
+        "discovery_speed": "assets_per_second",
+        "registration_speed": "tools_per_second",
+        "validation_speed": "validations_per_second",
+        "integration_success_rate": "percentage",
+        "compliance_score": "0_to_1_scale"
+      },
+      "mesh_network_integration": {
+        "peer_discovery": true,
+        "load_balancing": true,
+        "fault_tolerance": true,
+        "consistency_management": true,
+        "distributed_processing": true
+      },
+      "aos_v3_compliance": {
+        "atom_architecture": true,
+        "hash_based_identification": true,
+        "master_registry_integration": true,
+        "vector_tree_processing": true,
+        "gold_star_standards": true,
+        "csv_runtime_engine": true,
+        "fibonacci_complexity": true,
+        "mcp_v3_compliance": true
+      },
+      "asset_discovery_config": {
+        "discovery_paths": [
+          "AoS_v3/marketplace_prompt_generator_stack",
+          "AoS_v3/orchestration_system",
+          "AoS_v3/vector_embedding_atom_stack",
+          "AoS_v3/foreman_v2_stack",
+          "AoS_v3/python_atom_registry_stack",
+          "AoS_v3/master_atom_registry.csv"
+        ],
+        "discovery_patterns": [
+          "**/*.json",
+          "**/*.csv",
+          "**/*.py",
+          "**/atoms/*.json",
+          "**/csv_runners/*.csv",
+          "**/*_atom_stack.py"
+        ],
+        "asset_types": [
+          "prompt_generators",
+          "orchestrators",
+          "vector_embeddings",
+          "foreman_systems",
+          "atom_registries",
+          "csv_runners",
+          "vport_stacks"
+        ]
+      },
+      "tool_registration_config": {
+        "registration_endpoints": [
+          "foreman_v2_stack.foreman_v2_aos_v3_runtime_integration.register_tool",
+          "master_registry.register_atom",
+          "csv_runtime_engine.register_component"
+        ],
+        "validation_requirements": [
+          "atom_structure_validation",
+          "hash_generation",
+          "dependency_validation",
+          "endpoint_validation"
+        ]
+      },
+      "file_path": "atoms\\foreman_v2_aos_v3_runtime_integration_atom.json"
+    },
+    {
+      "atom_id": "rag_vector_tree_rebuilder_atom_v3",
+      "component_name": "rag_vector_tree_rebuilder",
+      "component_type": "rag_rebuilder",
+      "version": "3.0.0",
+      "fibonacci_level": 9,
+      "complexity_score": 10,
+      "description": "AOS v3 Atom CSV Runtime Standards Compliant RAG and Vector Tree Rebuilder with Advanced Hashing and Embedding Capabilities",
+      "created_at": "2025-09-03T02:00:00Z",
+      "status": "active",
+      "dna_hash": "890123456789012345678901234567890abcdef1234567890abcdef12345678901",
+      "capabilities": [
+        "rag_rebuilding",
+        "vector_tree_reconstruction",
+        "advanced_hashing",
+        "embedding_generation",
+        "knowledge_base_integration",
+        "intelligence_enhancement_integration",
+        "atom_discovery",
+        "csv_runtime_orchestration",
+        "master_registry_integration",
+        "mesh_network_orchestration",
+        "aos_v3_compliance",
+        "gold_star_standards"
+      ],
+      "functions": [
+        "discover_available_atoms",
+        "generate_atom_hashes",
+        "rebuild_rag_database",
+        "reconstruct_vector_tree",
+        "integrate_intelligence_enhancement",
+        "generate_embeddings",
+        "update_master_registry",
+        "create_csv_runtime_runner",
+        "validate_rebuild_integrity",
+        "generate_rebuild_report",
+        "backup_existing_data",
+        "restore_from_backup"
+      ],
+      "dependencies": [
+        "json",
+        "pathlib",
+        "hashlib",
+        "logging",
+        "datetime",
+        "time",
+        "asyncio",
+        "aiohttp",
+        "concurrent.futures",
+        "csv",
+        "typing",
+        "dataclasses"
+      ],
+      "resource_requirements": {
+        "cpu_cores": 6,
+        "memory_mb": 16384,
+        "storage_gb": 30,
+        "network_mbps": 200
+      },
+      "execution_flow": [
+        "initialize_rebuilder",
+        "discover_available_atoms",
+        "generate_atom_hashes",
+        "backup_existing_data",
+        "rebuild_rag_database",
+        "reconstruct_vector_tree",
+        "integrate_intelligence_enhancement",
+        "generate_embeddings",
+        "update_master_registry",
+        "create_csv_runtime_runner",
+        "validate_rebuild_integrity",
+        "generate_rebuild_report",
+        "save_rebuild_results"
+      ],
+      "health_checks": [
+        "atom_discovery_functionality",
+        "hash_generation_integrity",
+        "rag_database_accessibility",
+        "vector_tree_integrity",
+        "intelligence_system_availability",
+        "embedding_generation_capability",
+        "master_registry_functionality",
+        "csv_runtime_orchestration",
+        "rebuild_validation",
+        "backup_verification"
+      ],
+      "endpoint": "rag_vector_tree_rebuilder.execute",
+      "mcp_compliance": {
+        "protocol_version": "3.0",
+        "communication_pattern": "MCP_PACKET_VPORT",
+        "handler_vport": "rag_vector_tree_rebuilder",
+        "response_timestamp": "2025-09-03T02:00:00Z",
+        "mcp_compliant": true
+      },
+      "rag_rebuilding": {
+        "atom_discovery": true,
+        "hash_generation": true,
+        "database_reconstruction": true,
+        "vector_tree_rebuilding": true,
+        "intelligence_integration": true,
+        "embedding_generation": true
+      },
+      "function_schemas": {
+        "discover_available_atoms": {
+          "input": {
+            "discovery_paths": [
+              "string"
+            ],
+            "atom_patterns": [
+              "string"
+            ],
+            "exclude_patterns": [
+              "string"
+            ]
+          },
+          "output": {
+            "discovery_id": "string",
+            "discovered_atoms": [
+              "object"
+            ],
+            "total_atoms_found": "integer",
+            "discovery_metadata": "object"
+          }
+        },
+        "generate_atom_hashes": {
+          "input": {
+            "atoms_to_hash": [
+              "object"
+            ],
+            "hash_algorithm": "string",
+            "include_metadata": "boolean"
+          },
+          "output": {
+            "hash_generation_id": "string",
+            "hashed_atoms": [
+              "object"
+            ],
+            "total_hashes_generated": "integer",
+            "hash_metadata": "object"
+          }
+        },
+        "rebuild_rag_database": {
+          "input": {
+            "existing_rag_path": "string",
+            "new_atoms_data": "object",
+            "integration_strategy": "string"
+          },
+          "output": {
+            "rebuild_id": "string",
+            "rebuild_success": "boolean",
+            "enhanced_knowledge_items": "integer",
+            "new_vector_nodes": "integer",
+            "rebuild_score": "float"
+          }
+        },
+        "reconstruct_vector_tree": {
+          "input": {
+            "existing_vector_tree": "object",
+            "new_atoms_data": "object",
+            "reconstruction_strategy": "string"
+          },
+          "output": {
+            "reconstruction_id": "string",
+            "reconstructed_vector_tree": "object",
+            "new_nodes_added": "integer",
+            "reconstruction_metadata": "object"
+          }
+        },
+        "integrate_intelligence_enhancement": {
+          "input": {
+            "intelligence_system_path": "string",
+            "target_system": "object",
+            "integration_strategy": "string"
+          },
+          "output": {
+            "integration_id": "string",
+            "integration_success": "boolean",
+            "enhanced_capabilities": [
+              "string"
+            ],
+            "integration_metadata": "object"
+          }
+        },
+        "generate_embeddings": {
+          "input": {
+            "content_to_embed": "object",
+            "embedding_model": "string",
+            "embedding_dimensions": "integer"
+          },
+          "output": {
+            "embedding_id": "string",
+            "generated_embeddings": "object",
+            "total_embeddings": "integer",
+            "embedding_metadata": "object"
+          }
+        },
+        "update_master_registry": {
+          "input": {
+            "registry_path": "string",
+            "new_atoms": [
+              "object"
+            ],
+            "update_strategy": "string"
+          },
+          "output": {
+            "update_id": "string",
+            "registry_updated": "boolean",
+            "new_registry_entries": "integer",
+            "update_metadata": "object"
+          }
+        },
+        "create_csv_runtime_runner": {
+          "input": {
+            "runner_path": "string",
+            "atoms_data": [
+              "object"
+            ],
+            "runner_configuration": "object"
+          },
+          "output": {
+            "runner_id": "string",
+            "runner_created": "boolean",
+            "total_tasks": "integer",
+            "runner_metadata": "object"
+          }
+        }
+      },
+      "error_handling": {
+        "intelligent_error_recovery": true,
+        "fallback_strategies": [
+          "retry_rebuild",
+          "partial_rebuild",
+          "rollback_rebuild",
+          "alternative_rebuild",
+          "graceful_degradation"
+        ],
+        "error_categories": [
+          "atom_discovery_errors",
+          "hash_generation_errors",
+          "rag_rebuilding_errors",
+          "vector_tree_errors",
+          "intelligence_integration_errors",
+          "embedding_generation_errors",
+          "registry_update_errors",
+          "csv_runner_errors"
+        ]
+      },
+      "performance_metrics": {
+        "rebuild_success_rate": 0.95,
+        "hash_generation_success": 0.98,
+        "rag_rebuilding_success": 0.92,
+        "vector_tree_reconstruction_success": 0.9,
+        "intelligence_integration_success": 0.88,
+        "embedding_generation_success": 0.85,
+        "registry_update_success": 0.94,
+        "csv_runner_creation_success": 0.96,
+        "overall_rebuild_score": 0.92
+      },
+      "mesh_network_integration": {
+        "peer_discovery": true,
+        "distributed_rebuilding": true,
+        "fault_tolerance": true,
+        "load_balancing": true,
+        "service_mesh": true,
+        "orchestration": true
+      },
+      "aos_v3_compliance": {
+        "atom_architecture": true,
+        "hash_based_identification": true,
+        "master_registry_integration": true,
+        "gold_star_standards": true,
+        "csv_runtime_engine": true,
+        "fibonacci_complexity": true,
+        "mcp_v3_compliance": true,
+        "neurodivergent_friendly": true,
+        "self_documenting_code": true,
+        "intelligent_error_recovery": true,
+        "adaptive_behavior": true,
+        "learning_capabilities": true,
+        "mesh_network_orchestration": true,
+        "advanced_ai_integration": true
+      },
+      "configuration": {
+        "rebuild_targets": [
+          "aos_v3_atom_enhanced_vector_tree.json",
+          "foreman_v2_intelligence_enhanced_vector_tree.json",
+          "intelligence_enhancement_vector_tree.json",
+          "master_atom_registry.csv",
+          "foreman_v2_stack_runner.csv"
+        ],
+        "atom_discovery_paths": [
+          "AoS_v3/foreman_v2_stack/atoms/",
+          "AoS_v3/foreman_v2_stack/intelligence/atoms/",
+          "AoS_v3/foreman_v2_stack/csv_runners/"
+        ],
+        "hash_algorithms": [
+          "sha256",
+          "sha512",
+          "blake2b"
+        ],
+        "embedding_models": [
+          "llama2",
+          "codellama",
+          "mistral",
+          "gpt4",
+          "claude3"
+        ],
+        "rebuild_strategies": [
+          "incremental_rebuild",
+          "full_rebuild",
+          "selective_rebuild",
+          "intelligent_rebuild"
+        ],
+        "integration_strategies": [
+          "merge_integration",
+          "replace_integration",
+          "enhancement_integration",
+          "selective_integration"
+        ],
+        "rebuild_timeout_seconds": 1800,
+        "max_retries": 5,
+        "backup_enabled": true,
+        "validation_testing": true,
+        "rollback_capability": true,
+        "parallel_processing": true
+      },
+      "metadata": {
+        "author": "AoS v3 Gold Star Team",
+        "maintainer": "RAG Vector Tree Rebuilder System",
+        "documentation": "RAG_VECTOR_TREE_REBUILDER_GUIDE.md",
+        "license": "AoS v3 Gold Star Standards",
+        "tags": [
+          "rag",
+          "vector_tree",
+          "rebuilder",
+          "hashing",
+          "embedding",
+          "atoms",
+          "aos_v3",
+          "gold_star"
+        ]
+      },
+      "file_path": "atoms\\rag_vector_tree_rebuilder_atom.json"
+    },
+    {
+      "atom_id": "foreman_intelligence_enhancement_atom_v3",
+      "component_name": "foreman_intelligence_enhancement",
+      "component_type": "intelligence_enhancement",
+      "version": "3.0.0",
+      "fibonacci_level": 8,
+      "complexity_score": 9,
+      "description": "AOS v3 Atom CSV Runtime Standards Compliant Intelligence Enhancement System with LLM Multi-Handler Integration, Judge Overlay System, and Enhanced Vector Embedding Processing",
+      "created_at": "2025-09-02T21:30:00Z",
+      "status": "active",
+      "dna_hash": "a1b2c3d4e5f6789012345678901234567890abcdef1234567890abcdef123456",
+      "capabilities": [
+        "llm_multi_handler_integration",
+        "judge_overlay_system",
+        "intelligence_enhancement",
+        "vector_embedding_enhancement",
+        "quality_assessment",
+        "adaptive_learning",
+        "intelligent_decision_making",
+        "aos_v3_compliance",
+        "gold_star_standards",
+        "neurodivergent_friendly_design",
+        "semantic_enrichment",
+        "context_awareness",
+        "knowledge_integration",
+        "quality_optimization",
+        "intelligence_amplification"
+      ],
+      "functions": [
+        "enhance_vector_embeddings",
+        "evaluate_content_quality",
+        "select_optimal_llm_handler",
+        "apply_intelligence_enhancement",
+        "generate_quality_reports",
+        "learn_from_enhancements",
+        "adapt_enhancement_strategies",
+        "validate_compliance",
+        "generate_atom_hash",
+        "register_with_master_registry",
+        "apply_semantic_enrichment",
+        "apply_context_awareness",
+        "apply_knowledge_integration",
+        "apply_quality_optimization",
+        "apply_intelligence_amplification"
+      ],
+      "dependencies": [
+        "aiohttp",
+        "numpy",
+        "asyncio",
+        "pathlib",
+        "hashlib",
+        "json",
+        "logging",
+        "datetime",
+        "concurrent.futures"
+      ],
+      "resource_requirements": {
+        "cpu_cores": 4,
+        "memory_mb": 8192,
+        "storage_gb": 10,
+        "network_mbps": 100
+      },
+      "execution_flow": [
+        "initialize_intelligence_enhancement_system",
+        "load_llm_multi_handler",
+        "initialize_judge_overlay",
+        "register_with_master_registry",
+        "validate_runtime_standards_compliance",
+        "enhance_vector_embeddings",
+        "apply_enhancement_strategies",
+        "evaluate_enhancement_quality",
+        "calculate_intelligence_score",
+        "save_enhanced_vector_tree",
+        "generate_enhancement_report"
+      ],
+      "health_checks": [
+        "llm_handler_availability",
+        "judge_overlay_functionality",
+        "vector_tree_processing",
+        "enhancement_quality",
+        "compliance_validation"
+      ],
+      "endpoint": "foreman_intelligence_enhancement.enhance",
+      "mcp_compliance": {
+        "protocol_version": "3.0",
+        "communication_pattern": "MCP_PACKET_VPORT",
+        "handler_vport": "foreman_intelligence_enhancement",
+        "response_timestamp": "2025-09-02T21:30:00Z",
+        "mcp_compliant": true
+      },
+      "rag_integration": {
+        "vector_tree_processing": true,
+        "knowledge_retrieval": true,
+        "semantic_search": true,
+        "context_awareness": true,
+        "intelligence_enhancement": true
+      },
+      "function_schemas": {
+        "enhance_vector_embeddings": {
+          "input": {
+            "vector_tree_path": "string",
+            "enhancement_strategies": [
+              "string"
+            ],
+            "quality_threshold": "float"
+          },
+          "output": {
+            "enhancement_id": "string",
+            "intelligence_score": "float",
+            "processing_time": "float",
+            "enhanced_path": "string"
+          }
+        },
+        "evaluate_content_quality": {
+          "input": {
+            "content": "string",
+            "content_type": "string",
+            "evaluation_criteria": [
+              "string"
+            ]
+          },
+          "output": {
+            "evaluation_id": "string",
+            "overall_score": "float",
+            "confidence_level": "float",
+            "recommendations": [
+              "string"
+            ]
+          }
+        },
+        "select_optimal_llm_handler": {
+          "input": {
+            "task_type": "string",
+            "content": "string",
+            "quality_requirements": "object"
+          },
+          "output": {
+            "handler_id": "string",
+            "model_name": "string",
+            "quality_score": "float",
+            "capabilities": [
+              "string"
+            ]
+          }
+        }
+      },
+      "error_handling": {
+        "intelligent_error_recovery": true,
+        "fallback_strategies": [
+          "retry_enhancement",
+          "partial_enhancement",
+          "fallback_enhancement",
+          "alternative_handler",
+          "simplified_evaluation"
+        ],
+        "error_categories": [
+          "initialization_errors",
+          "vector_enhancement_errors",
+          "llm_handler_errors",
+          "judge_evaluation_errors"
+        ]
+      },
+      "performance_metrics": {
+        "enhancement_success_rate": 0.95,
+        "average_processing_time": 45.0,
+        "intelligence_score_threshold": 0.85,
+        "quality_improvement_target": 0.15,
+        "concurrent_handlers": 3
+      },
+      "mesh_network_integration": {
+        "peer_discovery": true,
+        "load_balancing": true,
+        "fault_tolerance": true,
+        "service_mesh": true,
+        "distributed_enhancement": true
+      },
+      "aos_v3_compliance": {
+        "atom_architecture": true,
+        "hash_based_identification": true,
+        "master_registry_integration": true,
+        "vector_tree_processing": true,
+        "gold_star_standards": true,
+        "csv_runtime_engine": true,
+        "fibonacci_complexity": true,
+        "mcp_v3_compliance": true,
+        "neurodivergent_friendly": true,
+        "self_documenting_code": true,
+        "intelligent_error_recovery": true,
+        "adaptive_behavior": true,
+        "learning_capabilities": true,
+        "mesh_network_orchestration": true,
+        "advanced_ai_integration": true
+      },
+      "configuration": {
+        "intelligence_enabled": true,
+        "learning_enabled": true,
+        "adaptation_enabled": true,
+        "decision_making_enabled": true,
+        "llm_handlers": [
+          "llama2",
+          "codellama",
+          "mistral",
+          "gpt4",
+          "claude3"
+        ],
+        "handler_selection_strategy": "intelligent_adaptive",
+        "model_quality_threshold": 0.85,
+        "judge_overlay_enabled": true,
+        "evaluation_criteria": [
+          "accuracy",
+          "relevance",
+          "coherence",
+          "completeness",
+          "compliance"
+        ],
+        "confidence_threshold": 0.9,
+        "vector_enhancement_enabled": true,
+        "enhancement_strategies": [
+          "semantic_enrichment",
+          "context_awareness",
+          "knowledge_integration",
+          "quality_optimization",
+          "intelligence_amplification"
+        ],
+        "timeout_seconds": 1200,
+        "max_retries": 3,
+        "batch_size": 5,
+        "concurrent_handlers": 3,
+        "performance_monitoring": true,
+        "intelligence_scoring": true,
+        "quality_assurance": true,
+        "compliance_validation": true
+      },
+      "metadata": {
+        "author": "AoS v3 Gold Star Team",
+        "maintainer": "Foreman Intelligence Enhancement System",
+        "documentation": "FOREMAN_INTELLIGENCE_ACTIVATION_GUIDE.md",
+        "license": "AoS v3 Gold Star Standards",
+        "tags": [
+          "intelligence",
+          "llm",
+          "judge",
+          "enhancement",
+          "vector",
+          "aos_v3",
+          "gold_star"
+        ]
+      },
+      "file_path": "intelligence\\atoms\\foreman_intelligence_enhancement_atom_v3.json"
+    },
+    {
+      "atom_id": "foreman_test_atom_v3",
+      "component_name": "foreman_test",
+      "component_type": "testing_system",
+      "version": "3.0.0",
+      "fibonacci_level": 8,
+      "complexity_score": 9,
+      "description": "AOS v3 Atom CSV Runtime Standards Compliant Comprehensive Foreman Testing System for validating all Foreman features, LLM calls, and intelligence enhancement capabilities",
+      "created_at": "2025-09-02T21:45:00Z",
+      "status": "active",
+      "dna_hash": "e5f6789012345678901234567890abcdef1234567890abcdef1234567890abcd",
+      "capabilities": [
+        "comprehensive_testing",
+        "llm_call_validation",
+        "foreman_feature_testing",
+        "intelligence_enhancement_validation",
+        "performance_benchmarking",
+        "integration_testing",
+        "regression_testing",
+        "quality_assurance",
+        "test_reporting",
+        "aos_v3_compliance",
+        "gold_star_standards"
+      ],
+      "functions": [
+        "test_foreman_master_functionality",
+        "test_llm_call_integration",
+        "test_headless_cursor_control",
+        "test_orchestration_system",
+        "test_documentation_automation",
+        "test_judge_overlay_system",
+        "test_prompt_generator_system",
+        "test_vector_embedding_system",
+        "test_intelligence_enhancement",
+        "test_llm_multi_handler",
+        "test_judge_overlay_atom",
+        "test_vector_enhancement_atom",
+        "test_csv_runtime_orchestration",
+        "test_master_registry_integration",
+        "test_mesh_network_orchestration",
+        "test_error_recovery_systems",
+        "test_performance_metrics",
+        "test_quality_assessment",
+        "test_adaptive_learning",
+        "test_intelligent_decision_making",
+        "generate_comprehensive_test_report",
+        "validate_aos_v3_compliance"
+      ],
+      "dependencies": [
+        "aiohttp",
+        "asyncio",
+        "hashlib",
+        "json",
+        "logging",
+        "datetime",
+        "time",
+        "pathlib",
+        "concurrent.futures",
+        "subprocess",
+        "requests",
+        "pytest",
+        "pytest_asyncio"
+      ],
+      "resource_requirements": {
+        "cpu_cores": 4,
+        "memory_mb": 8192,
+        "storage_gb": 15,
+        "network_mbps": 100
+      },
+      "execution_flow": [
+        "initialize_foreman_test_system",
+        "load_test_configuration",
+        "test_foreman_master_functionality",
+        "test_llm_call_integration",
+        "test_headless_cursor_control",
+        "test_orchestration_system",
+        "test_documentation_automation",
+        "test_judge_overlay_system",
+        "test_prompt_generator_system",
+        "test_vector_embedding_system",
+        "test_intelligence_enhancement_system",
+        "test_llm_multi_handler_atom",
+        "test_judge_overlay_atom",
+        "test_vector_enhancement_atom",
+        "test_csv_runtime_orchestration",
+        "test_master_registry_integration",
+        "test_mesh_network_orchestration",
+        "test_error_recovery_systems",
+        "test_performance_metrics",
+        "test_quality_assessment",
+        "test_adaptive_learning",
+        "test_intelligent_decision_making",
+        "generate_comprehensive_test_report",
+        "validate_aos_v3_compliance",
+        "save_test_results"
+      ],
+      "health_checks": [
+        "test_execution_success",
+        "llm_call_functionality",
+        "foreman_feature_availability",
+        "intelligence_enhancement_working",
+        "performance_metrics_acceptable",
+        "error_recovery_functional",
+        "compliance_validation_passed"
+      ],
+      "endpoint": "foreman_test.execute",
+      "mcp_compliance": {
+        "protocol_version": "3.0",
+        "communication_pattern": "MCP_PACKET_VPORT",
+        "handler_vport": "foreman_test",
+        "response_timestamp": "2025-09-02T21:45:00Z",
+        "mcp_compliant": true
+      },
+      "rag_integration": {
+        "test_data_processing": true,
+        "knowledge_retrieval": true,
+        "semantic_search": true,
+        "context_awareness": true,
+        "intelligence_enhancement": true
+      },
+      "function_schemas": {
+        "test_foreman_master_functionality": {
+          "input": {
+            "test_scenarios": [
+              "string"
+            ],
+            "validation_criteria": "object"
+          },
+          "output": {
+            "test_id": "string",
+            "success_rate": "float",
+            "test_results": "object",
+            "performance_metrics": "object"
+          }
+        },
+        "test_llm_call_integration": {
+          "input": {
+            "llm_models": [
+              "string"
+            ],
+            "test_prompts": [
+              "string"
+            ],
+            "expected_outputs": [
+              "string"
+            ]
+          },
+          "output": {
+            "test_id": "string",
+            "llm_success_rate": "float",
+            "response_times": "object",
+            "quality_scores": "object",
+            "model_performance": "object"
+          }
+        },
+        "test_intelligence_enhancement": {
+          "input": {
+            "vector_tree_path": "string",
+            "enhancement_strategies": [
+              "string"
+            ],
+            "quality_threshold": "float"
+          },
+          "output": {
+            "test_id": "string",
+            "enhancement_success": "boolean",
+            "intelligence_score": "float",
+            "quality_improvement": "float",
+            "processing_time": "float"
+          }
+        }
+      },
+      "error_handling": {
+        "intelligent_error_recovery": true,
+        "fallback_strategies": [
+          "retry_test",
+          "skip_failed_test",
+          "partial_test_execution",
+          "alternative_test_method",
+          "graceful_degradation"
+        ],
+        "error_categories": [
+          "test_execution_errors",
+          "llm_call_errors",
+          "foreman_feature_errors",
+          "intelligence_enhancement_errors",
+          "performance_errors",
+          "compliance_errors"
+        ]
+      },
+      "performance_metrics": {
+        "test_success_rate": 0.95,
+        "average_test_execution_time": 120.0,
+        "llm_call_success_rate": 0.9,
+        "intelligence_enhancement_success_rate": 0.85,
+        "compliance_validation_success_rate": 0.98
+      },
+      "mesh_network_integration": {
+        "peer_discovery": true,
+        "distributed_testing": true,
+        "fault_tolerance": true,
+        "load_balancing": true,
+        "service_mesh": true
+      },
+      "aos_v3_compliance": {
+        "atom_architecture": true,
+        "hash_based_identification": true,
+        "master_registry_integration": true,
+        "gold_star_standards": true,
+        "csv_runtime_engine": true,
+        "fibonacci_complexity": true,
+        "mcp_v3_compliance": true,
+        "neurodivergent_friendly": true,
+        "self_documenting_code": true,
+        "intelligent_error_recovery": true,
+        "adaptive_behavior": true,
+        "learning_capabilities": true,
+        "mesh_network_orchestration": true,
+        "advanced_ai_integration": true
+      },
+      "configuration": {
+        "test_categories": [
+          "foreman_master_functionality",
+          "llm_call_integration",
+          "headless_cursor_control",
+          "orchestration_system",
+          "documentation_automation",
+          "judge_overlay_system",
+          "prompt_generator_system",
+          "vector_embedding_system",
+          "intelligence_enhancement_system",
+          "llm_multi_handler_atom",
+          "judge_overlay_atom",
+          "vector_enhancement_atom",
+          "csv_runtime_orchestration",
+          "master_registry_integration",
+          "mesh_network_orchestration",
+          "error_recovery_systems",
+          "performance_metrics",
+          "quality_assessment",
+          "adaptive_learning",
+          "intelligent_decision_making"
+        ],
+        "llm_models_to_test": [
+          "llama2",
+          "codellama",
+          "mistral",
+          "gpt4",
+          "claude3"
+        ],
+        "test_timeout_seconds": 1800,
+        "max_retries": 3,
+        "parallel_testing": true,
+        "comprehensive_reporting": true,
+        "performance_benchmarking": true,
+        "quality_assurance": true,
+        "compliance_validation": true
+      },
+      "metadata": {
+        "author": "AoS v3 Gold Star Team",
+        "maintainer": "Foreman Test System",
+        "documentation": "FOREMAN_TEST_GUIDE.md",
+        "license": "AoS v3 Gold Star Standards",
+        "tags": [
+          "testing",
+          "foreman",
+          "llm",
+          "intelligence",
+          "validation",
+          "aos_v3",
+          "gold_star"
+        ]
+      },
+      "file_path": "intelligence\\atoms\\foreman_test_atom.json"
+    },
+    {
+      "atom_id": "intelligence_integration_atom_v3",
+      "component_name": "intelligence_integration",
+      "component_type": "foreman_integration",
+      "version": "3.0.0",
+      "fibonacci_level": 9,
+      "complexity_score": 10,
+      "description": "AOS v3 Atom CSV Runtime Standards Compliant Intelligence Integration System for embedding intelligence enhancement directly into Foreman master schema",
+      "created_at": "2025-09-02T21:50:00Z",
+      "status": "active",
+      "dna_hash": "6789012345678901234567890abcdef1234567890abcdef1234567890abcdef",
+      "capabilities": [
+        "foreman_master_integration",
+        "intelligence_enhancement_embedding",
+        "llm_multi_handler_integration",
+        "judge_overlay_integration",
+        "vector_enhancement_integration",
+        "master_schema_updates",
+        "capability_enhancement",
+        "endpoint_integration",
+        "message_bus_integration",
+        "aos_v3_compliance",
+        "gold_star_standards"
+      ],
+      "functions": [
+        "integrate_with_foreman_master",
+        "enhance_foreman_capabilities",
+        "embed_llm_multi_handler",
+        "embed_judge_overlay",
+        "embed_vector_enhancement",
+        "update_master_schema",
+        "enhance_endpoints",
+        "integrate_message_bus",
+        "validate_integration",
+        "test_integrated_functionality",
+        "generate_integration_report"
+      ],
+      "dependencies": [
+        "aiohttp",
+        "asyncio",
+        "hashlib",
+        "json",
+        "logging",
+        "datetime",
+        "time",
+        "pathlib",
+        "concurrent.futures"
+      ],
+      "resource_requirements": {
+        "cpu_cores": 4,
+        "memory_mb": 8192,
+        "storage_gb": 12,
+        "network_mbps": 100
+      },
+      "execution_flow": [
+        "initialize_intelligence_integration",
+        "load_foreman_master_schema",
+        "integrate_with_foreman_master",
+        "enhance_foreman_capabilities",
+        "embed_llm_multi_handler",
+        "embed_judge_overlay",
+        "embed_vector_enhancement",
+        "update_master_schema",
+        "enhance_endpoints",
+        "integrate_message_bus",
+        "validate_integration",
+        "test_integrated_functionality",
+        "generate_integration_report",
+        "save_integration_results"
+      ],
+      "health_checks": [
+        "foreman_integration_success",
+        "capability_enhancement_working",
+        "endpoint_integration_functional",
+        "message_bus_integration_active",
+        "intelligence_enhancement_embedded"
+      ],
+      "endpoint": "intelligence_integration.embed",
+      "mcp_compliance": {
+        "protocol_version": "3.0",
+        "communication_pattern": "MCP_PACKET_VPORT",
+        "handler_vport": "intelligence_integration",
+        "response_timestamp": "2025-09-02T21:50:00Z",
+        "mcp_compliant": true
+      },
+      "rag_integration": {
+        "foreman_integration": true,
+        "schema_updates": true,
+        "capability_enhancement": true,
+        "endpoint_integration": true,
+        "message_bus_integration": true
+      },
+      "function_schemas": {
+        "integrate_with_foreman_master": {
+          "input": {
+            "foreman_schema_path": "string",
+            "intelligence_components": [
+              "string"
+            ],
+            "integration_strategy": "string"
+          },
+          "output": {
+            "integration_id": "string",
+            "integration_success": "boolean",
+            "enhanced_capabilities": [
+              "string"
+            ],
+            "updated_endpoints": [
+              "string"
+            ]
+          }
+        },
+        "enhance_foreman_capabilities": {
+          "input": {
+            "current_capabilities": [
+              "string"
+            ],
+            "intelligence_capabilities": [
+              "string"
+            ]
+          },
+          "output": {
+            "enhancement_id": "string",
+            "enhanced_capabilities": [
+              "string"
+            ],
+            "capability_count": "integer",
+            "enhancement_score": "float"
+          }
+        }
+      },
+      "error_handling": {
+        "intelligent_error_recovery": true,
+        "fallback_strategies": [
+          "retry_integration",
+          "partial_integration",
+          "rollback_integration",
+          "alternative_integration",
+          "graceful_degradation"
+        ],
+        "error_categories": [
+          "integration_errors",
+          "schema_update_errors",
+          "capability_enhancement_errors",
+          "endpoint_integration_errors",
+          "message_bus_errors"
+        ]
+      },
+      "performance_metrics": {
+        "integration_success_rate": 0.95,
+        "capability_enhancement_success": 0.9,
+        "endpoint_integration_success": 0.88,
+        "message_bus_integration_success": 0.92,
+        "overall_integration_score": 0.91
+      },
+      "mesh_network_integration": {
+        "peer_discovery": true,
+        "distributed_integration": true,
+        "fault_tolerance": true,
+        "load_balancing": true,
+        "service_mesh": true
+      },
+      "aos_v3_compliance": {
+        "atom_architecture": true,
+        "hash_based_identification": true,
+        "master_registry_integration": true,
+        "gold_star_standards": true,
+        "csv_runtime_engine": true,
+        "fibonacci_complexity": true,
+        "mcp_v3_compliance": true,
+        "neurodivergent_friendly": true,
+        "self_documenting_code": true,
+        "intelligent_error_recovery": true,
+        "adaptive_behavior": true,
+        "learning_capabilities": true,
+        "mesh_network_orchestration": true,
+        "advanced_ai_integration": true
+      },
+      "configuration": {
+        "integration_targets": [
+          "foreman_master",
+          "llm_call",
+          "headless_cursor",
+          "orchestration_system",
+          "documentation_automation",
+          "judge_overlay",
+          "overlay_system",
+          "judgment_workflows"
+        ],
+        "intelligence_components": [
+          "llm_multi_handler_atom",
+          "judge_overlay_atom",
+          "vector_enhancement_atom"
+        ],
+        "enhancement_strategies": [
+          "capability_enhancement",
+          "endpoint_integration",
+          "message_bus_integration",
+          "schema_updates"
+        ],
+        "integration_timeout_seconds": 600,
+        "max_retries": 3,
+        "comprehensive_integration": true,
+        "validation_testing": true,
+        "rollback_capability": true
+      },
+      "metadata": {
+        "author": "AoS v3 Gold Star Team",
+        "maintainer": "Intelligence Integration System",
+        "documentation": "INTELLIGENCE_INTEGRATION_GUIDE.md",
+        "license": "AoS v3 Gold Star Standards",
+        "tags": [
+          "intelligence",
+          "integration",
+          "foreman",
+          "embedding",
+          "aos_v3",
+          "gold_star"
+        ]
+      },
+      "file_path": "intelligence\\atoms\\intelligence_integration_atom.json"
+    },
+    {
+      "atom_id": "judge_overlay_atom_v3",
+      "component_name": "judge_overlay",
+      "component_type": "quality_assessment",
+      "version": "3.0.0",
+      "fibonacci_level": 5,
+      "complexity_score": 6,
+      "description": "AOS v3 Atom CSV Runtime Standards Compliant Judge Overlay System for quality assessment and validation",
+      "created_at": "2025-09-02T21:36:00Z",
+      "status": "active",
+      "dna_hash": "c3d4e5f6789012345678901234567890abcdef1234567890abcdef1234567890",
+      "capabilities": [
+        "quality_assessment",
+        "content_evaluation",
+        "criteria_analysis",
+        "recommendation_generation",
+        "confidence_scoring",
+        "evaluation_history",
+        "adaptive_criteria",
+        "aos_v3_compliance",
+        "gold_star_standards"
+      ],
+      "functions": [
+        "evaluate_content_quality",
+        "evaluate_criterion",
+        "generate_recommendations",
+        "calculate_overall_score",
+        "assess_confidence_level",
+        "store_evaluation_history",
+        "adapt_evaluation_criteria",
+        "validate_compliance",
+        "generate_evaluation_report"
+      ],
+      "dependencies": [
+        "hashlib",
+        "json",
+        "logging",
+        "datetime",
+        "time",
+        "asyncio"
+      ],
+      "resource_requirements": {
+        "cpu_cores": 1,
+        "memory_mb": 2048,
+        "storage_gb": 2,
+        "network_mbps": 25
+      },
+      "execution_flow": [
+        "initialize_judge_overlay",
+        "receive_content_for_evaluation",
+        "apply_evaluation_criteria",
+        "calculate_individual_scores",
+        "generate_recommendations",
+        "calculate_overall_score",
+        "store_evaluation_result",
+        "return_evaluation_report"
+      ],
+      "health_checks": [
+        "evaluation_functionality",
+        "criteria_application",
+        "score_calculation",
+        "recommendation_generation",
+        "history_storage"
+      ],
+      "endpoint": "judge_overlay.evaluate",
+      "mcp_compliance": {
+        "protocol_version": "3.0",
+        "communication_pattern": "MCP_PACKET_VPORT",
+        "handler_vport": "judge_overlay",
+        "response_timestamp": "2025-09-02T21:36:00Z",
+        "mcp_compliant": true
+      },
+      "rag_integration": {
+        "quality_assessment": true,
+        "content_evaluation": true,
+        "recommendation_generation": true,
+        "adaptive_learning": true
+      },
+      "function_schemas": {
+        "evaluate_content_quality": {
+          "input": {
+            "content": "string",
+            "content_type": "string",
+            "evaluation_criteria": [
+              "string"
+            ]
+          },
+          "output": {
+            "evaluation_id": "string",
+            "overall_score": "float",
+            "confidence_level": "float",
+            "recommendations": [
+              "string"
+            ],
+            "criteria_scores": "object"
+          }
+        },
+        "evaluate_criterion": {
+          "input": {
+            "criterion": "string",
+            "content": "string",
+            "content_type": "string"
+          },
+          "output": {
+            "score": "float",
+            "reasoning": "string",
+            "confidence": "float"
+          }
+        }
+      },
+      "error_handling": {
+        "intelligent_error_recovery": true,
+        "fallback_strategies": [
+          "retry_evaluation",
+          "simplified_evaluation",
+          "skip_evaluation",
+          "default_scores"
+        ],
+        "error_categories": [
+          "evaluation_errors",
+          "criteria_errors",
+          "calculation_errors",
+          "storage_errors"
+        ]
+      },
+      "performance_metrics": {
+        "evaluation_success_rate": 0.98,
+        "average_evaluation_time": 1.5,
+        "confidence_accuracy": 0.92,
+        "recommendation_quality": 0.88,
+        "criteria_coverage": 0.95
+      },
+      "mesh_network_integration": {
+        "peer_discovery": true,
+        "distributed_evaluation": true,
+        "fault_tolerance": true,
+        "load_balancing": true
+      },
+      "aos_v3_compliance": {
+        "atom_architecture": true,
+        "hash_based_identification": true,
+        "master_registry_integration": true,
+        "gold_star_standards": true,
+        "csv_runtime_engine": true,
+        "fibonacci_complexity": true,
+        "mcp_v3_compliance": true,
+        "neurodivergent_friendly": true,
+        "self_documenting_code": true,
+        "intelligent_error_recovery": true,
+        "adaptive_behavior": true,
+        "learning_capabilities": true,
+        "mesh_network_orchestration": true,
+        "advanced_ai_integration": true
+      },
+      "configuration": {
+        "evaluation_criteria": [
+          "accuracy",
+          "relevance",
+          "coherence",
+          "completeness",
+          "compliance"
+        ],
+        "confidence_threshold": 0.9,
+        "score_weighting": {
+          "accuracy": 0.25,
+          "relevance": 0.25,
+          "coherence": 0.2,
+          "completeness": 0.2,
+          "compliance": 0.1
+        },
+        "recommendation_threshold": 0.85,
+        "history_retention": 1000,
+        "adaptive_learning": true
+      },
+      "metadata": {
+        "author": "AoS v3 Gold Star Team",
+        "maintainer": "Judge Overlay System",
+        "documentation": "JUDGE_OVERLAY_GUIDE.md",
+        "license": "AoS v3 Gold Star Standards",
+        "tags": [
+          "judge",
+          "quality",
+          "evaluation",
+          "assessment",
+          "aos_v3",
+          "gold_star"
+        ]
+      },
+      "file_path": "intelligence\\atoms\\judge_overlay_atom.json"
+    },
+    {
+      "atom_id": "llm_multi_handler_atom_v3",
+      "component_name": "llm_multi_handler",
+      "component_type": "llm_handler",
+      "version": "3.0.0",
+      "fibonacci_level": 6,
+      "complexity_score": 7,
+      "description": "AOS v3 Atom CSV Runtime Standards Compliant LLM Multi-Handler for intelligent model selection and execution",
+      "created_at": "2025-09-02T21:35:00Z",
+      "status": "active",
+      "dna_hash": "b2c3d4e5f6789012345678901234567890abcdef1234567890abcdef12345678",
+      "capabilities": [
+        "llm_handler_management",
+        "intelligent_model_selection",
+        "concurrent_execution",
+        "performance_optimization",
+        "quality_assessment",
+        "adaptive_learning",
+        "fallback_handling",
+        "aos_v3_compliance",
+        "gold_star_standards"
+      ],
+      "functions": [
+        "initialize_llm_handlers",
+        "select_optimal_handler",
+        "execute_with_handler",
+        "calculate_handler_score",
+        "generate_embedding",
+        "enhance_intelligence",
+        "assess_quality",
+        "generate_text",
+        "update_handler_metrics",
+        "handle_concurrent_requests"
+      ],
+      "dependencies": [
+        "aiohttp",
+        "asyncio",
+        "hashlib",
+        "json",
+        "logging",
+        "datetime",
+        "concurrent.futures",
+        "time"
+      ],
+      "resource_requirements": {
+        "cpu_cores": 2,
+        "memory_mb": 4096,
+        "storage_gb": 5,
+        "network_mbps": 50
+      },
+      "execution_flow": [
+        "initialize_llm_multi_handler",
+        "create_handler_instances",
+        "register_handlers",
+        "select_optimal_handler",
+        "execute_task_with_handler",
+        "update_performance_metrics",
+        "return_execution_result"
+      ],
+      "health_checks": [
+        "handler_availability",
+        "performance_metrics",
+        "quality_scores",
+        "concurrent_execution",
+        "fallback_functionality"
+      ],
+      "endpoint": "llm_multi_handler.execute",
+      "mcp_compliance": {
+        "protocol_version": "3.0",
+        "communication_pattern": "MCP_PACKET_VPORT",
+        "handler_vport": "llm_multi_handler",
+        "response_timestamp": "2025-09-02T21:35:00Z",
+        "mcp_compliant": true
+      },
+      "rag_integration": {
+        "model_selection": true,
+        "performance_tracking": true,
+        "quality_assessment": true,
+        "adaptive_learning": true
+      },
+      "function_schemas": {
+        "select_optimal_handler": {
+          "input": {
+            "task_type": "string",
+            "content": "string",
+            "quality_requirements": "object"
+          },
+          "output": {
+            "handler_id": "string",
+            "model_name": "string",
+            "quality_score": "float",
+            "capabilities": [
+              "string"
+            ]
+          }
+        },
+        "execute_with_handler": {
+          "input": {
+            "handler_id": "string",
+            "task": "string",
+            "content": "string"
+          },
+          "output": {
+            "result": "object",
+            "processing_time": "float",
+            "quality_score": "float",
+            "handler_id": "string"
+          }
+        }
+      },
+      "error_handling": {
+        "intelligent_error_recovery": true,
+        "fallback_strategies": [
+          "retry_handler",
+          "alternative_handler",
+          "fallback_handler",
+          "graceful_degradation"
+        ],
+        "error_categories": [
+          "handler_initialization_errors",
+          "execution_errors",
+          "performance_errors",
+          "concurrent_errors"
+        ]
+      },
+      "performance_metrics": {
+        "handler_success_rate": 0.95,
+        "average_response_time": 2.5,
+        "concurrent_capacity": 3,
+        "quality_score_threshold": 0.85,
+        "fallback_success_rate": 0.9
+      },
+      "mesh_network_integration": {
+        "peer_discovery": true,
+        "load_balancing": true,
+        "fault_tolerance": true,
+        "distributed_execution": true
+      },
+      "aos_v3_compliance": {
+        "atom_architecture": true,
+        "hash_based_identification": true,
+        "master_registry_integration": true,
+        "gold_star_standards": true,
+        "csv_runtime_engine": true,
+        "fibonacci_complexity": true,
+        "mcp_v3_compliance": true,
+        "neurodivergent_friendly": true,
+        "self_documenting_code": true,
+        "intelligent_error_recovery": true,
+        "adaptive_behavior": true,
+        "learning_capabilities": true,
+        "mesh_network_orchestration": true,
+        "advanced_ai_integration": true
+      },
+      "configuration": {
+        "llm_handlers": [
+          "llama2",
+          "codellama",
+          "mistral",
+          "gpt4",
+          "claude3"
+        ],
+        "handler_selection_strategy": "intelligent_adaptive",
+        "model_quality_threshold": 0.85,
+        "concurrent_handlers": 3,
+        "timeout_seconds": 30,
+        "max_retries": 3,
+        "performance_monitoring": true,
+        "quality_assurance": true
+      },
+      "metadata": {
+        "author": "AoS v3 Gold Star Team",
+        "maintainer": "LLM Multi-Handler System",
+        "documentation": "LLM_MULTI_HANDLER_GUIDE.md",
+        "license": "AoS v3 Gold Star Standards",
+        "tags": [
+          "llm",
+          "multi_handler",
+          "intelligence",
+          "aos_v3",
+          "gold_star"
+        ]
+      },
+      "file_path": "intelligence\\atoms\\llm_multi_handler_atom.json"
+    },
+    {
+      "atom_id": "llm_test_atom_v3",
+      "component_name": "llm_test",
+      "component_type": "llm_validation",
+      "version": "3.0.0",
+      "fibonacci_level": 6,
+      "complexity_score": 7,
+      "description": "AOS v3 Atom CSV Runtime Standards Compliant LLM Testing System for validating LLM calls, model configurations, and integration with Foreman intelligence system",
+      "created_at": "2025-09-02T21:46:00Z",
+      "status": "active",
+      "dna_hash": "f6789012345678901234567890abcdef1234567890abcdef1234567890abcde",
+      "capabilities": [
+        "llm_call_validation",
+        "model_configuration_testing",
+        "response_quality_assessment",
+        "performance_benchmarking",
+        "integration_validation",
+        "error_detection",
+        "fallback_testing",
+        "multi_model_comparison",
+        "embedding_generation_testing",
+        "intelligence_enhancement_validation",
+        "aos_v3_compliance",
+        "gold_star_standards"
+      ],
+      "functions": [
+        "test_llama2_integration",
+        "test_codellama_integration",
+        "test_mistral_integration",
+        "test_gpt4_integration",
+        "test_claude3_integration",
+        "test_embedding_generation",
+        "test_text_generation",
+        "test_code_generation",
+        "test_intelligence_enhancement",
+        "test_model_selection",
+        "test_concurrent_execution",
+        "test_error_handling",
+        "test_performance_metrics",
+        "test_quality_assessment",
+        "test_fallback_mechanisms",
+        "test_response_validation",
+        "test_model_compatibility",
+        "test_integration_with_foreman",
+        "test_intelligence_enhancement_flow",
+        "generate_llm_test_report"
+      ],
+      "dependencies": [
+        "aiohttp",
+        "asyncio",
+        "hashlib",
+        "json",
+        "logging",
+        "datetime",
+        "time",
+        "pathlib",
+        "concurrent.futures",
+        "requests",
+        "numpy",
+        "pytest",
+        "pytest_asyncio"
+      ],
+      "resource_requirements": {
+        "cpu_cores": 3,
+        "memory_mb": 6144,
+        "storage_gb": 10,
+        "network_mbps": 75
+      },
+      "execution_flow": [
+        "initialize_llm_test_system",
+        "load_llm_configurations",
+        "test_llama2_integration",
+        "test_codellama_integration",
+        "test_mistral_integration",
+        "test_gpt4_integration",
+        "test_claude3_integration",
+        "test_embedding_generation",
+        "test_text_generation",
+        "test_code_generation",
+        "test_intelligence_enhancement",
+        "test_model_selection",
+        "test_concurrent_execution",
+        "test_error_handling",
+        "test_performance_metrics",
+        "test_quality_assessment",
+        "test_fallback_mechanisms",
+        "test_response_validation",
+        "test_model_compatibility",
+        "test_integration_with_foreman",
+        "test_intelligence_enhancement_flow",
+        "generate_llm_test_report",
+        "save_test_results"
+      ],
+      "health_checks": [
+        "llm_connectivity",
+        "model_availability",
+        "response_quality",
+        "performance_metrics",
+        "error_handling",
+        "integration_functionality"
+      ],
+      "endpoint": "llm_test.execute",
+      "mcp_compliance": {
+        "protocol_version": "3.0",
+        "communication_pattern": "MCP_PACKET_VPORT",
+        "handler_vport": "llm_test",
+        "response_timestamp": "2025-09-02T21:46:00Z",
+        "mcp_compliant": true
+      },
+      "rag_integration": {
+        "llm_testing": true,
+        "model_validation": true,
+        "response_assessment": true,
+        "integration_testing": true,
+        "intelligence_enhancement": true
+      },
+      "function_schemas": {
+        "test_llm_model": {
+          "input": {
+            "model_name": "string",
+            "test_prompts": [
+              "string"
+            ],
+            "expected_outputs": [
+              "string"
+            ],
+            "quality_criteria": "object"
+          },
+          "output": {
+            "test_id": "string",
+            "model_name": "string",
+            "success_rate": "float",
+            "response_times": "object",
+            "quality_scores": "object",
+            "error_count": "integer"
+          }
+        },
+        "test_embedding_generation": {
+          "input": {
+            "model_name": "string",
+            "text_samples": [
+              "string"
+            ],
+            "expected_dimensions": "integer"
+          },
+          "output": {
+            "test_id": "string",
+            "model_name": "string",
+            "embedding_success": "boolean",
+            "dimension_accuracy": "float",
+            "generation_time": "float"
+          }
+        },
+        "test_intelligence_enhancement": {
+          "input": {
+            "model_name": "string",
+            "enhancement_prompt": "string",
+            "quality_threshold": "float"
+          },
+          "output": {
+            "test_id": "string",
+            "model_name": "string",
+            "enhancement_success": "boolean",
+            "intelligence_score": "float",
+            "quality_improvement": "float"
+          }
+        }
+      },
+      "error_handling": {
+        "intelligent_error_recovery": true,
+        "fallback_strategies": [
+          "retry_llm_call",
+          "alternative_model",
+          "simplified_prompt",
+          "graceful_degradation",
+          "error_logging"
+        ],
+        "error_categories": [
+          "llm_connection_errors",
+          "model_availability_errors",
+          "response_quality_errors",
+          "performance_errors",
+          "integration_errors"
+        ]
+      },
+      "performance_metrics": {
+        "llm_test_success_rate": 0.9,
+        "average_response_time": 5.0,
+        "model_availability_rate": 0.95,
+        "quality_score_threshold": 0.8,
+        "integration_success_rate": 0.85
+      },
+      "mesh_network_integration": {
+        "peer_discovery": true,
+        "distributed_testing": true,
+        "fault_tolerance": true,
+        "load_balancing": true
+      },
+      "aos_v3_compliance": {
+        "atom_architecture": true,
+        "hash_based_identification": true,
+        "master_registry_integration": true,
+        "gold_star_standards": true,
+        "csv_runtime_engine": true,
+        "fibonacci_complexity": true,
+        "mcp_v3_compliance": true,
+        "neurodivergent_friendly": true,
+        "self_documenting_code": true,
+        "intelligent_error_recovery": true,
+        "adaptive_behavior": true,
+        "learning_capabilities": true,
+        "mesh_network_orchestration": true,
+        "advanced_ai_integration": true
+      },
+      "configuration": {
+        "llm_models": [
+          "llama2",
+          "codellama",
+          "mistral",
+          "gpt4",
+          "claude3"
+        ],
+        "test_prompts": [
+          "Generate a simple text response",
+          "Write a Python function",
+          "Explain AOS v3 architecture",
+          "Create an embedding for this text",
+          "Enhance this content with intelligence"
+        ],
+        "quality_criteria": {
+          "response_time_threshold": 10.0,
+          "quality_score_minimum": 0.75,
+          "error_rate_maximum": 0.1,
+          "consistency_threshold": 0.85
+        },
+        "test_timeout_seconds": 300,
+        "max_retries": 3,
+        "parallel_testing": true,
+        "comprehensive_reporting": true,
+        "performance_benchmarking": true,
+        "quality_assurance": true
+      },
+      "metadata": {
+        "author": "AoS v3 Gold Star Team",
+        "maintainer": "LLM Test System",
+        "documentation": "LLM_TEST_GUIDE.md",
+        "license": "AoS v3 Gold Star Standards",
+        "tags": [
+          "llm",
+          "testing",
+          "validation",
+          "integration",
+          "intelligence",
+          "aos_v3",
+          "gold_star"
+        ]
+      },
+      "file_path": "intelligence\\atoms\\llm_test_atom.json"
+    },
+    {
+      "atom_id": "rag_integration_atom_v3",
+      "component_name": "rag_integration",
+      "component_type": "rag_database_integration",
+      "version": "3.0.0",
+      "fibonacci_level": 8,
+      "complexity_score": 9,
+      "description": "AOS v3 Atom CSV Runtime Standards Compliant RAG Integration System for adding intelligence enhancement system to RAG database and vector tree",
+      "created_at": "2025-09-02T21:58:00Z",
+      "status": "active",
+      "dna_hash": "7890123456789012345678901234567890abcdef1234567890abcdef1234567890",
+      "capabilities": [
+        "rag_database_integration",
+        "vector_tree_enhancement",
+        "intelligence_system_embedding",
+        "knowledge_base_expansion",
+        "foreman_master_integration",
+        "atom_registry_updates",
+        "vector_embedding_generation",
+        "semantic_search_enhancement",
+        "aos_v3_compliance",
+        "gold_star_standards"
+      ],
+      "functions": [
+        "integrate_intelligence_to_rag",
+        "enhance_vector_tree",
+        "update_foreman_master_schema",
+        "generate_intelligence_embeddings",
+        "expand_knowledge_base",
+        "update_atom_registry",
+        "validate_integration",
+        "test_rag_functionality",
+        "generate_integration_report",
+        "backup_existing_data"
+      ],
+      "dependencies": [
+        "json",
+        "pathlib",
+        "hashlib",
+        "logging",
+        "datetime",
+        "time",
+        "asyncio",
+        "aiohttp",
+        "concurrent.futures"
+      ],
+      "resource_requirements": {
+        "cpu_cores": 4,
+        "memory_mb": 8192,
+        "storage_gb": 15,
+        "network_mbps": 100
+      },
+      "execution_flow": [
+        "initialize_rag_integration",
+        "load_existing_rag_database",
+        "load_intelligence_vector_tree",
+        "integrate_intelligence_to_rag",
+        "enhance_vector_tree",
+        "update_foreman_master_schema",
+        "generate_intelligence_embeddings",
+        "expand_knowledge_base",
+        "update_atom_registry",
+        "validate_integration",
+        "test_rag_functionality",
+        "generate_integration_report",
+        "backup_existing_data",
+        "save_integration_results"
+      ],
+      "health_checks": [
+        "rag_database_accessibility",
+        "vector_tree_integrity",
+        "intelligence_system_availability",
+        "foreman_master_schema_access",
+        "atom_registry_functionality",
+        "integration_validation",
+        "backup_verification"
+      ],
+      "endpoint": "rag_integration.execute",
+      "mcp_compliance": {
+        "protocol_version": "3.0",
+        "communication_pattern": "MCP_PACKET_VPORT",
+        "handler_vport": "rag_integration",
+        "response_timestamp": "2025-09-02T21:58:00Z",
+        "mcp_compliant": true
+      },
+      "rag_integration": {
+        "intelligence_system_integration": true,
+        "vector_tree_enhancement": true,
+        "knowledge_base_expansion": true,
+        "foreman_master_integration": true,
+        "semantic_search_enhancement": true
+      },
+      "function_schemas": {
+        "integrate_intelligence_to_rag": {
+          "input": {
+            "rag_database_path": "string",
+            "intelligence_vector_tree_path": "string",
+            "integration_strategy": "string"
+          },
+          "output": {
+            "integration_id": "string",
+            "integration_success": "boolean",
+            "enhanced_knowledge_items": "integer",
+            "new_vector_nodes": "integer",
+            "integration_score": "float"
+          }
+        },
+        "enhance_vector_tree": {
+          "input": {
+            "existing_vector_tree": "object",
+            "intelligence_vector_tree": "object",
+            "enhancement_strategies": [
+              "string"
+            ]
+          },
+          "output": {
+            "enhancement_id": "string",
+            "enhanced_vector_tree": "object",
+            "new_nodes_added": "integer",
+            "enhancement_metadata": "object"
+          }
+        },
+        "update_foreman_master_schema": {
+          "input": {
+            "foreman_schema_path": "string",
+            "intelligence_capabilities": [
+              "string"
+            ],
+            "new_endpoints": [
+              "string"
+            ]
+          },
+          "output": {
+            "update_id": "string",
+            "schema_updated": "boolean",
+            "new_capabilities": [
+              "string"
+            ],
+            "updated_endpoints": [
+              "string"
+            ]
+          }
+        }
+      },
+      "error_handling": {
+        "intelligent_error_recovery": true,
+        "fallback_strategies": [
+          "retry_integration",
+          "partial_integration",
+          "rollback_integration",
+          "alternative_integration",
+          "graceful_degradation"
+        ],
+        "error_categories": [
+          "rag_database_errors",
+          "vector_tree_errors",
+          "intelligence_system_errors",
+          "foreman_schema_errors",
+          "atom_registry_errors"
+        ]
+      },
+      "performance_metrics": {
+        "integration_success_rate": 0.95,
+        "vector_tree_enhancement_success": 0.92,
+        "knowledge_base_expansion_success": 0.9,
+        "foreman_integration_success": 0.88,
+        "overall_integration_score": 0.91
+      },
+      "mesh_network_integration": {
+        "peer_discovery": true,
+        "distributed_integration": true,
+        "fault_tolerance": true,
+        "load_balancing": true,
+        "service_mesh": true
+      },
+      "aos_v3_compliance": {
+        "atom_architecture": true,
+        "hash_based_identification": true,
+        "master_registry_integration": true,
+        "gold_star_standards": true,
+        "csv_runtime_engine": true,
+        "fibonacci_complexity": true,
+        "mcp_v3_compliance": true,
+        "neurodivergent_friendly": true,
+        "self_documenting_code": true,
+        "intelligent_error_recovery": true,
+        "adaptive_behavior": true,
+        "learning_capabilities": true,
+        "mesh_network_orchestration": true,
+        "advanced_ai_integration": true
+      },
+      "configuration": {
+        "integration_targets": [
+          "aos_v3_atom_enhanced_vector_tree.json",
+          "foreman_master_schema.json",
+          "master_atom_registry.csv",
+          "intelligence_enhancement_vector_tree.json"
+        ],
+        "intelligence_components": [
+          "llm_multi_handler_atom_v3",
+          "judge_overlay_atom_v3",
+          "vector_enhancement_atom_v3",
+          "foreman_test_atom_v3",
+          "llm_test_atom_v3",
+          "intelligence_integration_atom_v3"
+        ],
+        "enhancement_strategies": [
+          "knowledge_base_expansion",
+          "vector_tree_enhancement",
+          "semantic_search_improvement",
+          "foreman_master_integration",
+          "atom_registry_updates"
+        ],
+        "integration_timeout_seconds": 900,
+        "max_retries": 3,
+        "backup_enabled": true,
+        "validation_testing": true,
+        "rollback_capability": true
+      },
+      "metadata": {
+        "author": "AoS v3 Gold Star Team",
+        "maintainer": "RAG Integration System",
+        "documentation": "RAG_INTEGRATION_GUIDE.md",
+        "license": "AoS v3 Gold Star Standards",
+        "tags": [
+          "rag",
+          "integration",
+          "intelligence",
+          "vector_tree",
+          "knowledge_base",
+          "aos_v3",
+          "gold_star"
+        ]
+      },
+      "file_path": "intelligence\\atoms\\rag_integration_atom_v3.json"
+    },
+    {
+      "atom_id": "vector_enhancement_atom_v3",
+      "component_name": "vector_enhancement",
+      "component_type": "vector_processing",
+      "version": "3.0.0",
+      "fibonacci_level": 7,
+      "complexity_score": 8,
+      "description": "AOS v3 Atom CSV Runtime Standards Compliant Vector Enhancement System for intelligence-based vector embedding processing",
+      "created_at": "2025-09-02T21:37:00Z",
+      "status": "active",
+      "dna_hash": "d4e5f6789012345678901234567890abcdef1234567890abcdef1234567890ab",
+      "capabilities": [
+        "vector_enhancement",
+        "semantic_enrichment",
+        "context_awareness",
+        "knowledge_integration",
+        "quality_optimization",
+        "intelligence_amplification",
+        "strategy_application",
+        "enhancement_history",
+        "aos_v3_compliance",
+        "gold_star_standards"
+      ],
+      "functions": [
+        "enhance_vector_embeddings",
+        "apply_enhancement_strategies",
+        "apply_semantic_enrichment",
+        "apply_context_awareness",
+        "apply_knowledge_integration",
+        "apply_quality_optimization",
+        "apply_intelligence_amplification",
+        "calculate_intelligence_score",
+        "save_enhanced_vector_tree",
+        "generate_enhancement_report"
+      ],
+      "dependencies": [
+        "json",
+        "pathlib",
+        "hashlib",
+        "logging",
+        "datetime",
+        "time",
+        "asyncio"
+      ],
+      "resource_requirements": {
+        "cpu_cores": 3,
+        "memory_mb": 6144,
+        "storage_gb": 8,
+        "network_mbps": 75
+      },
+      "execution_flow": [
+        "initialize_vector_enhancement",
+        "load_vector_tree",
+        "apply_enhancement_strategies",
+        "evaluate_enhancement_quality",
+        "calculate_intelligence_score",
+        "save_enhanced_vector_tree",
+        "generate_enhancement_report",
+        "store_enhancement_history"
+      ],
+      "health_checks": [
+        "vector_tree_processing",
+        "enhancement_quality",
+        "strategy_application",
+        "intelligence_scoring",
+        "file_operations"
+      ],
+      "endpoint": "vector_enhancement.enhance",
+      "mcp_compliance": {
+        "protocol_version": "3.0",
+        "communication_pattern": "MCP_PACKET_VPORT",
+        "handler_vport": "vector_enhancement",
+        "response_timestamp": "2025-09-02T21:37:00Z",
+        "mcp_compliant": true
+      },
+      "rag_integration": {
+        "vector_tree_processing": true,
+        "knowledge_retrieval": true,
+        "semantic_search": true,
+        "context_awareness": true,
+        "intelligence_enhancement": true
+      },
+      "function_schemas": {
+        "enhance_vector_embeddings": {
+          "input": {
+            "vector_tree_path": "string",
+            "enhancement_strategies": [
+              "string"
+            ],
+            "quality_threshold": "float"
+          },
+          "output": {
+            "enhancement_id": "string",
+            "intelligence_score": "float",
+            "processing_time": "float",
+            "enhanced_path": "string"
+          }
+        },
+        "apply_enhancement_strategies": {
+          "input": {
+            "vector_tree": "object",
+            "strategies": [
+              "string"
+            ]
+          },
+          "output": {
+            "enhanced_tree": "object",
+            "strategies_applied": [
+              "string"
+            ],
+            "enhancement_metadata": "object"
+          }
+        }
+      },
+      "error_handling": {
+        "intelligent_error_recovery": true,
+        "fallback_strategies": [
+          "retry_enhancement",
+          "partial_enhancement",
+          "fallback_enhancement",
+          "skip_strategy"
+        ],
+        "error_categories": [
+          "vector_enhancement_errors",
+          "strategy_application_errors",
+          "file_operation_errors",
+          "quality_evaluation_errors"
+        ]
+      },
+      "performance_metrics": {
+        "enhancement_success_rate": 0.95,
+        "average_processing_time": 45.0,
+        "intelligence_score_threshold": 0.85,
+        "quality_improvement_target": 0.15,
+        "strategy_success_rate": 0.92
+      },
+      "mesh_network_integration": {
+        "peer_discovery": true,
+        "distributed_enhancement": true,
+        "fault_tolerance": true,
+        "load_balancing": true
+      },
+      "aos_v3_compliance": {
+        "atom_architecture": true,
+        "hash_based_identification": true,
+        "master_registry_integration": true,
+        "vector_tree_processing": true,
+        "gold_star_standards": true,
+        "csv_runtime_engine": true,
+        "fibonacci_complexity": true,
+        "mcp_v3_compliance": true,
+        "neurodivergent_friendly": true,
+        "self_documenting_code": true,
+        "intelligent_error_recovery": true,
+        "adaptive_behavior": true,
+        "learning_capabilities": true,
+        "mesh_network_orchestration": true,
+        "advanced_ai_integration": true
+      },
+      "configuration": {
+        "enhancement_strategies": [
+          "semantic_enrichment",
+          "context_awareness",
+          "knowledge_integration",
+          "quality_optimization",
+          "intelligence_amplification"
+        ],
+        "quality_threshold": 0.85,
+        "intelligence_score_target": 0.9,
+        "enhancement_history_size": 100,
+        "file_backup_enabled": true,
+        "metadata_integration": true
+      },
+      "metadata": {
+        "author": "AoS v3 Gold Star Team",
+        "maintainer": "Vector Enhancement System",
+        "documentation": "VECTOR_ENHANCEMENT_GUIDE.md",
+        "license": "AoS v3 Gold Star Standards",
+        "tags": [
+          "vector",
+          "enhancement",
+          "intelligence",
+          "embedding",
+          "aos_v3",
+          "gold_star"
+        ]
+      },
+      "file_path": "intelligence\\atoms\\vector_enhancement_atom.json"
+    }
+  ],
+  "existing_content": {
+    "component_id": "foreman_v2_aos_v3_atom_enhanced",
+    "vector_tree": {
+      "root": {
+        "id": "foreman_v2_aos_v3_root",
+        "name": "AOS v3 Atom-Enhanced Foreman v2 Knowledge Tree",
+        "description": "Enhanced root node incorporating AOS v3 atom architecture, evolution from VPorts to atoms, and current system structure",
+        "vector_embedding": [
+          0.1,
+          0.2,
+          0.3,
+          0.4,
+          0.5
+        ],
+        "children": [
+          "orchestration_knowledge",
+          "testing_knowledge",
+          "ai_planning_knowledge",
+          "health_monitoring_knowledge",
+          "aos_v3_atom_architecture_knowledge",
+          "legacy_vport_knowledge",
+          "intelligence_system_knowledge",
+          "system_context_knowledge"
+        ]
+      },
+      "aos_v3_atom_architecture_knowledge": {
+        "id": "aos_v3_atom_architecture_knowledge",
+        "name": "AOS v3 Atom Architecture Knowledge",
+        "description": "Current AOS v3 atom-based architecture standards and implementation",
+        "vector_embedding": [
+          0.2,
+          0.3,
+          0.4,
+          0.5,
+          0.6
+        ],
+        "children": [
+          "master_atom_registry",
+          "atom_json_files",
+          "csv_runtime_engine",
+          "atom_discovery_routing",
+          "hash_based_integration"
+        ],
+        "related_functions": [
+          "discover_atoms",
+          "route_requests",
+          "execute_atoms",
+          "monitor_performance"
+        ]
+      },
+      "master_atom_registry": {
+        "id": "master_atom_registry",
+        "name": "Master Atom Registry",
+        "description": "Central registry for all atoms in the AOS v3 system",
+        "vector_embedding": [
+          0.3,
+          0.4,
+          0.5,
+          0.6,
+          0.7
+        ],
+        "children": [],
+        "knowledge_items": [
+          {
+            "id": "registry_structure",
+            "title": "Registry Structure",
+            "content": "CSV-based registry with atom_id, atom_type, version, domain, complexity_level, quality_score, hash, registration_date, file_path",
+            "tags": [
+              "registry",
+              "csv",
+              "structure",
+              "atoms"
+            ],
+            "location": "AoS_v3/master_atom_registry.csv"
+          },
+          {
+            "id": "atom_identification",
+            "title": "Atom Identification",
+            "content": "Each atom has unique atom_id with hash-based identification and quality scoring",
+            "tags": [
+              "identification",
+              "hash",
+              "quality",
+              "scoring"
+            ]
+          },
+          {
+            "id": "registry_operations",
+            "title": "Registry Operations",
+            "content": "Real-time updates, automatic validation, and atom discovery capabilities",
+            "tags": [
+              "operations",
+              "real-time",
+              "validation",
+              "discovery"
+            ]
+          }
+        ]
+      },
+      "atom_json_files": {
+        "id": "atom_json_files",
+        "name": "Atom JSON Files",
+        "description": "Individual atom definitions in JSON format",
+        "vector_embedding": [
+          0.4,
+          0.5,
+          0.6,
+          0.7,
+          0.8
+        ],
+        "children": [],
+        "knowledge_items": [
+          {
+            "id": "atom_structure",
+            "title": "Atom Structure",
+            "content": "Standard structure with atom_id, component_name, component_type, capabilities, functions, configuration, dependencies, resource_requirements, execution_flow, health_checks, endpoint",
+            "tags": [
+              "structure",
+              "json",
+              "standard",
+              "definition"
+            ]
+          },
+          {
+            "id": "naming_convention",
+            "title": "Naming Convention",
+            "content": "Atoms named as {component_name}_atom.json located in AoS_v3/{system_name}/atoms/",
+            "tags": [
+              "naming",
+              "convention",
+              "location",
+              "pattern"
+            ]
+          },
+          {
+            "id": "atom_capabilities",
+            "title": "Atom Capabilities",
+            "content": "Each atom defines specific capabilities and functions for modular operation",
+            "tags": [
+              "capabilities",
+              "functions",
+              "modular",
+              "operation"
+            ]
+          }
+        ]
+      },
+      "csv_runtime_engine": {
+        "id": "csv_runtime_engine",
+        "name": "CSV Runtime Engine",
+        "description": "Master handler for orchestrating atom execution",
+        "vector_embedding": [
+          0.5,
+          0.6,
+          0.7,
+          0.8,
+          0.9
+        ],
+        "children": [],
+        "knowledge_items": [
+          {
+            "id": "engine_responsibilities",
+            "title": "Engine Responsibilities",
+            "content": "Atom discovery, request routing, execution orchestration, performance monitoring, error handling",
+            "tags": [
+              "responsibilities",
+              "discovery",
+              "routing",
+              "orchestration"
+            ]
+          },
+          {
+            "id": "integration_points",
+            "title": "Integration Points",
+            "content": "Integrates with master registry, RAG system, and embedding agents for vector operations",
+            "tags": [
+              "integration",
+              "registry",
+              "rag",
+              "embedding"
+            ]
+          },
+          {
+            "id": "execution_flow",
+            "title": "Execution Flow",
+            "content": "Reads from master_atom_registry.csv, routes requests to appropriate atoms, monitors execution",
+            "tags": [
+              "execution",
+              "flow",
+              "routing",
+              "monitoring"
+            ]
+          }
+        ]
+      },
+      "atom_discovery_routing": {
+        "id": "atom_discovery_routing",
+        "name": "Atom Discovery and Routing",
+        "description": "How atoms are discovered and requests are routed",
+        "vector_embedding": [
+          0.6,
+          0.7,
+          0.8,
+          0.9,
+          1.0
+        ],
+        "children": [],
+        "knowledge_items": [
+          {
+            "id": "discovery_process",
+            "title": "Discovery Process",
+            "content": "Automatic discovery of atoms from master registry with hash-based identification",
+            "tags": [
+              "discovery",
+              "automatic",
+              "hash",
+              "identification"
+            ]
+          },
+          {
+            "id": "routing_strategy",
+            "title": "Routing Strategy",
+            "content": "Intelligent routing based on atom capabilities, complexity level, and quality score",
+            "tags": [
+              "routing",
+              "intelligent",
+              "capabilities",
+              "complexity"
+            ]
+          },
+          {
+            "id": "load_balancing",
+            "title": "Load Balancing",
+            "content": "Round-robin routing with health checks and automatic failover",
+            "tags": [
+              "load",
+              "balancing",
+              "health",
+              "failover"
+            ]
+          }
+        ]
+      },
+      "hash_based_integration": {
+        "id": "hash_based_integration",
+        "name": "Hash-Based Integration",
+        "description": "SHA256 hash-based integration for atom identification and communication",
+        "vector_embedding": [
+          0.7,
+          0.8,
+          0.9,
+          1.0,
+          0.1
+        ],
+        "children": [],
+        "knowledge_items": [
+          {
+            "id": "hash_identification",
+            "title": "Hash Identification",
+            "content": "Each atom has unique SHA256 hash for identification and verification",
+            "tags": [
+              "hash",
+              "identification",
+              "sha256",
+              "verification"
+            ]
+          },
+          {
+            "id": "message_bus_integration",
+            "title": "Message Bus Integration",
+            "content": "Hash-based message bus for atom communication and coordination",
+            "tags": [
+              "message",
+              "bus",
+              "communication",
+              "coordination"
+            ]
+          },
+          {
+            "id": "point_of_contact",
+            "title": "Point of Contact",
+            "content": "Message bus serves as first point of contact for all atom operations",
+            "tags": [
+              "contact",
+              "first",
+              "operations",
+              "message"
+            ]
+          }
+        ]
+      },
+      "legacy_vport_knowledge": {
+        "id": "legacy_vport_knowledge",
+        "name": "Legacy VPort Knowledge",
+        "description": "Knowledge about the legacy VPort system and evolution to atoms",
+        "vector_embedding": [
+          0.8,
+          0.9,
+          1.0,
+          0.1,
+          0.2
+        ],
+        "children": [
+          "vport_evolution",
+          "vport_to_atom_migration",
+          "legacy_capabilities"
+        ],
+        "related_functions": [
+          "migrate_vport_to_atom",
+          "preserve_legacy_knowledge"
+        ]
+      },
+      "vport_evolution": {
+        "id": "vport_evolution",
+        "name": "VPort Evolution",
+        "description": "Evolution from VPorts to atom-based architecture",
+        "vector_embedding": [
+          0.9,
+          1.0,
+          0.1,
+          0.2,
+          0.3
+        ],
+        "children": [],
+        "knowledge_items": [
+          {
+            "id": "vport_legacy",
+            "title": "VPort Legacy",
+            "content": "VPorts were the legacy calling mechanism before AOS v3 atom architecture",
+            "tags": [
+              "legacy",
+              "vports",
+              "calling",
+              "mechanism"
+            ]
+          },
+          {
+            "id": "evolution_timeline",
+            "title": "Evolution Timeline",
+            "content": "System evolved from VPorts to individual atom JSON files, then to atom registry, and finally to master schemas",
+            "tags": [
+              "evolution",
+              "timeline",
+              "atoms",
+              "registry",
+              "schemas"
+            ]
+          },
+          {
+            "id": "architecture_progression",
+            "title": "Architecture Progression",
+            "content": "Progression: VPorts → Individual Atoms → Atom Registry → Master Schemas → Hash-Based Message Bus",
+            "tags": [
+              "progression",
+              "architecture",
+              "atoms",
+              "registry",
+              "message"
+            ]
+          }
+        ]
+      },
+      "vport_to_atom_migration": {
+        "id": "vport_to_atom_migration",
+        "name": "VPort to Atom Migration",
+        "description": "Migration process from VPorts to atom-based system",
+        "vector_embedding": [
+          1.0,
+          0.1,
+          0.2,
+          0.3,
+          0.4
+        ],
+        "children": [],
+        "knowledge_items": [
+          {
+            "id": "migration_strategy",
+            "title": "Migration Strategy",
+            "content": "Systematic migration from VPort capabilities to atom capabilities with preserved functionality",
+            "tags": [
+              "migration",
+              "strategy",
+              "capabilities",
+              "functionality"
+            ]
+          },
+          {
+            "id": "capability_mapping",
+            "title": "Capability Mapping",
+            "content": "VPort capabilities mapped to atom capabilities with enhanced modularity",
+            "tags": [
+              "mapping",
+              "capabilities",
+              "modularity",
+              "enhancement"
+            ]
+          },
+          {
+            "id": "backward_compatibility",
+            "title": "Backward Compatibility",
+            "content": "Legacy VPort knowledge preserved for backward compatibility and reference",
+            "tags": [
+              "compatibility",
+              "backward",
+              "legacy",
+              "reference"
+            ]
+          }
+        ]
+      },
+      "legacy_capabilities": {
+        "id": "legacy_capabilities",
+        "name": "Legacy VPort Capabilities",
+        "description": "Original VPort capabilities from AOS liftoff",
+        "vector_embedding": [
+          0.1,
+          0.2,
+          0.3,
+          0.4,
+          0.5
+        ],
+        "children": [],
+        "knowledge_items": [
+          {
+            "id": "foreman_master_vport",
+            "title": "Foreman Master VPort",
+            "content": "Original foreman master VPort with orchestration capabilities",
+            "tags": [
+              "foreman",
+              "master",
+              "vport",
+              "orchestration"
+            ],
+            "hash_id": "6d142de6b7987e22"
+          },
+          {
+            "id": "llm_call_vport",
+            "title": "LLM Call VPort",
+            "content": "Original LLM call VPort with execution capabilities",
+            "tags": [
+              "llm",
+              "call",
+              "vport",
+              "execution"
+            ],
+            "hash_id": "9ec1e5f263d09b71"
+          },
+          {
+            "id": "headless_cursor_vport",
+            "title": "Headless Cursor VPort",
+            "content": "Original headless cursor VPort with IDE control capabilities",
+            "tags": [
+              "headless",
+              "cursor",
+              "vport",
+              "ide"
+            ],
+            "hash_id": "ba244fd8c5ef3dc3"
+          }
+        ]
+      },
+      "system_context_knowledge": {
+        "id": "system_context_knowledge",
+        "name": "System Context Knowledge",
+        "description": "Current AOS v3 system context and state",
+        "vector_embedding": [
+          0.2,
+          0.3,
+          0.4,
+          0.5,
+          0.6
+        ],
+        "children": [
+          "current_system_state",
+          "atom_architecture_standards",
+          "gold_star_compliance"
+        ],
+        "related_functions": [
+          "get_system_state",
+          "check_compliance"
+        ]
+      },
+      "current_system_state": {
+        "id": "current_system_state",
+        "name": "Current System State",
+        "description": "Current AOS v3 system state and capabilities",
+        "vector_embedding": [
+          0.3,
+          0.4,
+          0.5,
+          0.6,
+          0.7
+        ],
+        "children": [],
+        "knowledge_items": [
+          {
+            "id": "atom_count",
+            "title": "Atom Count",
+            "content": "System currently has 3,512+ registered atoms across multiple domains",
+            "tags": [
+              "count",
+              "atoms",
+              "registered",
+              "domains"
+            ]
+          },
+          {
+            "id": "migration_status",
+            "title": "Migration Status",
+            "content": "100% migration complete from legacy systems to atom-based architecture",
+            "tags": [
+              "migration",
+              "status",
+              "complete",
+              "architecture"
+            ]
+          },
+          {
+            "id": "system_capabilities",
+            "title": "System Capabilities",
+            "content": "Advanced AI integration, neurodivergent-friendly design, comprehensive testing, self-documenting code",
+            "tags": [
+              "capabilities",
+              "ai",
+              "neurodivergent",
+              "testing"
+            ]
+          }
+        ]
+      },
+      "atom_architecture_standards": {
+        "id": "atom_architecture_standards",
+        "name": "Atom Architecture Standards",
+        "description": "Mandatory AOS v3 atom architecture standards",
+        "vector_embedding": [
+          0.4,
+          0.5,
+          0.6,
+          0.7,
+          0.8
+        ],
+        "children": [],
+        "knowledge_items": [
+          {
+            "id": "mandatory_standard",
+            "title": "Mandatory Standard",
+            "content": "Atom-based architecture is the primary and mandatory standard for all AOS v3 components",
+            "tags": [
+              "mandatory",
+              "standard",
+              "architecture",
+              "components"
+            ]
+          },
+          {
+            "id": "gold_star_requirement",
+            "title": "Gold Star Requirement",
+            "content": "Gold Star compliance required for all atom implementations",
+            "tags": [
+              "gold",
+              "star",
+              "compliance",
+              "requirement"
+            ]
+          },
+          {
+            "id": "architecture_components",
+            "title": "Architecture Components",
+            "content": "Master atom registry, atom JSON files, CSV runtime engine, embedding agent integration",
+            "tags": [
+              "components",
+              "registry",
+              "json",
+              "runtime"
+            ]
+          }
+        ]
+      },
+      "gold_star_compliance": {
+        "id": "gold_star_compliance",
+        "name": "Gold Star Compliance",
+        "description": "Gold Star standards compliance requirements",
+        "vector_embedding": [
+          0.5,
+          0.6,
+          0.7,
+          0.8,
+          0.9
+        ],
+        "children": [],
+        "knowledge_items": [
+          {
+            "id": "neurodivergent_design",
+            "title": "Neurodivergent Design",
+            "content": "All atoms must follow neurodivergent-friendly design principles",
+            "tags": [
+              "neurodivergent",
+              "design",
+              "principles",
+              "atoms"
+            ]
+          },
+          {
+            "id": "advanced_ai_integration",
+            "title": "Advanced AI Integration",
+            "content": "Self-documenting code and intelligent error recovery required",
+            "tags": [
+              "ai",
+              "integration",
+              "documenting",
+              "recovery"
+            ]
+          },
+          {
+            "id": "comprehensive_testing",
+            "title": "Comprehensive Testing",
+            "content": "100% test coverage requirements for all atom implementations",
+            "tags": [
+              "testing",
+              "coverage",
+              "requirements",
+              "implementations"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "enhanced_capabilities": [
+    "atom_discovery",
+    "hash_generation",
+    "rag_rebuilding",
+    "vector_tree_reconstruction",
+    "intelligence_integration",
+    "embedding_generation"
+  ]
+}

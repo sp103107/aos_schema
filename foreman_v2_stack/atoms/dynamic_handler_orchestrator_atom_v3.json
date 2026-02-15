@@ -1,0 +1,162 @@
+{
+  "atom_id": "dynamic_handler_orchestrator_atom_v3",
+  "component_name": "dynamic_handler_orchestrator",
+  "version": "3.0.0",
+  "description": "Master atom orchestrator for managing atom-based handler execution via CSV runners",
+  "capabilities": [
+    "atom_discovery_and_loading",
+    "csv_runner_execution",
+    "dynamic_handler_orchestration",
+    "atom_execution_validation",
+    "error_recovery_and_retry",
+    "execution_reporting",
+    "mesh_network_integration"
+  ],
+  "functions": [
+    {
+      "function_name": "load_csv_runner_tasks",
+      "description": "Load and parse CSV runner files to extract atom execution tasks",
+      "parameters": {
+        "csv_runner_path": "string",
+        "task_filter": "optional_string"
+      },
+      "returns": "task_list"
+    },
+    {
+      "function_name": "execute_atom_handler",
+      "description": "Execute specific atom handlers based on CSV runner configuration",
+      "parameters": {
+        "atom_id": "string",
+        "function_name": "string",
+        "parameters": "object",
+        "execution_context": "object"
+      },
+      "returns": "execution_result"
+    },
+    {
+      "function_name": "validate_orchestration",
+      "description": "Validate the orchestration process and atom execution results",
+      "parameters": {
+        "execution_results": "array",
+        "validation_criteria": "object"
+      },
+      "returns": "validation_result"
+    },
+    {
+      "function_name": "generate_orchestration_report",
+      "description": "Generate comprehensive reports of orchestration execution",
+      "parameters": {
+        "execution_data": "object",
+        "report_format": "string"
+      },
+      "returns": "report_data"
+    }
+  ],
+  "dependencies": [
+    "foreman_intelligence_integration_atom_v3",
+    "real_embedding_generator_atom_v3",
+    "rag_vector_tree_rebuilder_atom_v3",
+    "advanced_hashing_atom_v3"
+  ],
+  "resource_requirements": {
+    "cpu": "medium",
+    "memory": "medium",
+    "storage": "low",
+    "network": "low"
+  },
+  "execution_flow": [
+    "load_csv_runner_tasks",
+    "validate_task_dependencies",
+    "execute_atom_handler",
+    "monitor_execution_progress",
+    "validate_orchestration",
+    "generate_orchestration_report"
+  ],
+  "health_checks": [
+    "csv_runner_file_accessibility",
+    "atom_discovery_success",
+    "execution_environment_validation",
+    "dependency_resolution_status"
+  ],
+  "endpoint": {
+    "protocol": "http",
+    "port": 8080,
+    "path": "/orchestrator",
+    "methods": ["POST", "GET"]
+  },
+  "mcp_compliance": {
+    "protocol_version": "1.0",
+    "capabilities": ["orchestration", "validation", "reporting"],
+    "endpoints": ["/orchestrator/execute", "/orchestrator/status", "/orchestrator/report"]
+  },
+  "function_schemas": {
+    "load_csv_runner_tasks": {
+      "input": {
+        "type": "object",
+        "properties": {
+          "csv_runner_path": {"type": "string", "description": "Path to CSV runner file"},
+          "task_filter": {"type": "string", "description": "Optional filter for specific tasks"}
+        },
+        "required": ["csv_runner_path"]
+      },
+      "output": {
+        "type": "object",
+        "properties": {
+          "tasks": {"type": "array", "description": "List of parsed tasks"},
+          "metadata": {"type": "object", "description": "Task metadata"}
+        }
+      }
+    },
+    "execute_atom_handler": {
+      "input": {
+        "type": "object",
+        "properties": {
+          "atom_id": {"type": "string", "description": "Target atom ID"},
+          "function_name": {"type": "string", "description": "Function to execute"},
+          "parameters": {"type": "object", "description": "Function parameters"},
+          "execution_context": {"type": "object", "description": "Execution context"}
+        },
+        "required": ["atom_id", "function_name"]
+      },
+      "output": {
+        "type": "object",
+        "properties": {
+          "success": {"type": "boolean", "description": "Execution success status"},
+          "result": {"type": "object", "description": "Execution result"},
+          "metadata": {"type": "object", "description": "Execution metadata"}
+        }
+      }
+    }
+  },
+  "error_handling": {
+    "retry_strategy": "exponential_backoff",
+    "max_retries": 3,
+    "error_recovery": "automatic",
+    "fallback_mechanisms": ["simulated_execution", "cached_results"]
+  },
+  "performance_metrics": {
+    "execution_time_threshold": "30s",
+    "memory_usage_limit": "512MB",
+    "concurrent_executions": 5,
+    "throughput_target": "100_tasks_per_minute"
+  },
+  "mesh_network_integration": {
+    "peer_discovery": "automatic",
+    "load_balancing": "round_robin",
+    "fault_tolerance": "redundant_execution",
+    "consistency_model": "eventual"
+  },
+  "aos_v3_compliance": {
+    "architecture": "atom_based",
+    "execution_model": "csv_runner_orchestrated",
+    "communication": "message_bus_hash_based",
+    "modularity": "granular_atoms",
+    "standards": "gold_star_compliant"
+  },
+  "configuration": {
+    "default_csv_runner": "foreman_intelligence_integration_runner.csv",
+    "execution_mode": "atom_bottom_up",
+    "validation_level": "comprehensive",
+    "reporting_format": "json"
+  }
+}

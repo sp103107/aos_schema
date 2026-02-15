@@ -1,0 +1,8 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "aos.vport.id.schema.v1",
+  "title": "AoS vPort Identifier",
+  "description": "Canonical identifier format for AoS vPorts.",
+  "type": "string",
+  "pattern": "^vport://[a-z0-9._-]+(/[a-z0-9._-]+)*$"
+}

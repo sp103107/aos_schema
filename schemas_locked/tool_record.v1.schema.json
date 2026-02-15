@@ -1,0 +1,105 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schema.aos.tools_bootstrap.tool_record.v1",
+  "title": "Tool Catalog Record (v1)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "type",
+    "created_at",
+    "name",
+    "kind",
+    "entrypoint",
+    "capabilities",
+    "interfaces",
+    "versioning",
+    "status"
+  ],
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "type": {
+      "const": "aos.tool_record"
+    },
+    "created_at": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "kind": {
+      "enum": [
+        "python_module",
+        "node_module",
+        "shell_script",
+        "mcp_tool_server",
+        "vport_handler",
+        "http_service",
+        "document_only"
+      ]
+    },
+    "entrypoint": {
+      "type": "string"
+    },
+    "capabilities": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "interfaces": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mcp",
+        "vport",
+        "http"
+      ],
+      "properties": {
+        "mcp": {
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "vport": {
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "http": {
+          "type": [
+            "object",
+            "null"
+          ]
+        }
+      }
+    },
+    "versioning": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "semver",
+        "api_version"
+      ],
+      "properties": {
+        "semver": {
+          "type": "string"
+        },
+        "api_version": {
+          "type": "string"
+        }
+      }
+    },
+    "status": {
+      "enum": [
+        "planned",
+        "active",
+        "deprecated"
+      ]
+    }
+  }
+}

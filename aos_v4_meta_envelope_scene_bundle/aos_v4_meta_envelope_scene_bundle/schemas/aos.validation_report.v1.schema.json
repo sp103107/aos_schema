@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aos.dev/schemas/aos.validation_report.v1.schema.json",
+  "title": "AoS Validation Report v1",
+  "description": "Validation report for schema + example checks.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "run_id",
+    "generated_at",
+    "validator_version",
+    "ref_resolution_ok",
+    "schema_validation_ok",
+    "example_validation_ok",
+    "errors",
+    "warnings"
+  ],
+  "$defs": {
+    "issue": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "code",
+        "message",
+        "pointer",
+        "file",
+        "severity"
+      ],
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "pointer": {
+          "type": "string"
+        },
+        "file": {
+          "type": "string"
+        },
+        "severity": {
+          "type": "string",
+          "enum": [
+            "info",
+            "warning",
+            "error"
+          ]
+        }
+      }
+    }
+  },
+  "properties": {
+    "run_id": {
+      "type": "string"
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "validator_version": {
+      "type": "string"
+    },
+    "ref_resolution_ok": {
+      "type": "boolean"
+    },
+    "schema_validation_ok": {
+      "type": "boolean"
+    },
+    "example_validation_ok": {
+      "type": "boolean"
+    },
+    "errors": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/issue"
+      }
+    },
+    "warnings": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/issue"
+      }
+    }
+  }
+}

@@ -1,0 +1,189 @@
+{
+  "atom_id": "ui_component_generator_atom_v3",
+  "component_name": "UI Component Generator",
+  "component_type": "component_factory",
+  "version": "3.0.0",
+  "created_at": "2025-09-09T23:30:00.000000",
+  "status": "active",
+  "description": "Generates UI components based on discovered requirements and component specifications",
+  "fibonacci_level": 7,
+  "complexity_score": 7,
+  "capabilities": [
+    "dynamic_component_generation",
+    "multi_framework_support",
+    "responsive_design_generation",
+    "accessibility_compliance",
+    "performance_optimization",
+    "component_library_management",
+    "style_guide_adherence",
+    "interaction_pattern_implementation"
+  ],
+  "functions": [
+    {
+      "function_name": "generate_chart_component",
+      "description": "Generate chart/visualization components",
+      "parameters": {
+        "component_name": "string",
+        "capabilities": "array",
+        "chart_type": "string",
+        "data_requirements": "object",
+        "interaction_level": "string"
+      },
+      "return_value": {
+        "type": "object",
+        "properties": {
+          "html_code": "string",
+          "css_code": "string",
+          "javascript_code": "string",
+          "styling": "object",
+          "interactions": "array"
+        }
+      }
+    },
+    {
+      "function_name": "generate_search_component",
+      "description": "Generate search interface components",
+      "parameters": {
+        "component_name": "string",
+        "search_capabilities": "array",
+        "filter_options": "array",
+        "result_display": "string",
+        "rag_integration": "boolean"
+      },
+      "return_value": {
+        "type": "object",
+        "properties": {
+          "html_code": "string",
+          "css_code": "string",
+          "javascript_code": "string",
+          "styling": "object",
+          "interactions": "array"
+        }
+      }
+    },
+    {
+      "function_name": "generate_table_component",
+      "description": "Generate data table components",
+      "parameters": {
+        "component_name": "string",
+        "data_structure": "object",
+        "sorting_capabilities": "array",
+        "filtering_options": "array",
+        "pagination_required": "boolean"
+      },
+      "return_value": {
+        "type": "object",
+        "properties": {
+          "html_code": "string",
+          "css_code": "string",
+          "javascript_code": "string",
+          "styling": "object",
+          "interactions": "array"
+        }
+      }
+    },
+    {
+      "function_name": "generate_form_component",
+      "description": "Generate form components",
+      "parameters": {
+        "component_name": "string",
+        "form_fields": "array",
+        "validation_rules": "array",
+        "submission_handler": "string",
+        "accessibility_level": "string"
+      },
+      "return_value": {
+        "type": "object",
+        "properties": {
+          "html_code": "string",
+          "css_code": "string",
+          "javascript_code": "string",
+          "styling": "object",
+          "interactions": "array"
+        }
+      }
+    },
+    {
+      "function_name": "generate_dashboard_component",
+      "description": "Generate dashboard layout components",
+      "parameters": {
+        "component_name": "string",
+        "widget_requirements": "array",
+        "layout_preferences": "object",
+        "real_time_updates": "boolean",
+        "responsive_breakpoints": "array"
+      },
+      "return_value": {
+        "type": "object",
+        "properties": {
+          "html_code": "string",
+          "css_code": "string",
+          "javascript_code": "string",
+          "styling": "object",
+          "interactions": "array"
+        }
+      }
+    },
+    {
+      "function_name": "generate_generic_component",
+      "description": "Generate generic UI components",
+      "parameters": {
+        "component_name": "string",
+        "capabilities": "array",
+        "styling_preferences": "object",
+        "interaction_level": "string",
+        "customization_options": "array"
+      },
+      "return_value": {
+        "type": "object",
+        "properties": {
+          "html_code": "string",
+          "css_code": "string",
+          "javascript_code": "string",
+          "styling": "object",
+          "interactions": "array"
+        }
+      }
+    }
+  ],
+  "dependencies": [
+    "ui_requirement_discovery_atom"
+  ],
+  "integration_points": [
+    "ui_requirement_discovery_atom",
+    "ui_layout_generator_atom"
+  ],
+  "use_cases": [
+    "Generate specific UI components based on requirements",
+    "Create reusable component libraries",
+    "Implement responsive and accessible designs",
+    "Generate components for multiple frameworks"
+  ],
+  "agi_bootstrapping_relevance": "Critical for creating functional UI components that meet user requirements and integrate with RAG-powered systems",
+  "performance_characteristics": {
+    "execution_time": "2-5 seconds",
+    "memory_usage": "moderate",
+    "scalability": "high",
+    "concurrent_operations": "supported"
+  },
+  "security_considerations": [
+    "Secure component generation",
+    "Protected styling and code generation",
+    "Controlled framework access"
+  ],
+  "testing_requirements": [
+    "Unit tests for each component type",
+    "Integration tests with requirement discovery",
+    "Performance tests for component generation",
+    "Accessibility compliance tests"
+  ],
+  "documentation_requirements": [
+    "Component generation API documentation",
+    "Framework integration guides",
+    "Styling and customization options",
+    "Performance optimization guidelines"
+  ]
+}
+
+
+

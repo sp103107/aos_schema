@@ -1,0 +1,83 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "aos.schema.agent.sorcerer.input.v1",
+  "title": "AoS Sorcerer Agent Input Contract v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "task_id",
+    "objective",
+    "materials",
+    "intent",
+    "context_snapshot"
+  ],
+  "properties": {
+    "task_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "objective": {
+      "type": "string",
+      "minLength": 3
+    },
+    "materials": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "intent": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "expand",
+        "compress",
+        "rewrite",
+        "summarize",
+        "reformat",
+        "extract_structured",
+        "generate_code",
+        "create_artifact"
+      ]
+    },
+    "context_snapshot": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "style_profile": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "tone": {
+          "type": "string",
+          "enum": [
+            "neutral",
+            "professional",
+            "friendly",
+            "playful",
+            "strict"
+          ],
+          "default": "professional"
+        },
+        "format": {
+          "type": "string",
+          "enum": [
+            "markdown",
+            "json",
+            "plain_text"
+          ],
+          "default": "markdown"
+        }
+      },
+      "default": {}
+    },
+    "constraints": {
+      "type": "object",
+      "additionalProperties": true,
+      "default": {}
+    },
+    "trace": {
+      "type": "object",
+      "additionalProperties": true,
+      "default": {}
+    }
+  }
+}

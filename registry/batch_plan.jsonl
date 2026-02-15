@@ -1,0 +1,1 @@
+{"id": "batch_plan.meta.v1", "type": "aos.batch_plan_meta", "created_at": "2025-12-20T19:56:29Z", "schema": "schemas_locked/batch_plan_entry.v1.schema.json", "notes": "Append-only. One line per tool_root planned/ingested."}

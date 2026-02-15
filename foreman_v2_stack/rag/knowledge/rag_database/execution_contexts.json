@@ -1,0 +1,94 @@
+{
+  "component_id": "foreman_v2",
+  "execution_contexts": {
+    "orchestration_context": {
+      "description": "Context for orchestration operations",
+      "required_components": [
+        "orchestration_engine",
+        "coordination_system",
+        "task_distributor"
+      ],
+      "optional_components": [
+        "optimization_engine",
+        "performance_monitor"
+      ],
+      "environment_variables": [
+        "ORCHESTRATION_TIMEOUT",
+        "MAX_CONCURRENT_TASKS",
+        "COORDINATION_STRATEGY"
+      ],
+      "performance_requirements": {
+        "max_execution_time": "30s",
+        "min_throughput": "50 tasks/sec",
+        "max_memory_usage": "4GB"
+      }
+    },
+    "testing_context": {
+      "description": "Context for testing operations",
+      "required_components": [
+        "test_engine",
+        "validation_system",
+        "result_analyzer"
+      ],
+      "optional_components": [
+        "performance_benchmarker",
+        "report_generator"
+      ],
+      "environment_variables": [
+        "TEST_TIMEOUT",
+        "VALIDATION_STRICTNESS",
+        "PERFORMANCE_THRESHOLDS"
+      ],
+      "performance_requirements": {
+        "max_test_duration": "300s",
+        "min_test_coverage": "0.9",
+        "max_resource_usage": "2GB"
+      }
+    },
+    "ai_planning_context": {
+      "description": "Context for AI planning operations",
+      "required_components": [
+        "ai_planner",
+        "optimization_engine",
+        "data_analyzer"
+      ],
+      "optional_components": [
+        "plan_validator",
+        "implementation_preparer"
+      ],
+      "environment_variables": [
+        "AI_MODEL_CONFIG",
+        "OPTIMIZATION_PARAMETERS",
+        "PLANNING_TIMEOUT"
+      ],
+      "performance_requirements": {
+        "max_planning_time": "60s",
+        "min_optimization_quality": "0.8",
+        "max_ai_resource_usage": "3GB"
+      }
+    },
+    "health_monitoring_context": {
+      "description": "Context for health monitoring operations",
+      "required_components": [
+        "health_monitor",
+        "alert_system",
+        "status_tracker"
+      ],
+      "optional_components": [
+        "recovery_planner",
+        "notification_manager"
+      ],
+      "environment_variables": [
+        "HEALTH_CHECK_INTERVAL",
+        "ALERT_THRESHOLDS",
+        "NOTIFICATION_CONFIG"
+      ],
+      "performance_requirements": {
+        "max_check_duration": "10s",
+        "min_check_frequency": "30s",
+        "max_monitoring_overhead": "500MB"
+      }
+    }
+  }
+}
+

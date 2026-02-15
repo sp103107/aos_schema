@@ -1,0 +1,197 @@
+{
+  "atom_id": "foreman_v2_rag_intelligence_embedding_executor_atom_v3",
+  "component_name": "foreman_v2_rag_intelligence_embedding_executor",
+  "version": "3.0.0",
+  "description": "Atom executor for embedding Foreman v2 RAG intelligence using atom-based architecture",
+  "capabilities": [
+    "rag_intelligence_embedding",
+    "atom_based_execution",
+    "csv_runner_orchestration",
+    "dynamic_handler_coordination",
+    "embedding_validation",
+    "comprehensive_reporting",
+    "error_recovery_and_retry",
+    "mesh_network_integration"
+  ],
+  "functions": [
+    {
+      "function_name": "initialize_rag_intelligence_embedding",
+      "description": "Initialize the RAG intelligence embedding process",
+      "parameters": {
+        "embedding_config": "object",
+        "foreman_schema_path": "string",
+        "intelligence_atoms_path": "string"
+      },
+      "returns": "initialization_result"
+    },
+    {
+      "function_name": "execute_dynamic_handler_orchestrator",
+      "description": "Execute the dynamic handler orchestrator for atom-based embedding",
+      "parameters": {
+        "csv_runner_path": "string",
+        "execution_mode": "string",
+        "validation_level": "string"
+      },
+      "returns": "orchestration_result"
+    },
+    {
+      "function_name": "embed_foreman_intelligence_integration",
+      "description": "Embed Foreman intelligence integration using atom-based approach",
+      "parameters": {
+        "integration_config": "object",
+        "foreman_master_path": "string",
+        "intelligence_atoms_path": "string"
+      },
+      "returns": "integration_result"
+    },
+    {
+      "function_name": "embed_real_embeddings",
+      "description": "Generate real embeddings using Ollama models",
+      "parameters": {
+        "embedding_config": "object",
+        "ollama_models": "array",
+        "content_sources": "array"
+      },
+      "returns": "embedding_result"
+    },
+    {
+      "function_name": "validate_rag_intelligence_embedding",
+      "description": "Validate the RAG intelligence embedding process",
+      "parameters": {
+        "validation_targets": "array",
+        "validation_criteria": "object",
+        "validation_strategy": "string"
+      },
+      "returns": "validation_result"
+    },
+    {
+      "function_name": "generate_embedding_execution_report",
+      "description": "Generate comprehensive embedding execution report",
+      "parameters": {
+        "report_config": "object",
+        "include_metrics": "boolean",
+        "include_validation": "boolean"
+      },
+      "returns": "report_data"
+    }
+  ],
+  "dependencies": [
+    "dynamic_handler_orchestrator_atom_v3",
+    "master_atom_orchestrator_executor_atom_v3",
+    "foreman_intelligence_integration_atom_v3",
+    "real_embedding_generator_atom_v3",
+    "rag_vector_tree_rebuilder_atom_v3",
+    "advanced_hashing_atom_v3"
+  ],
+  "resource_requirements": {
+    "cpu": "high",
+    "memory": "high",
+    "storage": "medium",
+    "network": "medium"
+  },
+  "execution_flow": [
+    "initialize_rag_intelligence_embedding",
+    "execute_dynamic_handler_orchestrator",
+    "embed_foreman_intelligence_integration",
+    "embed_real_embeddings",
+    "validate_rag_intelligence_embedding",
+    "generate_embedding_execution_report"
+  ],
+  "health_checks": [
+    "rag_intelligence_embedding_initialization",
+    "dynamic_handler_orchestrator_availability",
+    "atom_discovery_success",
+    "execution_environment_validation",
+    "dependency_resolution_status"
+  ],
+  "endpoint": {
+    "protocol": "http",
+    "port": 8082,
+    "path": "/rag_intelligence_embedding",
+    "methods": ["POST", "GET", "PUT"]
+  },
+  "mcp_compliance": {
+    "protocol_version": "1.0",
+    "capabilities": ["rag_intelligence_embedding", "atom_coordination", "validation", "reporting"],
+    "endpoints": ["/rag_intelligence_embedding/execute", "/rag_intelligence_embedding/status", "/rag_intelligence_embedding/report"]
+  },
+  "function_schemas": {
+    "initialize_rag_intelligence_embedding": {
+      "input": {
+        "type": "object",
+        "properties": {
+          "embedding_config": {
+            "type": "object",
+            "properties": {
+              "execution_mode": {"type": "string", "description": "Execution mode for embedding"},
+              "validation_level": {"type": "string", "description": "Validation level for embedding"},
+              "reporting_format": {"type": "string", "description": "Format for reporting"}
+            }
+          },
+          "foreman_schema_path": {"type": "string", "description": "Path to Foreman schema"},
+          "intelligence_atoms_path": {"type": "string", "description": "Path to intelligence atoms"}
+        },
+        "required": ["embedding_config", "foreman_schema_path", "intelligence_atoms_path"]
+      },
+      "output": {
+        "type": "object",
+        "properties": {
+          "success": {"type": "boolean", "description": "Initialization success status"},
+          "discovered_atoms": {"type": "array", "description": "List of discovered atoms"},
+          "metadata": {"type": "object", "description": "Initialization metadata"}
+        }
+      }
+    },
+    "execute_dynamic_handler_orchestrator": {
+      "input": {
+        "type": "object",
+        "properties": {
+          "csv_runner_path": {"type": "string", "description": "Path to CSV runner file"},
+          "execution_mode": {"type": "string", "description": "Execution mode"},
+          "validation_level": {"type": "string", "description": "Validation level"}
+        },
+        "required": ["csv_runner_path"]
+      },
+      "output": {
+        "type": "object",
+        "properties": {
+          "success": {"type": "boolean", "description": "Orchestration success status"},
+          "execution_results": {"type": "array", "description": "Results from orchestration"},
+          "metadata": {"type": "object", "description": "Orchestration metadata"}
+        }
+      }
+    }
+  },
+  "error_handling": {
+    "retry_strategy": "exponential_backoff",
+    "max_retries": 5,
+    "error_recovery": "automatic",
+    "fallback_mechanisms": ["simulated_execution", "cached_results", "partial_execution"]
+  },
+  "performance_metrics": {
+    "execution_time_threshold": "120s",
+    "memory_usage_limit": "2GB",
+    "concurrent_executions": 15,
+    "throughput_target": "300_tasks_per_minute"
+  },
+  "mesh_network_integration": {
+    "peer_discovery": "automatic",
+    "load_balancing": "intelligent",
+    "fault_tolerance": "redundant_execution",
+    "consistency_model": "strong"
+  },
+  "aos_v3_compliance": {
+    "architecture": "atom_based",
+    "execution_model": "rag_intelligence_embedding_coordinated",
+    "communication": "message_bus_hash_based",
+    "modularity": "granular_atoms",
+    "standards": "gold_star_compliant"
+  },
+  "configuration": {
+    "default_csv_runner": "foreman_intelligence_integration_runner.csv",
+    "execution_mode": "rag_intelligence_embedding_atom_bottom_up",
+    "validation_level": "comprehensive",
+    "reporting_format": "json",
+    "orchestration_strategy": "dynamic_handler_based"
+  }
+}

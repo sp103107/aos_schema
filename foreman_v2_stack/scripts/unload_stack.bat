@@ -1,0 +1,3 @@
+@echo off
+echo Deregistering stack from index...
+REM TODO: implement deregistration against central index

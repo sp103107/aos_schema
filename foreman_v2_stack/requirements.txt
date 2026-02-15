@@ -1,0 +1,8 @@
+# Pinned minimal runtime deps for handler + tooling
+jsonschema==4.23.0
+fastapi==0.115.4
+uvicorn[standard]==0.30.6
+nats-py==2.7.2
+redis==5.0.8
+ruff==0.6.9
+watchdog>=4.0.0

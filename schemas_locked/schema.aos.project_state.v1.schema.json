@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "AoS Project State Schema",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "project_id",
+    "name",
+    "domain",
+    "status",
+    "description",
+    "current_focus",
+    "key_artifacts",
+    "core_agents",
+    "entrypoints"
+  ],
+  "additionalProperties": true
+}

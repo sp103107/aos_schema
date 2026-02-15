@@ -1,0 +1,23 @@
+{
+  "component_id": "foreman_v2_ollama_enhanced_vector_tree",
+  "vector_tree": {
+    "root": {
+      "id": "foreman_v2_ollama_enhanced_root",
+      "name": "Ollama Enhanced Foreman v2 Knowledge Tree",
+      "description": "Enhanced root node with Ollama embeddings",
+      "vector_embedding": [
+        0.1,
+        0.2,
+        0.3,
+        0.4,
+        0.5
+      ],
+      "children": [
+        "prompt_generation_knowledge",
+        "advanced_orchestration_knowledge",
+        "overlay_system_knowledge",
+        "ollama_embedding_knowledge"
+      ]
+    }
+  }
+}

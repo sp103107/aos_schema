@@ -1,0 +1,25 @@
+{
+  "watch_dir": "inbox",
+  "processing_dir": "processing",
+  "done_dir": "done",
+  "failed_dir": "failed",
+  "outbox_dir": "outbox",
+  "logs_dir": "logs",
+  "file_glob": "*.json",
+  "debounce_ms": 350,
+  "runner_mode": "cli",
+  "cli_command": [
+    "python",
+    "-m",
+    "aos_runtime.cli"
+  ],
+  "module_entrypoint": {
+    "module": "aos_runtime.runner",
+    "callable": "run_envelope_file",
+    "args": {
+      "path_arg_name": "path"
+    }
+  },
+  "write_stdout_to_outbox": true,
+  "max_parallel": 1
+}

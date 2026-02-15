@@ -1,0 +1,187 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schema.aos.tools_bootstrap.project.v1",
+  "title": "AoS Tools Bootstrap Project File (v1)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "type",
+    "version",
+    "created_at",
+    "provenance",
+    "paths",
+    "rules",
+    "locks",
+    "registries"
+  ],
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "type": {
+      "const": "aos.tools_bootstrap.project"
+    },
+    "version": {
+      "const": "1.0.0"
+    },
+    "created_at": {
+      "type": "string"
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "registry_sha256",
+        "registry_path"
+      ],
+      "properties": {
+        "registry_sha256": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "registry_path": {
+          "type": "string"
+        },
+        "created_at_utc": {
+          "type": "string"
+        }
+      }
+    },
+    "paths": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "repo_root",
+        "tools_dir",
+        "schemas_dir",
+        "registry_dir",
+        "roadmap_dir",
+        "state_dir",
+        "templates_dir",
+        "docs_dir",
+        "examples_dir"
+      ],
+      "properties": {
+        "repo_root": {
+          "type": "string"
+        },
+        "tools_dir": {
+          "type": "string"
+        },
+        "schemas_dir": {
+          "type": "string"
+        },
+        "registry_dir": {
+          "type": "string"
+        },
+        "roadmap_dir": {
+          "type": "string"
+        },
+        "state_dir": {
+          "type": "string"
+        },
+        "templates_dir": {
+          "type": "string"
+        },
+        "docs_dir": {
+          "type": "string"
+        },
+        "examples_dir": {
+          "type": "string"
+        }
+      }
+    },
+    "rules": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_first",
+        "no_hallucinated_fields",
+        "all_actions_logged_jsonl",
+        "atomic_step_policy",
+        "mobile_callable",
+        "mcp_packet_contract"
+      ],
+      "properties": {
+        "schema_first": {
+          "type": "boolean"
+        },
+        "no_hallucinated_fields": {
+          "type": "boolean"
+        },
+        "all_actions_logged_jsonl": {
+          "type": "boolean"
+        },
+        "atomic_step_policy": {
+          "type": "string"
+        },
+        "mobile_callable": {
+          "type": "boolean"
+        },
+        "mcp_packet_contract": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "request_fields",
+            "response_fields"
+          ],
+          "properties": {
+            "request_fields": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "response_fields": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "locks": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "registries": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "tools_catalog_jsonl",
+        "vport_registry_jsonl",
+        "knowledge_ingestion_index_jsonl",
+        "template_ledger_jsonl",
+        "roadmap_jsonl",
+        "done_jsonl"
+      ],
+      "properties": {
+        "tools_catalog_jsonl": {
+          "type": "string"
+        },
+        "vport_registry_jsonl": {
+          "type": "string"
+        },
+        "knowledge_ingestion_index_jsonl": {
+          "type": "string"
+        },
+        "template_ledger_jsonl": {
+          "type": "string"
+        },
+        "roadmap_jsonl": {
+          "type": "string"
+        },
+        "done_jsonl": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

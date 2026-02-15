@@ -1,0 +1,26 @@
+{
+  "vport_id": "vport_pod_formatter_create_bootable_iso_python_v3",
+  "atom_id": "pod_formatter_create_bootable_iso_python_v3",
+  "capabilities": [
+    "creation",
+    "iso_processing",
+    "boot_processing"
+  ],
+  "endpoint": "pod_formatter.create_bootable_iso.execute",
+  "protocol": "message_bus_v2",
+  "security": {
+    "authentication": "none",
+    "encryption": "none",
+    "rate_limiting": false
+  },
+  "performance": {
+    "max_concurrent_requests": 10,
+    "timeout_seconds": 30,
+    "retry_count": 3
+  },
+  "metadata": {
+    "created_at": "2025-09-03T00:52:52.158141",
+    "version": "3.0.0",
+    "status": "active"
+  }
+}

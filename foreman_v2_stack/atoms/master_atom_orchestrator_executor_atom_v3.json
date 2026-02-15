@@ -1,0 +1,198 @@
+{
+  "atom_id": "master_atom_orchestrator_executor_atom_v3",
+  "component_name": "master_atom_orchestrator_executor",
+  "version": "3.0.0",
+  "description": "Master atom orchestrator executor for coordinating atom-based execution using dynamic handler orchestrator",
+  "capabilities": [
+    "master_orchestration",
+    "atom_coordination",
+    "dynamic_handler_management",
+    "csv_runner_orchestration",
+    "execution_flow_management",
+    "comprehensive_reporting",
+    "error_recovery_and_retry",
+    "mesh_network_integration"
+  ],
+  "functions": [
+    {
+      "function_name": "initialize_master_orchestration",
+      "description": "Initialize the master orchestration system and load all required atoms",
+      "parameters": {
+        "orchestration_config": "object",
+        "atom_discovery_paths": "array"
+      },
+      "returns": "initialization_result"
+    },
+    {
+      "function_name": "execute_dynamic_handler_orchestrator",
+      "description": "Execute the dynamic handler orchestrator to manage atom execution",
+      "parameters": {
+        "csv_runner_path": "string",
+        "execution_mode": "string",
+        "validation_level": "string"
+      },
+      "returns": "orchestration_result"
+    },
+    {
+      "function_name": "coordinate_foreman_intelligence_integration",
+      "description": "Coordinate the Foreman intelligence integration process",
+      "parameters": {
+        "integration_config": "object",
+        "foreman_schema_path": "string",
+        "intelligence_atoms_path": "string"
+      },
+      "returns": "integration_result"
+    },
+    {
+      "function_name": "coordinate_real_embedding_generation",
+      "description": "Coordinate the real embedding generation process using Ollama",
+      "parameters": {
+        "embedding_config": "object",
+        "ollama_models": "array",
+        "content_sources": "array"
+      },
+      "returns": "embedding_result"
+    },
+    {
+      "function_name": "validate_master_execution",
+      "description": "Validate the complete master execution process",
+      "parameters": {
+        "validation_targets": "array",
+        "validation_criteria": "object",
+        "validation_strategy": "string"
+      },
+      "returns": "validation_result"
+    },
+    {
+      "function_name": "generate_master_execution_report",
+      "description": "Generate comprehensive master execution report",
+      "parameters": {
+        "report_config": "object",
+        "include_metrics": "boolean",
+        "include_validation": "boolean"
+      },
+      "returns": "report_data"
+    }
+  ],
+  "dependencies": [
+    "dynamic_handler_orchestrator_atom_v3",
+    "foreman_intelligence_integration_atom_v3",
+    "real_embedding_generator_atom_v3",
+    "rag_vector_tree_rebuilder_atom_v3",
+    "advanced_hashing_atom_v3"
+  ],
+  "resource_requirements": {
+    "cpu": "high",
+    "memory": "high",
+    "storage": "medium",
+    "network": "medium"
+  },
+  "execution_flow": [
+    "initialize_master_orchestration",
+    "execute_dynamic_handler_orchestrator",
+    "coordinate_foreman_intelligence_integration",
+    "coordinate_real_embedding_generation",
+    "validate_master_execution",
+    "generate_master_execution_report"
+  ],
+  "health_checks": [
+    "master_orchestration_initialization",
+    "dynamic_handler_orchestrator_availability",
+    "atom_discovery_success",
+    "execution_environment_validation",
+    "dependency_resolution_status"
+  ],
+  "endpoint": {
+    "protocol": "http",
+    "port": 8081,
+    "path": "/master_orchestrator",
+    "methods": ["POST", "GET", "PUT"]
+  },
+  "mcp_compliance": {
+    "protocol_version": "1.0",
+    "capabilities": ["master_orchestration", "atom_coordination", "validation", "reporting"],
+    "endpoints": ["/master_orchestrator/execute", "/master_orchestrator/status", "/master_orchestrator/report"]
+  },
+  "function_schemas": {
+    "initialize_master_orchestration": {
+      "input": {
+        "type": "object",
+        "properties": {
+          "orchestration_config": {
+            "type": "object",
+            "properties": {
+              "execution_mode": {"type": "string", "description": "Execution mode for orchestration"},
+              "validation_level": {"type": "string", "description": "Validation level for execution"},
+              "reporting_format": {"type": "string", "description": "Format for reporting"}
+            }
+          },
+          "atom_discovery_paths": {
+            "type": "array",
+            "items": {"type": "string"},
+            "description": "Paths to discover atoms"
+          }
+        },
+        "required": ["orchestration_config", "atom_discovery_paths"]
+      },
+      "output": {
+        "type": "object",
+        "properties": {
+          "success": {"type": "boolean", "description": "Initialization success status"},
+          "discovered_atoms": {"type": "array", "description": "List of discovered atoms"},
+          "metadata": {"type": "object", "description": "Initialization metadata"}
+        }
+      }
+    },
+    "execute_dynamic_handler_orchestrator": {
+      "input": {
+        "type": "object",
+        "properties": {
+          "csv_runner_path": {"type": "string", "description": "Path to CSV runner file"},
+          "execution_mode": {"type": "string", "description": "Execution mode"},
+          "validation_level": {"type": "string", "description": "Validation level"}
+        },
+        "required": ["csv_runner_path"]
+      },
+      "output": {
+        "type": "object",
+        "properties": {
+          "success": {"type": "boolean", "description": "Orchestration success status"},
+          "execution_results": {"type": "array", "description": "Results from orchestration"},
+          "metadata": {"type": "object", "description": "Orchestration metadata"}
+        }
+      }
+    }
+  },
+  "error_handling": {
+    "retry_strategy": "exponential_backoff",
+    "max_retries": 5,
+    "error_recovery": "automatic",
+    "fallback_mechanisms": ["simulated_execution", "cached_results", "partial_execution"]
+  },
+  "performance_metrics": {
+    "execution_time_threshold": "60s",
+    "memory_usage_limit": "1GB",
+    "concurrent_executions": 10,
+    "throughput_target": "200_tasks_per_minute"
+  },
+  "mesh_network_integration": {
+    "peer_discovery": "automatic",
+    "load_balancing": "intelligent",
+    "fault_tolerance": "redundant_execution",
+    "consistency_model": "strong"
+  },
+  "aos_v3_compliance": {
+    "architecture": "atom_based",
+    "execution_model": "master_orchestrator_coordinated",
+    "communication": "message_bus_hash_based",
+    "modularity": "granular_atoms",
+    "standards": "gold_star_compliant"
+  },
+  "configuration": {
+    "default_csv_runner": "foreman_intelligence_integration_runner.csv",
+    "execution_mode": "master_atom_bottom_up",
+    "validation_level": "comprehensive",
+    "reporting_format": "json",
+    "orchestration_strategy": "dynamic_handler_based"
+  }
+}

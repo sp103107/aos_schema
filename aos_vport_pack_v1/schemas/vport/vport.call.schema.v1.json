@@ -1,0 +1,61 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "aos.vport.call.schema.v1",
+  "title": "AoS vPort Call Envelope",
+  "description": "Internal call envelope used by AoS to invoke a vPort via the registry.",
+  "type": "object",
+  "required": [
+    "vport",
+    "payload"
+  ],
+  "properties": {
+    "request_id": {
+      "type": "string",
+      "description": "Optional id to correlate call and result."
+    },
+    "vport": {
+      "$ref": "aos.vport.id.schema.v1"
+    },
+    "profile_id": {
+      "type": "string",
+      "description": "Optional AoS user/behavior profile id.",
+      "default": "AoS_User_Default"
+    },
+    "task_type": {
+      "type": "string",
+      "description": "High-level task classification used by AoS.",
+      "enum": [
+        "chat_general",
+        "coding_assist",
+        "writing_helper",
+        "planner",
+        "researcher"
+      ],
+      "default": "chat_general"
+    },
+    "payload": {
+      "type": "object",
+      "description": "Input object for the vPort target. Shape depends on the target.",
+      "additionalProperties": true
+    },
+    "options": {
+      "type": "object",
+      "description": "Optional call options (timeouts, streaming, dry-run).",
+      "properties": {
+        "timeout_ms": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "dry_run": {
+          "type": "boolean"
+        },
+        "expect_stream": {
+          "type": "boolean",
+          "description": "True if caller expects streaming/iterative results."
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

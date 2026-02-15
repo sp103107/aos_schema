@@ -1,0 +1,1 @@
+Follow docs/CURSOR_RULES.md strictly. No hallucinated fields. Log everything to JSONL.

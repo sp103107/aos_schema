@@ -1,0 +1,78 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "aos.schema.agent.librarian.output.v1",
+  "title": "AoS Librarian Agent Output Contract v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "status",
+    "reasoning_summary",
+    "results"
+  ],
+  "properties": {
+    "status": {
+      "type": "string",
+      "enum": [
+        "SUCCESS",
+        "PARTIAL_SUCCESS",
+        "FAILURE",
+        "NEEDS_HUMAN_INPUT"
+      ]
+    },
+    "reasoning_summary": {
+      "type": "string"
+    },
+    "results": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "source_id",
+          "title",
+          "snippet",
+          "score",
+          "fetched_at"
+        ],
+        "properties": {
+          "source_id": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "snippet": {
+            "type": "string"
+          },
+          "score": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "fetched_at": {
+            "type": "string"
+          },
+          "citations": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "default": []
+          }
+        }
+      }
+    },
+    "notes": {
+      "type": "string",
+      "default": ""
+    },
+    "metrics": {
+      "type": "object",
+      "additionalProperties": true,
+      "default": {}
+    }
+  }
+}

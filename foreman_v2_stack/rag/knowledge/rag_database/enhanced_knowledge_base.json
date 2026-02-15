@@ -1,0 +1,489 @@
+{
+  "component_id": "foreman_v2_enhanced",
+  "component_name": "Enhanced Foreman v2",
+  "component_type": "enhanced_orchestration_management",
+  "vport_hash": "747ba763cb2309df",
+  "created_at": "2025-09-03T00:15:40.097384",
+  "functions": {
+    "execute": {
+      "description": "Execute orchestration tasks with advanced coordination",
+      "parameters": [
+        "task_type",
+        "task_data",
+        "execution_options"
+      ],
+      "capabilities": [
+        "task_orchestration",
+        "coordination_management",
+        "execution_monitoring"
+      ],
+      "execution_pattern": "plan \u2192 coordinate \u2192 execute \u2192 monitor \u2192 report",
+      "dependencies": [
+        "orchestration_engine",
+        "coordination_system"
+      ],
+      "rag_context": "Advanced task orchestration with intelligent coordination and monitoring"
+    },
+    "get_info": {
+      "description": "Get comprehensive information about foreman v2 system",
+      "parameters": [
+        "info_type",
+        "detail_level",
+        "include_metrics"
+      ],
+      "capabilities": [
+        "system_information",
+        "metrics_collection",
+        "status_reporting"
+      ],
+      "execution_pattern": "collect \u2192 analyze \u2192 format \u2192 return",
+      "dependencies": [
+        "metrics_collector",
+        "status_monitor"
+      ],
+      "rag_context": "Comprehensive system information and status reporting"
+    },
+    "task_orchestration_vport": {
+      "description": "Orchestrate tasks across multiple VPorts",
+      "parameters": [
+        "orchestration_plan",
+        "vport_mapping",
+        "execution_strategy"
+      ],
+      "capabilities": [
+        "vport_orchestration",
+        "task_distribution",
+        "result_aggregation"
+      ],
+      "execution_pattern": "plan \u2192 distribute \u2192 execute \u2192 aggregate \u2192 return",
+      "dependencies": [
+        "vport_manager",
+        "task_distributor"
+      ],
+      "rag_context": "Multi-VPort task orchestration with intelligent distribution"
+    },
+    "orchestration_system_vport": {
+      "description": "Manage orchestration system VPorts",
+      "parameters": [
+        "vport_configuration",
+        "system_settings",
+        "management_options"
+      ],
+      "capabilities": [
+        "vport_management",
+        "system_configuration",
+        "orchestration_control"
+      ],
+      "execution_pattern": "configure \u2192 initialize \u2192 manage \u2192 monitor",
+      "dependencies": [
+        "vport_configurator",
+        "system_manager"
+      ],
+      "rag_context": "Orchestration system VPort management and configuration"
+    },
+    "orchestration_integration": {
+      "description": "Integrate with external orchestration systems",
+      "parameters": [
+        "integration_type",
+        "external_config",
+        "integration_options"
+      ],
+      "capabilities": [
+        "external_integration",
+        "system_connectivity",
+        "orchestration_extensions"
+      ],
+      "execution_pattern": "connect \u2192 configure \u2192 integrate \u2192 test \u2192 activate",
+      "dependencies": [
+        "integration_manager",
+        "external_connector"
+      ],
+      "rag_context": "External orchestration system integration and connectivity"
+    },
+    "orchestration_test_suite": {
+      "description": "Comprehensive orchestration testing suite",
+      "parameters": [
+        "test_scenarios",
+        "test_configuration",
+        "validation_rules"
+      ],
+      "capabilities": [
+        "test_execution",
+        "scenario_validation",
+        "performance_testing"
+      ],
+      "execution_pattern": "setup \u2192 execute \u2192 validate \u2192 report",
+      "dependencies": [
+        "test_engine",
+        "validation_system"
+      ],
+      "rag_context": "Comprehensive orchestration testing with scenario validation"
+    },
+    "orchestration_health_checker": {
+      "description": "Check health and status of orchestration system",
+      "parameters": [
+        "health_checks",
+        "status_metrics",
+        "alert_configuration"
+      ],
+      "capabilities": [
+        "health_monitoring",
+        "status_tracking",
+        "alert_management"
+      ],
+      "execution_pattern": "check \u2192 analyze \u2192 alert \u2192 report",
+      "dependencies": [
+        "health_monitor",
+        "alert_system"
+      ],
+      "rag_context": "Orchestration system health monitoring and alerting"
+    },
+    "comprehensive_orchestration_test_runner": {
+      "description": "Run comprehensive orchestration tests",
+      "parameters": [
+        "test_suite",
+        "execution_config",
+        "result_analysis"
+      ],
+      "capabilities": [
+        "test_execution",
+        "result_analysis",
+        "performance_evaluation"
+      ],
+      "execution_pattern": "prepare \u2192 execute \u2192 analyze \u2192 evaluate \u2192 report",
+      "dependencies": [
+        "test_runner",
+        "analysis_engine"
+      ],
+      "rag_context": "Comprehensive orchestration test execution and analysis"
+    },
+    "schema_stack_orchestration_system": {
+      "description": "Orchestrate schema stack operations",
+      "parameters": [
+        "schema_operations",
+        "stack_configuration",
+        "orchestration_rules"
+      ],
+      "capabilities": [
+        "schema_orchestration",
+        "stack_management",
+        "operation_coordination"
+      ],
+      "execution_pattern": "configure \u2192 orchestrate \u2192 execute \u2192 validate",
+      "dependencies": [
+        "schema_manager",
+        "stack_orchestrator"
+      ],
+      "rag_context": "Schema stack orchestration with operation coordination"
+    },
+    "simple_orchestration_test": {
+      "description": "Simple orchestration test execution",
+      "parameters": [
+        "test_case",
+        "execution_options",
+        "validation_criteria"
+      ],
+      "capabilities": [
+        "test_execution",
+        "basic_validation",
+        "result_reporting"
+      ],
+      "execution_pattern": "setup \u2192 execute \u2192 validate \u2192 report",
+      "dependencies": [
+        "test_executor",
+        "validator"
+      ],
+      "rag_context": "Simple orchestration test execution and validation"
+    },
+    "test_orchestration_step_by_step": {
+      "description": "Step-by-step orchestration testing",
+      "parameters": [
+        "test_steps",
+        "step_configuration",
+        "validation_points"
+      ],
+      "capabilities": [
+        "step_execution",
+        "step_validation",
+        "progressive_testing"
+      ],
+      "execution_pattern": "step \u2192 validate \u2192 next \u2192 complete",
+      "dependencies": [
+        "step_executor",
+        "step_validator"
+      ],
+      "rag_context": "Step-by-step orchestration testing with validation points"
+    },
+    "orchestration_system_test_suite": {
+      "description": "Complete orchestration system test suite",
+      "parameters": [
+        "test_suite_config",
+        "execution_parameters",
+        "result_requirements"
+      ],
+      "capabilities": [
+        "suite_execution",
+        "comprehensive_testing",
+        "result_analysis"
+      ],
+      "execution_pattern": "configure \u2192 execute \u2192 analyze \u2192 report",
+      "dependencies": [
+        "test_suite_runner",
+        "analysis_system"
+      ],
+      "rag_context": "Complete orchestration system test suite execution"
+    },
+    "dynamic_foreman_v2_discovery": {
+      "description": "Dynamically discover foreman v2 capabilities",
+      "parameters": [
+        "discovery_patterns",
+        "capability_filters",
+        "integration_rules"
+      ],
+      "capabilities": [
+        "capability_discovery",
+        "dynamic_integration",
+        "auto_configuration"
+      ],
+      "execution_pattern": "scan \u2192 discover \u2192 analyze \u2192 integrate \u2192 register",
+      "dependencies": [
+        "discovery_engine",
+        "integration_manager"
+      ],
+      "rag_context": "Dynamic discovery and integration of foreman v2 capabilities"
+    },
+    "test_rtx_health_monitoring": {
+      "description": "Test RTX health monitoring capabilities",
+      "parameters": [
+        "monitoring_config",
+        "health_checks",
+        "alert_settings"
+      ],
+      "capabilities": [
+        "health_monitoring",
+        "rtx_integration",
+        "alert_testing"
+      ],
+      "execution_pattern": "configure \u2192 monitor \u2192 test \u2192 validate",
+      "dependencies": [
+        "rtx_monitor",
+        "health_checker"
+      ],
+      "rag_context": "RTX health monitoring testing and validation"
+    },
+    "create_ai_orchestration_spreadsheet": {
+      "description": "Create AI orchestration spreadsheet for planning",
+      "parameters": [
+        "spreadsheet_config",
+        "orchestration_data",
+        "format_options"
+      ],
+      "capabilities": [
+        "spreadsheet_generation",
+        "ai_planning",
+        "orchestration_mapping"
+      ],
+      "execution_pattern": "plan \u2192 generate \u2192 format \u2192 populate",
+      "dependencies": [
+        "spreadsheet_generator",
+        "ai_planner"
+      ],
+      "rag_context": "AI-powered orchestration spreadsheet generation and planning"
+    },
+    "calculate_orchestration_priority": {
+      "description": "Calculate orchestration priorities for tasks",
+      "parameters": [
+        "task_list",
+        "priority_factors",
+        "calculation_rules"
+      ],
+      "capabilities": [
+        "priority_calculation",
+        "task_ranking",
+        "optimization_analysis"
+      ],
+      "execution_pattern": "analyze \u2192 calculate \u2192 rank \u2192 optimize",
+      "dependencies": [
+        "priority_calculator",
+        "optimization_engine"
+      ],
+      "rag_context": "Intelligent orchestration priority calculation and optimization"
+    },
+    "advanced_ai_orchestration_engine_atom": {
+      "description": "Function from advanced_orchestration system",
+      "parameters": [
+        "param1",
+        "param2"
+      ],
+      "capabilities": [
+        "advanced_orchestration",
+        "integration"
+      ],
+      "execution_pattern": "discover \u2192 process \u2192 integrate",
+      "dependencies": [
+        "advanced_orchestration_engine"
+      ],
+      "rag_context": "Integration function for advanced_orchestration system"
+    },
+    "foreman_v2_core_atom": {
+      "description": "Function from advanced_orchestration system",
+      "parameters": [
+        "param1",
+        "param2"
+      ],
+      "capabilities": [
+        "advanced_orchestration",
+        "integration"
+      ],
+      "execution_pattern": "discover \u2192 process \u2192 integrate",
+      "dependencies": [
+        "advanced_orchestration_engine"
+      ],
+      "rag_context": "Integration function for advanced_orchestration system"
+    },
+    "monitoring_engine_atom_010": {
+      "description": "Function from advanced_orchestration system",
+      "parameters": [
+        "param1",
+        "param2"
+      ],
+      "capabilities": [
+        "advanced_orchestration",
+        "integration"
+      ],
+      "execution_pattern": "discover \u2192 process \u2192 integrate",
+      "dependencies": [
+        "advanced_orchestration_engine"
+      ],
+      "rag_context": "Integration function for advanced_orchestration system"
+    },
+    "orchestration_integration_atom": {
+      "description": "Function from advanced_orchestration system",
+      "parameters": [
+        "param1",
+        "param2"
+      ],
+      "capabilities": [
+        "advanced_orchestration",
+        "integration"
+      ],
+      "execution_pattern": "discover \u2192 process \u2192 integrate",
+      "dependencies": [
+        "advanced_orchestration_engine"
+      ],
+      "rag_context": "Integration function for advanced_orchestration system"
+    },
+    "orchestration_system_vport_atom": {
+      "description": "Function from advanced_orchestration system",
+      "parameters": [
+        "param1",
+        "param2"
+      ],
+      "capabilities": [
+        "advanced_orchestration",
+        "integration"
+      ],
+      "execution_pattern": "discover \u2192 process \u2192 integrate",
+      "dependencies": [
+        "advanced_orchestration_engine"
+      ],
+      "rag_context": "Integration function for advanced_orchestration system"
+    },
+    "policy_engine_atom_009": {
+      "description": "Function from advanced_orchestration system",
+      "parameters": [
+        "param1",
+        "param2"
+      ],
+      "capabilities": [
+        "advanced_orchestration",
+        "integration"
+      ],
+      "execution_pattern": "discover \u2192 process \u2192 integrate",
+      "dependencies": [
+        "advanced_orchestration_engine"
+      ],
+      "rag_context": "Integration function for advanced_orchestration system"
+    },
+    "resource_manager_atom_008": {
+      "description": "Function from advanced_orchestration system",
+      "parameters": [
+        "param1",
+        "param2"
+      ],
+      "capabilities": [
+        "advanced_orchestration",
+        "integration"
+      ],
+      "execution_pattern": "discover \u2192 process \u2192 integrate",
+      "dependencies": [
+        "advanced_orchestration_engine"
+      ],
+      "rag_context": "Integration function for advanced_orchestration system"
+    },
+    "schema_stack_orchestration_system_atom": {
+      "description": "Function from advanced_orchestration system",
+      "parameters": [
+        "param1",
+        "param2"
+      ],
+      "capabilities": [
+        "advanced_orchestration",
+        "integration"
+      ],
+      "execution_pattern": "discover \u2192 process \u2192 integrate",
+      "dependencies": [
+        "advanced_orchestration_engine"
+      ],
+      "rag_context": "Integration function for advanced_orchestration system"
+    },
+    "task_orchestration_vport_atom": {
+      "description": "Function from advanced_orchestration system",
+      "parameters": [
+        "param1",
+        "param2"
+      ],
+      "capabilities": [
+        "advanced_orchestration",
+        "integration"
+      ],
+      "execution_pattern": "discover \u2192 process \u2192 integrate",
+      "dependencies": [
+        "advanced_orchestration_engine"
+      ],
+      "rag_context": "Integration function for advanced_orchestration system"
+    },
+    "workflow_engine_atom_007": {
+      "description": "Function from advanced_orchestration system",
+      "parameters": [
+        "param1",
+        "param2"
+      ],
+      "capabilities": [
+        "advanced_orchestration",
+        "integration"
+      ],
+      "execution_pattern": "discover \u2192 process \u2192 integrate",
+      "dependencies": [
+        "advanced_orchestration_engine"
+      ],
+      "rag_context": "Integration function for advanced_orchestration system"
+    },
+    "overlay_engine_atom_v3": {
+      "description": "Function from overlay_system system",
+      "parameters": [
+        "param1",
+        "param2"
+      ],
+      "capabilities": [
+        "overlay_system",
+        "integration"
+      ],
+      "execution_pattern": "discover \u2192 process \u2192 integrate",
+      "dependencies": [
+        "overlay_system_engine"
+      ],
+      "rag_context": "Integration function for overlay_system system"
+    }
+  }
+}

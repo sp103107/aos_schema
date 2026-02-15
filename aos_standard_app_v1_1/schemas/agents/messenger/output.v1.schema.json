@@ -1,0 +1,67 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "aos.schema.agent.messenger.output.v1",
+  "title": "AoS Messenger Agent Output Contract v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "status",
+    "reasoning_summary",
+    "delivery_reports"
+  ],
+  "properties": {
+    "status": {
+      "type": "string",
+      "enum": [
+        "SUCCESS",
+        "PARTIAL_SUCCESS",
+        "FAILURE",
+        "NEEDS_HUMAN_INPUT"
+      ]
+    },
+    "reasoning_summary": {
+      "type": "string"
+    },
+    "delivery_reports": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "target_id",
+          "channel",
+          "status"
+        ],
+        "properties": {
+          "target_id": {
+            "type": "string"
+          },
+          "channel": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "SENT",
+              "QUEUED",
+              "FAILED",
+              "SKIPPED"
+            ]
+          },
+          "details": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "notes": {
+      "type": "string",
+      "default": ""
+    },
+    "metrics": {
+      "type": "object",
+      "additionalProperties": true,
+      "default": {}
+    }
+  }
+}

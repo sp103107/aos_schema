@@ -1,0 +1,593 @@
+{
+  "component_id": "foreman_v2_intelligence_enhanced_v3",
+  "vector_tree": {
+    "root": {
+      "id": "foreman_v2_intelligence_enhanced_root",
+      "name": "Intelligence-Enhanced Foreman v2 Knowledge Tree",
+      "description": "Enhanced root node incorporating AOS v3 atom architecture, intelligence enhancement system, and comprehensive system capabilities",
+      "vector_embedding": [0.1, 0.2, 0.3, 0.4, 0.5],
+      "children": [
+        "orchestration_knowledge",
+        "testing_knowledge", 
+        "ai_planning_knowledge",
+        "health_monitoring_knowledge",
+        "aos_v3_atom_architecture_knowledge",
+        "legacy_vport_knowledge",
+        "intelligence_system_knowledge",
+        "system_context_knowledge",
+        "intelligence_enhancement_knowledge",
+        "rag_integration_knowledge",
+        "llm_multi_handler_knowledge",
+        "judge_overlay_knowledge",
+        "vector_enhancement_knowledge",
+        "foreman_test_knowledge",
+        "llm_test_knowledge",
+        "intelligence_integration_knowledge",
+        "testing_framework_knowledge",
+        "aos_v3_compliance_knowledge"
+      ]
+    },
+    "intelligence_enhancement_knowledge": {
+      "id": "intelligence_enhancement_knowledge",
+      "name": "Intelligence Enhancement System Knowledge",
+      "description": "Comprehensive intelligence enhancement system with LLM Multi-Handlers, Judge Overlay, and Vector Enhancement",
+      "vector_embedding": [0.15, 0.25, 0.35, 0.45, 0.55],
+      "children": [
+        "llm_multi_handler_knowledge",
+        "judge_overlay_knowledge",
+        "vector_enhancement_knowledge",
+        "foreman_test_knowledge",
+        "llm_test_knowledge",
+        "intelligence_integration_knowledge",
+        "testing_framework_knowledge",
+        "aos_v3_compliance_knowledge"
+      ],
+      "knowledge_items": [
+        {
+          "id": "intelligence_system_overview",
+          "title": "Intelligence Enhancement System Overview",
+          "content": "Complete intelligence enhancement system with 7 atoms: LLM Multi-Handler, Judge Overlay, Vector Enhancement, Foreman Test, LLM Test, Intelligence Integration, and RAG Integration",
+          "tags": ["intelligence", "enhancement", "system", "overview", "atoms"],
+          "location": "AoS_v3/foreman_v2_stack/intelligence/"
+        },
+        {
+          "id": "atom_architecture",
+          "title": "Atom Architecture",
+          "content": "All intelligence components follow AOS v3 atom architecture with JSON definitions, CSV runtime orchestration, and master registry integration",
+          "tags": ["atom", "architecture", "aos_v3", "json", "csv"],
+          "location": "AoS_v3/foreman_v2_stack/intelligence/atoms/"
+        },
+        {
+          "id": "integration_strategy",
+          "title": "Integration Strategy",
+          "content": "5-phase integration strategy: Preparation, Intelligence Integration, Schema Updates, Registry Updates, Validation and Testing",
+          "tags": ["integration", "strategy", "phases", "validation"],
+          "location": "AoS_v3/foreman_v2_stack/intelligence/rag_integration_master.json"
+        }
+      ]
+    },
+    "llm_multi_handler_knowledge": {
+      "id": "llm_multi_handler_knowledge",
+      "name": "LLM Multi-Handler Knowledge",
+      "description": "Intelligent model selection and execution system for multiple LLM models",
+      "vector_embedding": [0.2, 0.3, 0.4, 0.5, 0.6],
+      "children": [
+        "model_selection_strategies",
+        "concurrent_execution",
+        "performance_optimization",
+        "fallback_handling"
+      ],
+      "knowledge_items": [
+        {
+          "id": "llm_multi_handler_atom",
+          "title": "LLM Multi-Handler Atom",
+          "content": "Atom ID: llm_multi_handler_atom_v3, Fibonacci Level: 6, Complexity Score: 7, Supports: llama2, codellama, mistral, gpt4, claude3",
+          "tags": ["llm", "multi_handler", "atom", "model_selection"],
+          "location": "AoS_v3/foreman_v2_stack/intelligence/atoms/llm_multi_handler_atom.json"
+        },
+        {
+          "id": "intelligent_model_selection",
+          "title": "Intelligent Model Selection",
+          "content": "Automatically selects optimal LLM model based on task type, content, and quality requirements",
+          "tags": ["model_selection", "intelligent", "optimization", "quality"]
+        },
+        {
+          "id": "concurrent_execution",
+          "title": "Concurrent Execution",
+          "content": "Handles multiple LLM requests simultaneously with load balancing and fault tolerance",
+          "tags": ["concurrent", "execution", "load_balancing", "fault_tolerance"]
+        }
+      ]
+    },
+    "judge_overlay_knowledge": {
+      "id": "judge_overlay_knowledge",
+      "name": "Judge Overlay Knowledge",
+      "description": "Quality assessment and validation system for content evaluation",
+      "vector_embedding": [0.25, 0.35, 0.45, 0.55, 0.65],
+      "children": [
+        "quality_assessment",
+        "content_evaluation",
+        "recommendation_generation",
+        "confidence_scoring"
+      ],
+      "knowledge_items": [
+        {
+          "id": "judge_overlay_atom",
+          "title": "Judge Overlay Atom",
+          "content": "Atom ID: judge_overlay_atom_v3, Fibonacci Level: 5, Complexity Score: 6, Evaluation Criteria: accuracy, relevance, coherence, completeness, compliance",
+          "tags": ["judge", "overlay", "quality", "evaluation"],
+          "location": "AoS_v3/foreman_v2_stack/intelligence/atoms/judge_overlay_atom.json"
+        },
+        {
+          "id": "evaluation_criteria",
+          "title": "Evaluation Criteria",
+          "content": "Accuracy (25%), Relevance (25%), Coherence (20%), Completeness (20%), Compliance (10%)",
+          "tags": ["evaluation", "criteria", "weighting", "quality"]
+        },
+        {
+          "id": "confidence_scoring",
+          "title": "Confidence Scoring",
+          "content": "Generates confidence levels and recommendations for content quality improvement",
+          "tags": ["confidence", "scoring", "recommendations", "improvement"]
+        }
+      ]
+    },
+    "vector_enhancement_knowledge": {
+      "id": "vector_enhancement_knowledge",
+      "name": "Vector Enhancement Knowledge",
+      "description": "Intelligence-based vector embedding processing and enhancement",
+      "vector_embedding": [0.3, 0.4, 0.5, 0.6, 0.7],
+      "children": [
+        "semantic_enrichment",
+        "context_awareness",
+        "knowledge_integration",
+        "intelligence_amplification"
+      ],
+      "knowledge_items": [
+        {
+          "id": "vector_enhancement_atom",
+          "title": "Vector Enhancement Atom",
+          "content": "Atom ID: vector_enhancement_atom_v3, Fibonacci Level: 7, Complexity Score: 8, Enhancement Strategies: semantic_enrichment, context_awareness, knowledge_integration, quality_optimization, intelligence_amplification",
+          "tags": ["vector", "enhancement", "semantic", "intelligence"],
+          "location": "AoS_v3/foreman_v2_stack/intelligence/atoms/vector_enhancement_atom.json"
+        },
+        {
+          "id": "enhancement_strategies",
+          "title": "Enhancement Strategies",
+          "content": "Semantic enrichment, context awareness, knowledge integration, quality optimization, intelligence amplification",
+          "tags": ["strategies", "enhancement", "semantic", "context"]
+        },
+        {
+          "id": "intelligence_amplification",
+          "title": "Intelligence Amplification",
+          "content": "Enhances vector embeddings with additional intelligence and context awareness",
+          "tags": ["intelligence", "amplification", "context", "awareness"]
+        }
+      ]
+    },
+    "foreman_test_knowledge": {
+      "id": "foreman_test_knowledge",
+      "name": "Foreman Test Knowledge",
+      "description": "Comprehensive testing system for all Foreman features and capabilities",
+      "vector_embedding": [0.35, 0.45, 0.55, 0.65, 0.75],
+      "children": [
+        "comprehensive_testing",
+        "llm_call_validation",
+        "foreman_feature_testing",
+        "intelligence_enhancement_validation"
+      ],
+      "knowledge_items": [
+        {
+          "id": "foreman_test_atom",
+          "title": "Foreman Test Atom",
+          "content": "Atom ID: foreman_test_atom_v3, Fibonacci Level: 8, Complexity Score: 9, Test Categories: foreman_master_functionality, llm_call_integration, headless_cursor_control, orchestration_system, documentation_automation, judge_overlay_system, prompt_generator_system, vector_embedding_system, intelligence_enhancement_system",
+          "tags": ["testing", "foreman", "comprehensive", "validation"],
+          "location": "AoS_v3/foreman_v2_stack/intelligence/atoms/foreman_test_atom_v3.json"
+        },
+        {
+          "id": "test_categories",
+          "title": "Test Categories",
+          "content": "20 comprehensive test categories covering all Foreman features, LLM calls, and intelligence enhancement capabilities",
+          "tags": ["categories", "comprehensive", "features", "capabilities"]
+        },
+        {
+          "id": "performance_benchmarking",
+          "title": "Performance Benchmarking",
+          "content": "Benchmarks system performance, response times, and quality metrics across all components",
+          "tags": ["performance", "benchmarking", "metrics", "quality"]
+        }
+      ]
+    },
+    "llm_test_knowledge": {
+      "id": "llm_test_knowledge",
+      "name": "LLM Test Knowledge",
+      "description": "Specialized testing system for LLM calls, model configurations, and integration validation",
+      "vector_embedding": [0.4, 0.5, 0.6, 0.7, 0.8],
+      "children": [
+        "llm_call_validation",
+        "model_configuration_testing",
+        "response_quality_assessment",
+        "integration_validation"
+      ],
+      "knowledge_items": [
+        {
+          "id": "llm_test_atom",
+          "title": "LLM Test Atom",
+          "content": "Atom ID: llm_test_atom_v3, Fibonacci Level: 6, Complexity Score: 7, LLM Models: llama2, codellama, mistral, gpt4, claude3",
+          "tags": ["llm", "testing", "validation", "models"],
+          "location": "AoS_v3/foreman_v2_stack/intelligence/atoms/llm_test_atom_v3.json"
+        },
+        {
+          "id": "model_testing",
+          "title": "Model Testing",
+          "content": "Tests each LLM model for integration, response quality, performance, and error handling",
+          "tags": ["model", "testing", "integration", "quality"]
+        },
+        {
+          "id": "embedding_generation_testing",
+          "title": "Embedding Generation Testing",
+          "content": "Validates embedding generation, dimension accuracy, and generation time for each model",
+          "tags": ["embedding", "generation", "validation", "accuracy"]
+        }
+      ]
+    },
+    "intelligence_integration_knowledge": {
+      "id": "intelligence_integration_knowledge",
+      "name": "Intelligence Integration Knowledge",
+      "description": "Integration system for embedding intelligence enhancement into Foreman master schema",
+      "vector_embedding": [0.45, 0.55, 0.65, 0.75, 0.85],
+      "children": [
+        "foreman_master_integration",
+        "capability_enhancement",
+        "endpoint_integration",
+        "message_bus_integration"
+      ],
+      "knowledge_items": [
+        {
+          "id": "intelligence_integration_atom",
+          "title": "Intelligence Integration Atom",
+          "content": "Atom ID: intelligence_integration_atom_v3, Fibonacci Level: 9, Complexity Score: 10, Integration Targets: foreman_master, llm_call, headless_cursor, orchestration_system, documentation_automation, judge_overlay, overlay_system, judgment_workflows",
+          "tags": ["integration", "intelligence", "foreman", "embedding"],
+          "location": "AoS_v3/foreman_v2_stack/intelligence/atoms/intelligence_integration_atom.json"
+        },
+        {
+          "id": "integration_strategies",
+          "title": "Integration Strategies",
+          "content": "Capability enhancement, endpoint integration, message bus integration, schema updates",
+          "tags": ["strategies", "integration", "capabilities", "endpoints"]
+        },
+        {
+          "id": "master_schema_updates",
+          "title": "Master Schema Updates",
+          "content": "Updates Foreman master schema to include intelligence enhancement capabilities and endpoints",
+          "tags": ["schema", "updates", "master", "capabilities"]
+        }
+      ]
+    },
+    "rag_integration_knowledge": {
+      "id": "rag_integration_knowledge",
+      "name": "RAG Integration Knowledge",
+      "description": "RAG database integration system for adding intelligence enhancement to vector tree",
+      "vector_embedding": [0.5, 0.6, 0.7, 0.8, 0.9],
+      "children": [
+        "rag_database_integration",
+        "vector_tree_enhancement",
+        "knowledge_base_expansion",
+        "semantic_search_enhancement"
+      ],
+      "knowledge_items": [
+        {
+          "id": "rag_integration_atom",
+          "title": "RAG Integration Atom",
+          "content": "Atom ID: rag_integration_atom_v3, Fibonacci Level: 8, Complexity Score: 9, Integration Targets: aos_v3_atom_enhanced_vector_tree.json, foreman_master_schema.json, master_atom_registry.csv, intelligence_enhancement_vector_tree.json",
+          "tags": ["rag", "integration", "vector_tree", "knowledge_base"],
+          "location": "AoS_v3/foreman_v2_stack/intelligence/atoms/rag_integration_atom_v3.json"
+        },
+        {
+          "id": "integration_process",
+          "title": "Integration Process",
+          "content": "5-phase integration process: Preparation, Intelligence Integration, Schema Updates, Registry Updates, Validation and Testing",
+          "tags": ["process", "integration", "phases", "validation"]
+        },
+        {
+          "id": "enhancement_strategies",
+          "title": "Enhancement Strategies",
+          "content": "Knowledge base expansion, vector tree enhancement, semantic search improvement, Foreman master integration, atom registry updates",
+          "tags": ["strategies", "enhancement", "knowledge", "semantic"]
+        }
+      ]
+    },
+    "testing_framework_knowledge": {
+      "id": "testing_framework_knowledge",
+      "name": "Testing Framework Knowledge",
+      "description": "Comprehensive testing framework for validating all system components",
+      "vector_embedding": [0.55, 0.65, 0.75, 0.85, 0.95],
+      "children": [
+        "test_orchestration",
+        "result_validation",
+        "performance_metrics",
+        "quality_assurance"
+      ],
+      "knowledge_items": [
+        {
+          "id": "csv_runtime_orchestration",
+          "title": "CSV Runtime Orchestration",
+          "content": "CSV runner orchestrates all test atoms in coordinated execution flow",
+          "tags": ["csv", "runtime", "orchestration", "execution"],
+          "location": "AoS_v3/foreman_v2_stack/intelligence/csv_runners/intelligence_enhancement_runner.csv"
+        },
+        {
+          "id": "master_registry_integration",
+          "title": "Master Registry Integration",
+          "content": "All atoms registered in master atom registry with JSONL format integration",
+          "tags": ["registry", "integration", "jsonl", "master"],
+          "location": "AoS_v3/foreman_v2_stack/intelligence/intelligence_enhancement_master_atoms.jsonl"
+        },
+        {
+          "id": "test_execution_flow",
+          "title": "Test Execution Flow",
+          "content": "Comprehensive test execution flow covering initialization, testing, validation, and reporting",
+          "tags": ["execution", "flow", "testing", "validation"]
+        }
+      ]
+    },
+    "aos_v3_compliance_knowledge": {
+      "id": "aos_v3_compliance_knowledge",
+      "name": "AOS v3 Compliance Knowledge",
+      "description": "Compliance with AOS v3 standards and Gold Star programming requirements",
+      "vector_embedding": [0.6, 0.7, 0.8, 0.9, 1.0],
+      "children": [
+        "atom_architecture",
+        "hash_based_identification",
+        "master_registry_integration",
+        "gold_star_standards"
+      ],
+      "knowledge_items": [
+        {
+          "id": "atom_architecture_compliance",
+          "title": "Atom Architecture Compliance",
+          "content": "All components follow AOS v3 atom architecture with proper JSON structure and CSV runtime orchestration",
+          "tags": ["architecture", "compliance", "atoms", "structure"]
+        },
+        {
+          "id": "hash_based_identification",
+          "title": "Hash-Based Identification",
+          "content": "SHA256 hash-based identification for all atoms with unique DNA hashes",
+          "tags": ["hash", "identification", "sha256", "dna"]
+        },
+        {
+          "id": "gold_star_standards",
+          "title": "Gold Star Standards",
+          "content": "Neurodivergent-friendly design, comprehensive documentation, intelligent error recovery, adaptive behavior, learning capabilities",
+          "tags": ["gold_star", "standards", "neurodivergent", "documentation"]
+        }
+      ]
+    },
+    "aos_v3_atom_architecture_knowledge": {
+      "id": "aos_v3_atom_architecture_knowledge",
+      "name": "AOS v3 Atom Architecture Knowledge",
+      "description": "Current AOS v3 atom-based architecture standards and implementation",
+      "vector_embedding": [0.2, 0.3, 0.4, 0.5, 0.6],
+      "children": [
+        "master_atom_registry",
+        "atom_json_files",
+        "csv_runtime_engine",
+        "atom_discovery_routing",
+        "hash_based_integration"
+      ],
+      "related_functions": [
+        "discover_atoms",
+        "route_requests",
+        "execute_atoms",
+        "monitor_performance"
+      ]
+    },
+    "master_atom_registry": {
+      "id": "master_atom_registry",
+      "name": "Master Atom Registry",
+      "description": "Central registry for all atoms in the AOS v3 system",
+      "vector_embedding": [0.3, 0.4, 0.5, 0.6, 0.7],
+      "children": [],
+      "knowledge_items": [
+        {
+          "id": "registry_structure",
+          "title": "Registry Structure",
+          "content": "CSV-based registry with atom_id, atom_type, version, domain, complexity_level, quality_score, hash, registration_date, file_path",
+          "tags": ["registry", "csv", "structure", "atoms"],
+          "location": "AoS_v3/master_atom_registry.csv"
+        },
+        {
+          "id": "atom_identification",
+          "title": "Atom Identification",
+          "content": "Each atom has unique atom_id with hash-based identification and quality scoring",
+          "tags": ["identification", "hash", "quality", "scoring"]
+        },
+        {
+          "id": "registry_operations",
+          "title": "Registry Operations",
+          "content": "Real-time updates, automatic validation, and atom discovery capabilities",
+          "tags": ["operations", "real-time", "validation", "discovery"]
+        }
+      ]
+    },
+    "atom_json_files": {
+      "id": "atom_json_files",
+      "name": "Atom JSON Files",
+      "description": "Individual atom definitions in JSON format",
+      "vector_embedding": [0.4, 0.5, 0.6, 0.7, 0.8],
+      "children": [],
+      "knowledge_items": [
+        {
+          "id": "atom_structure",
+          "title": "Atom Structure",
+          "content": "Standard structure with atom_id, component_name, component_type, capabilities, functions, configuration, dependencies, resource_requirements, execution_flow, health_checks, endpoint",
+          "tags": ["structure", "json", "standard", "definition"]
+        },
+        {
+          "id": "naming_convention",
+          "title": "Naming Convention",
+          "content": "Atoms named as {component_name}_atom.json located in AoS_v3/{system_name}/atoms/",
+          "tags": ["naming", "convention", "location", "pattern"]
+        },
+        {
+          "id": "atom_capabilities",
+          "title": "Atom Capabilities",
+          "content": "Each atom defines specific capabilities and functions for modular operation",
+          "tags": ["capabilities", "functions", "modular", "operation"]
+        }
+      ]
+    },
+    "csv_runtime_engine": {
+      "id": "csv_runtime_engine",
+      "name": "CSV Runtime Engine",
+      "description": "Master handler for orchestrating atom execution",
+      "vector_embedding": [0.5, 0.6, 0.7, 0.8, 0.9],
+      "children": [],
+      "knowledge_items": [
+        {
+          "id": "runtime_structure",
+          "title": "Runtime Structure",
+          "content": "CSV-based runtime with atom_id, component_name, component_type, capabilities, functions, dependencies, endpoint, status, fibonacci_level, complexity_score, dna_hash",
+          "tags": ["runtime", "csv", "structure", "orchestration"],
+          "location": "AoS_v3/foreman_v2_stack/intelligence/csv_runners/intelligence_enhancement_runner.csv"
+        },
+        {
+          "id": "execution_flow",
+          "title": "Execution Flow",
+          "content": "Coordinated execution flow with atom discovery, routing, execution, and monitoring",
+          "tags": ["execution", "flow", "coordination", "monitoring"]
+        },
+        {
+          "id": "performance_tracking",
+          "title": "Performance Tracking",
+          "content": "Real-time performance tracking with fibonacci complexity scoring and quality metrics",
+          "tags": ["performance", "tracking", "fibonacci", "quality"]
+        }
+      ]
+    },
+    "orchestration_knowledge": {
+      "id": "orchestration_knowledge",
+      "name": "Orchestration Knowledge",
+      "description": "System orchestration and coordination capabilities",
+      "vector_embedding": [0.6, 0.7, 0.8, 0.9, 1.0],
+      "children": [],
+      "knowledge_items": [
+        {
+          "id": "orchestration_overview",
+          "title": "Orchestration Overview",
+          "content": "Comprehensive system orchestration with atom-based coordination and intelligent routing",
+          "tags": ["orchestration", "coordination", "routing", "intelligent"]
+        }
+      ]
+    },
+    "testing_knowledge": {
+      "id": "testing_knowledge",
+      "name": "Testing Knowledge",
+      "description": "Comprehensive testing and validation capabilities",
+      "vector_embedding": [0.65, 0.75, 0.85, 0.95, 1.05],
+      "children": [],
+      "knowledge_items": [
+        {
+          "id": "testing_overview",
+          "title": "Testing Overview",
+          "content": "Comprehensive testing framework with validation, performance benchmarking, and quality assurance",
+          "tags": ["testing", "validation", "benchmarking", "quality"]
+        }
+      ]
+    },
+    "ai_planning_knowledge": {
+      "id": "ai_planning_knowledge",
+      "name": "AI Planning Knowledge",
+      "description": "AI-driven planning and decision-making capabilities",
+      "vector_embedding": [0.7, 0.8, 0.9, 1.0, 1.1],
+      "children": [],
+      "knowledge_items": [
+        {
+          "id": "ai_planning_overview",
+          "title": "AI Planning Overview",
+          "content": "Intelligent planning system with adaptive decision-making and learning capabilities",
+          "tags": ["ai", "planning", "decision", "learning"]
+        }
+      ]
+    },
+    "health_monitoring_knowledge": {
+      "id": "health_monitoring_knowledge",
+      "name": "Health Monitoring Knowledge",
+      "description": "System health monitoring and diagnostics",
+      "vector_embedding": [0.75, 0.85, 0.95, 1.05, 1.15],
+      "children": [],
+      "knowledge_items": [
+        {
+          "id": "health_monitoring_overview",
+          "title": "Health Monitoring Overview",
+          "content": "Comprehensive health monitoring with real-time diagnostics and predictive maintenance",
+          "tags": ["health", "monitoring", "diagnostics", "predictive"]
+        }
+      ]
+    },
+    "legacy_vport_knowledge": {
+      "id": "legacy_vport_knowledge",
+      "name": "Legacy VPort Knowledge",
+      "description": "Legacy VPort system knowledge and migration information",
+      "vector_embedding": [0.8, 0.9, 1.0, 1.1, 1.2],
+      "children": [],
+      "knowledge_items": [
+        {
+          "id": "vport_migration",
+          "title": "VPort Migration",
+          "content": "Migration from legacy VPorts to AOS v3 atom architecture with backward compatibility",
+          "tags": ["vport", "migration", "legacy", "compatibility"]
+        }
+      ]
+    },
+    "intelligence_system_knowledge": {
+      "id": "intelligence_system_knowledge",
+      "name": "Intelligence System Knowledge",
+      "description": "Core intelligence system capabilities and features",
+      "vector_embedding": [0.85, 0.95, 1.05, 1.15, 1.25],
+      "children": [],
+      "knowledge_items": [
+        {
+          "id": "intelligence_overview",
+          "title": "Intelligence Overview",
+          "content": "Core intelligence capabilities with learning, adaptation, and decision-making",
+          "tags": ["intelligence", "learning", "adaptation", "decision"]
+        }
+      ]
+    },
+    "system_context_knowledge": {
+      "id": "system_context_knowledge",
+      "name": "System Context Knowledge",
+      "description": "System context and environment information",
+      "vector_embedding": [0.9, 1.0, 1.1, 1.2, 1.3],
+      "children": [],
+      "knowledge_items": [
+        {
+          "id": "system_context_overview",
+          "title": "System Context Overview",
+          "content": "System context and environment with configuration and deployment information",
+          "tags": ["context", "environment", "configuration", "deployment"]
+        }
+      ]
+    }
+  },
+  "metadata": {
+    "created_at": "2025-09-02T22:00:00Z",
+    "version": "3.0.0",
+    "description": "Intelligence-Enhanced Foreman v2 Vector Tree with Complete Intelligence Enhancement System Integration",
+    "total_nodes": 19,
+    "total_knowledge_items": 45,
+    "integration_status": "intelligence_enhanced",
+    "enhancement_features": [
+      "llm_multi_handler_integration",
+      "judge_overlay_integration", 
+      "vector_enhancement_integration",
+      "foreman_test_integration",
+      "llm_test_integration",
+      "intelligence_integration",
+      "rag_integration",
+      "testing_framework_integration",
+      "aos_v3_compliance_integration"
+    ]
+  }
+}
