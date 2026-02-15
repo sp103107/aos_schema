@@ -36,15 +36,19 @@ def _legacy_schemas_enabled() -> bool:
     return _is_truthy(os.getenv("AOS_ALLOW_LEGACY_SCHEMAS"))
 
 
+def _packet_mode_enabled() -> bool:
+    # If true, /chat returns an MCP packet instead of executing the local engine.
+    return _is_truthy(os.getenv("AOS_FOREMAN_PACKET_MODE"))
+
+
 def _prune_unresolvable_master_refs(
     envelope_schema: Dict[str, Any],
     available_master_ids: set[str],
     allowed_master_ids: set[str],
 ) -> Dict[str, Any]:
     schema_copy = deepcopy(envelope_schema)
-    embedded_master_meta = (
-        schema_copy.get("properties", {})
-        .get("embedded_master_meta", {})
+    embedded_master_meta = schema_copy.get("properties", {}).get(
+        "embedded_master_meta", {}
     )
     one_of = embedded_master_meta.get("oneOf")
     if isinstance(one_of, list):
@@ -219,6 +223,16 @@ def validate_envelope_payload(payload: Dict[str, Any]) -> None:
     _enforce_conditional_envelope_requirements(payload)
 
 
+def to_mcp(payload: Dict[str, Any]) -> Dict[str, Any]:
+    # Keep this lightweight; the real MCP envelope builder can live elsewhere.
+    return {
+        "source_atom": payload.get("request_id", "api"),
+        "target_atom": "foreman",
+        "payload": payload,
+        "protocol": "MCP_PACKET_VPORT",
+    }
+
+
 @app.on_event("startup")
 async def on_startup() -> None:
     global ENGINE
@@ -240,6 +254,9 @@ def _require_engine() -> BaseTaskEngine:
 @app.post("/chat")
 async def chat(request_data: Dict[str, Any]) -> Dict[str, Any]:
     validate_envelope_payload(request_data)
+
+    if _packet_mode_enabled():
+        return {"status": "ok", "mode": "packet", "packet": to_mcp(request_data)}
 
     engine = _require_engine()
     try:
