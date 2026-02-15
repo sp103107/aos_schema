@@ -1,0 +1,18 @@
+{
+  "status": "SUCCESS",
+  "generation_summary": "Stub generation for intent=draft: Draft a README intro for AoS Standard App v1",
+  "artifacts": [
+    {
+      "artifact_id": "artifact_001",
+      "type": "text",
+      "content": "[Stub artifact]\nDraft a README intro for AoS Standard App v1",
+      "metadata": {
+        "intent": "draft"
+      }
+    }
+  ],
+  "notes": "",
+  "metrics": {
+    "artifacts": 1
+  }
+}
