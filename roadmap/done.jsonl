@@ -1,3 +1,4 @@
 {"id": "done.stage.000", "type": "aos.done_entry", "stage": "STAGE_000", "completed_at": "2025-12-20T19:53:22Z", "notes": "Bootstrap scaffold created."}
 {"id": "done.stage.004", "type": "aos.done_entry", "stage": "STAGE_004", "completed_at": "2026-02-15T16:50:09Z", "notes": "Reviewed AoS archive schemas and runtime packages; findings reported in assistant response."}
 {"id": "done.stage.005", "type": "aos.done_entry", "stage": "STAGE_005", "completed_at": "2026-02-15T17:04:22Z", "notes": "Envelope builder now emits canonical target/transport/payload shape."}
+{"id": "done.stage.006", "type": "aos.done_entry", "stage": "STAGE_006", "completed_at": "2026-02-15T17:10:18Z", "notes": "Git initialized and pushed to GitHub origin/main."}
