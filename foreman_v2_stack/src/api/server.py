@@ -39,6 +39,7 @@ def _legacy_schemas_enabled() -> bool:
 def _prune_unresolvable_master_refs(
     envelope_schema: Dict[str, Any],
     available_master_ids: set[str],
+    allowed_master_ids: set[str],
 ) -> Dict[str, Any]:
     schema_copy = deepcopy(envelope_schema)
     embedded_master_meta = (
@@ -53,6 +54,7 @@ def _prune_unresolvable_master_refs(
             if isinstance(entry, dict)
             and isinstance(entry.get("$ref"), str)
             and entry["$ref"] in available_master_ids
+            and entry["$ref"] in allowed_master_ids
         ]
         if filtered:
             embedded_master_meta["oneOf"] = filtered
@@ -73,6 +75,7 @@ def _build_envelope_validators() -> Dict[str, Draft202012Validator]:
         "v5": _load_json(schema_root / "master" / "aos.master.meta.v5.schema.json"),
         "v4": _load_json(schema_root / "master" / "aos.master.meta.v4.schema.json"),
     }
+    master_ids = {name: schema["$id"] for name, schema in master_schemas.items()}
     master_store = {schema["$id"]: schema for schema in master_schemas.values()}
     available_master_ids = set(master_store.keys())
 
@@ -88,10 +91,18 @@ def _build_envelope_validators() -> Dict[str, Draft202012Validator]:
         ),
     }
 
+    allowed_master_map = {
+        "aos.master.envelope.v5_1": {master_ids["v5_1"]},
+        "aos.master.envelope.v5": {master_ids["v5"], master_ids["v4"]},
+        "aos.master.envelope.v4": {master_ids["v4"]},
+    }
+
     validators: Dict[str, Draft202012Validator] = {}
     for envelope_version, envelope_schema in envelope_schemas.items():
         normalized_envelope = _prune_unresolvable_master_refs(
-            envelope_schema, available_master_ids
+            envelope_schema,
+            available_master_ids,
+            allowed_master_map.get(envelope_version, available_master_ids),
         )
         resolver = RefResolver.from_schema(
             normalized_envelope,
@@ -232,7 +243,7 @@ async def chat(request_data: Dict[str, Any]) -> Dict[str, Any]:
 
     engine = _require_engine()
     try:
-        task_id = engine.submit_task(request_data)
+        result_envelope = engine.submit_task(request_data)
     except ValueError as exc:
         raise HTTPException(
             status_code=400,
@@ -242,10 +253,16 @@ async def chat(request_data: Dict[str, Any]) -> Dict[str, Any]:
             },
         ) from exc
 
-    return {
-        "status": "accepted",
-        "task_id": task_id,
-    }
+    if not isinstance(result_envelope, dict):
+        raise HTTPException(
+            status_code=500,
+            detail={
+                "error": "invalid_engine_result",
+                "message": "Engine must return a result envelope object.",
+            },
+        )
+
+    return result_envelope
 
 
 @app.websocket("/ws")

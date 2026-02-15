@@ -5,3 +5,4 @@
 {"id":"done.stage.007","type":"aos.done_entry","stage":"STAGE_007","completed_at":"2026-02-15T17:20:00Z","notes":"Ingested envelope/scene v5.1 contracts and documented Foreman alignment gaps."}
 {"id":"done.stage.008","type":"aos.done_entry","stage":"STAGE_008","completed_at":"2026-02-15T17:31:00Z","notes":"Implemented P0 strict envelope validation at /chat and extracted execution/tasks domains in handler."}
 {"id":"done.stage.009","type":"aos.done_entry","stage":"STAGE_009","completed_at":"2026-02-15T17:47:47Z","notes":"Implemented P1 version gating, conditional envelope checks, and updated stack API/strict-mode documentation."}
+{"id":"done.stage.010","type":"aos.done_entry","stage":"STAGE_010","completed_at":"2026-02-15T18:14:41Z","notes":"Implemented in-process task runner MVP; /chat now returns a v5.1 task_result envelope with generated artifacts."}

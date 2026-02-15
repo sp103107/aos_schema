@@ -12,10 +12,10 @@ class BaseTaskEngine(ABC):
     """
 
     @abstractmethod
-    def submit_task(self, envelope: Dict[str, Any]) -> str:
+    def submit_task(self, envelope: Dict[str, Any]) -> Dict[str, Any]:
         """Submit an AoS envelope for execution.
 
         Returns:
-            task_id: canonical AoS task identifier.
+            AoS result envelope payload.
         """
         raise NotImplementedError
