@@ -2,9 +2,10 @@ from __future__ import annotations
 
 import json
 from datetime import datetime, timezone
-from typing import Any, Dict, List
+from typing import Any, Callable, Dict, List, Optional
 
 from src.interfaces.engine import BaseTaskEngine
+from src.registries.tool_lookup import ToolRecord, ToolRegistry
 
 
 class LocalTaskEngine(BaseTaskEngine):
@@ -15,6 +16,14 @@ class LocalTaskEngine(BaseTaskEngine):
     """
 
     EXPECTED_ENVELOPE_VERSION = "aos.master.envelope.v5_1"
+
+    def __init__(self, registry: Optional[ToolRegistry] = None) -> None:
+        self.registry = registry or ToolRegistry()
+        self.handlers: Dict[str, Callable[[Dict[str, Any]], Dict[str, Any]]] = {
+            "urn:aos:tool:planner": self._build_planning_artifact,
+            "urn:aos:tool:generator": self._build_generation_artifact,
+            "urn:aos:tool:writer": self._build_generation_artifact,
+        }
 
     def _iso_now(self) -> str:
         return datetime.now(tz=timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
@@ -68,25 +77,41 @@ class LocalTaskEngine(BaseTaskEngine):
         for task in tasks:
             if not isinstance(task, dict):
                 continue
-            task_type = task.get("task_type")
-            if task_type == "planning":
-                artifacts.append(self._build_planning_artifact(task))
-            elif task_type in {"generation", "presentation"}:
-                artifacts.append(self._build_generation_artifact(task))
-            else:
+
+            task_type = str(task.get("task_type", "")).strip()
+            tool_record: Optional[ToolRecord] = self.registry.resolve_tool(task_type)
+            if tool_record is None:
                 unsupported.append(
                     {
                         "task_id": task.get("task_id"),
                         "task_type": task_type,
-                        "reason": "unsupported_task_type",
+                        "reason": "tool_not_found",
                     }
                 )
+                continue
+
+            handler = self.handlers.get(tool_record.id)
+            if handler is None:
+                unsupported.append(
+                    {
+                        "task_id": task.get("task_id"),
+                        "task_type": task_type,
+                        "tool_id": tool_record.id,
+                        "reason": "handler_not_found",
+                    }
+                )
+                continue
+
+            artifact = handler(task)
+            artifact["tool_id"] = tool_record.id
+            artifacts.append(artifact)
 
         status = "completed" if not unsupported else "completed_with_warnings"
         return {
             "status": status,
             "artifacts": artifacts,
             "unsupported_tasks": unsupported,
+            "registry_errors": self.registry.load_errors,
         }
 
     def submit_task(self, envelope: Dict[str, Any]) -> Dict[str, Any]:
