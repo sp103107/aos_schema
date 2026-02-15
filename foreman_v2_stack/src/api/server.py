@@ -9,6 +9,9 @@ from typing import Any, Dict
 from fastapi import FastAPI, HTTPException, WebSocket
 from jsonschema import Draft202012Validator, RefResolver
 
+from src.engines.local_inproc import LocalTaskEngine
+from src.interfaces.engine import BaseTaskEngine
+
 app = FastAPI(title="Foreman v2 Agent API")
 
 DEFAULT_ENVELOPE_VERSION = "aos.master.envelope.v5_1"
@@ -16,6 +19,8 @@ LEGACY_ENVELOPE_VERSIONS = {
     "aos.master.envelope.v5",
     "aos.master.envelope.v4",
 }
+
+ENGINE: BaseTaskEngine | None = None
 
 
 def _load_json(path: Path) -> Dict[str, Any]:
@@ -68,10 +73,7 @@ def _build_envelope_validators() -> Dict[str, Draft202012Validator]:
         "v5": _load_json(schema_root / "master" / "aos.master.meta.v5.schema.json"),
         "v4": _load_json(schema_root / "master" / "aos.master.meta.v4.schema.json"),
     }
-    master_store = {
-        schema["$id"]: schema
-        for schema in master_schemas.values()
-    }
+    master_store = {schema["$id"]: schema for schema in master_schemas.values()}
     available_master_ids = set(master_store.keys())
 
     envelope_schemas = {
@@ -171,9 +173,7 @@ def _enforce_conditional_envelope_requirements(payload: Dict[str, Any]) -> None:
         if task is None or not isinstance(task, dict):
             _raise_validation_error(
                 error="conditional_requirement_failed",
-                message=(
-                    "envelope_kind=task_request requires a non-null task object."
-                ),
+                message="envelope_kind=task_request requires a non-null task object.",
                 path=["task"],
                 schema_path=["allOf", "task_request", "required", "task"],
                 validator="conditional",
@@ -184,9 +184,7 @@ def _enforce_conditional_envelope_requirements(payload: Dict[str, Any]) -> None:
         if result is None or not isinstance(result, dict):
             _raise_validation_error(
                 error="conditional_requirement_failed",
-                message=(
-                    "envelope_kind=task_result requires a non-null result object."
-                ),
+                message="envelope_kind=task_result requires a non-null result object.",
                 path=["result"],
                 schema_path=["allOf", "task_result", "required", "result"],
                 validator="conditional",
@@ -210,20 +208,44 @@ def validate_envelope_payload(payload: Dict[str, Any]) -> None:
     _enforce_conditional_envelope_requirements(payload)
 
 
-def to_mcp(payload: Dict[str, Any]) -> Dict[str, Any]:
-    return {
-        "source_atom": payload.get("request_id", "api"),
-        "target_atom": "foreman",
-        "payload": payload,
-        "protocol": "MCP_PACKET_VPORT",
-    }
+@app.on_event("startup")
+async def on_startup() -> None:
+    global ENGINE
+    ENGINE = LocalTaskEngine()
+
+
+def _require_engine() -> BaseTaskEngine:
+    if ENGINE is None:
+        raise HTTPException(
+            status_code=503,
+            detail={
+                "error": "engine_not_ready",
+                "message": "Task engine is not initialized.",
+            },
+        )
+    return ENGINE
 
 
 @app.post("/chat")
-async def chat(payload: Dict[str, Any]) -> Dict[str, Any]:
-    validate_envelope_payload(payload)
-    packet = to_mcp(payload)
-    return {"status": "ok", "packet": packet}
+async def chat(request_data: Dict[str, Any]) -> Dict[str, Any]:
+    validate_envelope_payload(request_data)
+
+    engine = _require_engine()
+    try:
+        task_id = engine.submit_task(request_data)
+    except ValueError as exc:
+        raise HTTPException(
+            status_code=400,
+            detail={
+                "error": "engine_submission_error",
+                "message": str(exc),
+            },
+        ) from exc
+
+    return {
+        "status": "accepted",
+        "task_id": task_id,
+    }
 
 
 @app.websocket("/ws")
