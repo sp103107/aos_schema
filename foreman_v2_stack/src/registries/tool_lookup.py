@@ -67,9 +67,19 @@ class ToolRecord:
 class ToolRegistry:
     """Tool catalog adapter for capability lookup by task type."""
 
+    @staticmethod
+    def _find_repo_root(start: Path) -> Path:
+        for candidate in (start, *start.parents):
+            if (candidate / ".git").exists() or (
+                (candidate / "foreman_v2_stack").exists()
+                and (candidate / "registry" / "tools_catalog.jsonl").exists()
+            ):
+                return candidate
+        raise RuntimeError("Unable to locate repository root from tool_lookup.py path")
+
     def __init__(self, registry_path: Optional[Path] = None) -> None:
         if registry_path is None:
-            repo_root = Path(__file__).resolve().parents[3]
+            repo_root = self._find_repo_root(Path(__file__).resolve())
             registry_path = repo_root / "registry" / "tools_catalog.jsonl"
 
         self.registry_path = registry_path

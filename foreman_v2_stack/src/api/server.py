@@ -23,6 +23,15 @@ LEGACY_ENVELOPE_VERSIONS = {
 ENGINE: BaseTaskEngine | None = None
 
 
+def _find_repo_root(start: Path) -> Path:
+    for candidate in (start, *start.parents):
+        if (candidate / ".git").exists() or (
+            candidate / "aos_v4_meta_envelope_scene_bundle"
+        ).exists():
+            return candidate
+    raise RuntimeError("Unable to locate repository root from server.py path")
+
+
 def _load_json(path: Path) -> Dict[str, Any]:
     with open(path, "r", encoding="utf-8") as f:
         return json.load(f)
@@ -67,7 +76,7 @@ def _prune_unresolvable_master_refs(
 
 
 def _build_envelope_validators() -> Dict[str, Draft202012Validator]:
-    repo_root = Path(__file__).resolve().parents[3]
+    repo_root = _find_repo_root(Path(__file__).resolve())
     schema_root = (
         repo_root
         / "aos_v4_meta_envelope_scene_bundle"

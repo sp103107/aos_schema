@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import json
 from datetime import datetime, timezone
 from typing import Any, Callable, Dict, List, Optional
 
@@ -26,10 +25,21 @@ class LocalTaskEngine(BaseTaskEngine):
         }
 
     def _iso_now(self) -> str:
-        return datetime.now(tz=timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
+        return (
+            datetime.now(tz=timezone.utc)
+            .replace(microsecond=0)
+            .isoformat()
+            .replace("+00:00", "Z")
+        )
+
+    def _sanitize_untrusted_text(self, value: Any, fallback: str = "n/a") -> str:
+        text = value if isinstance(value, str) else fallback
+        text = text.replace("\r", " ").replace("\n", " ")
+        return text.replace("```", "` ` `").strip() or fallback
 
     def _build_planning_artifact(self, task: Dict[str, Any]) -> Dict[str, Any]:
         task_id = task.get("task_id", "urn:aos:task:unknown")
+        description = self._sanitize_untrusted_text(task.get("description"))
         return {
             "artifact_id": f"urn:aos:artifact:{task_id.split(':')[-1]}.plan.md",
             "artifact_type": "doc_md",
@@ -37,7 +47,7 @@ class LocalTaskEngine(BaseTaskEngine):
             "content": (
                 f"# Task Plan\n\n"
                 f"- Task ID: `{task_id}`\n"
-                f"- Description: {task.get('description', 'n/a')}\n"
+                f"- Description: {description}\n"
                 f"- Next Step: execute downstream generation/validation tasks.\n"
             ),
             "produced_by_task_id": task_id,
@@ -45,7 +55,7 @@ class LocalTaskEngine(BaseTaskEngine):
 
     def _build_generation_artifact(self, task: Dict[str, Any]) -> Dict[str, Any]:
         task_id = task.get("task_id", "urn:aos:task:unknown")
-        title = task.get("description", "Generated Document")
+        title = self._sanitize_untrusted_text(task.get("description"), "Generated Document")
         return {
             "artifact_id": f"urn:aos:artifact:{task_id.split(':')[-1]}.generated.md",
             "artifact_type": "doc_md",
@@ -122,8 +132,11 @@ class LocalTaskEngine(BaseTaskEngine):
                 f"expected '{self.EXPECTED_ENVELOPE_VERSION}', got '{envelope_version}'"
             )
 
-        print("[LocalTaskEngine] submitted envelope:")
-        print(json.dumps(envelope, indent=2, sort_keys=True))
+        print(
+            "[LocalTaskEngine] accepted envelope "
+            f"request_id={envelope.get('request_id', 'n/a')} "
+            f"kind={envelope.get('envelope_kind', 'n/a')}"
+        )
 
         result = self._run_tasks(envelope)
 
